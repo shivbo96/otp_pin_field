@@ -21,7 +21,7 @@ dependencies:
    with Flutter:
 
 ```
-$ flutter pub add otp_pin_field
+$ flutter pub get
 ```
 
 Alternatively, your editor might support flutter packages get. Check the docs for your editor to
