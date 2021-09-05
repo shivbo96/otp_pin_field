@@ -12,7 +12,6 @@ class OtpPinFieldState extends State<OtpPinField>
   bool hasFocus = false;
   String text = "";
 
-
   @override
   void initState() {
     super.initState();
@@ -29,7 +28,6 @@ class OtpPinFieldState extends State<OtpPinField>
     // Clean up the focus node when the Form is disposed.
     _focusNode.dispose();
     _focusNode.removeListener(_focusListener);
-
     super.dispose();
   }
 
@@ -56,7 +54,6 @@ class OtpPinFieldState extends State<OtpPinField>
               print(text);
             },
             onChanged: (text) {
-
               this.text = text;
               // FocusScope.of(context).nextFocus();
               if (ending && text.length == widget.maxLength) {
@@ -99,7 +96,7 @@ class OtpPinFieldState extends State<OtpPinField>
     fieldBorderColor = widget.highlightBorder && _shouldHighlight(i)
         ? widget.otpPinFieldStyle!.activeFieldBorderColor
         : widget.otpPinFieldStyle!.defaultFieldBorderColor;
-    fieldBackgroundColor = widget.highlightBorder&& _shouldHighlight(i)
+    fieldBackgroundColor = widget.highlightBorder && _shouldHighlight(i)
         ? widget.otpPinFieldStyle!.activeFieldBackgroundColor
         : widget.otpPinFieldStyle!.defaultFieldBackgroundColor;
     // }
@@ -140,8 +137,8 @@ class OtpPinFieldState extends State<OtpPinField>
             width: 2.0,
           ),
           color: fieldBackgroundColor,
-          borderRadius:
-          BorderRadius.circular(widget.otpPinFieldStyle!.fieldBorderRadius));
+          borderRadius: BorderRadius.circular(
+              widget.otpPinFieldStyle!.fieldBorderRadius));
     }
 
     return InkWell(

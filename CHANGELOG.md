@@ -5,3 +5,7 @@
 ## [0.0.2] -Release
 
 * Initial release, working functionality.
+
+## [1.0.0] -Release
+
+* Example Added.

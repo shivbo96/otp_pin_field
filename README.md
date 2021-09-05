@@ -34,6 +34,7 @@ import 'package:otp_pin_field/otp_pin.dart';
 ```
 
 ## Properties
+
 | name | type | default | description |
 | --- | --- | --- | --- |
 | fieldCount | int | 4 | The total length of pin number & the number of pin boxes. |
@@ -101,5 +102,6 @@ refer to `example/lib/main.dart`
 <img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/8.png" width="250" height="480">
 
 ## More information
+
 [Pub package](https://pub.dartlang.org/packages/otp_pin_field)
 [Flutter documentation](https://flutter.io/).

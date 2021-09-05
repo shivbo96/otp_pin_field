@@ -22,7 +22,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-
   MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
@@ -44,20 +43,25 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             OtpPinField(
               onSubmit: (text) {
-                print( 'Entered pin is $text');     // return the entered pin
+                print('Entered pin is $text'); // return the entered pin
               },
               // to decorate your Otp_Pin_Field
               otpPinFieldStyle: OtpPinFieldStyle(
-                defaultFieldBorderColor: Colors.red,   // border color for inactive/unfocused Otp_Pin_Field
-                activeFieldBorderColor: Colors.indigo, // border color for active/focused Otp_Pin_Field
-                defaultFieldBackgroundColor: Colors.yellow,  // Background Color for inactive/unfocused Otp_Pin_Field
-                activeFieldBackgroundColor: Colors.cyanAccent,// Background Color for active/focused Otp_Pin_Field
+                // border color for inactive/unfocused Otp_Pin_Field
+                defaultFieldBorderColor: Colors.red,
+                // border color for active/focused Otp_Pin_Field
+                activeFieldBorderColor: Colors.indigo,
+                // Background Color for inactive/unfocused Otp_Pin_Field
+                defaultFieldBackgroundColor: Colors.yellow,
+                activeFieldBackgroundColor: Colors
+                    .cyanAccent, // Background Color for active/focused Otp_Pin_Field
               ),
-              maxLength: 6,  // no of pin field
+              maxLength: 6,
+              // no of pin field
               // predefine decorate of pinField use  OtpPinFieldDecoration.defaultPinBoxDecoration||OtpPinFieldDecoration.underlinedPinBoxDecoration||OtpPinFieldDecoration.roundedPinBoxDecoration
               //use OtpPinFieldDecoration.custom  (by using this you can make Otp_Pin_Field according to yourself like you can give fieldBorderRadius,fieldBorderWidth and etc things)
-              otpPinFieldDecoration: OtpPinFieldDecoration.underlinedPinBoxDecoration,
-
+              otpPinFieldDecoration:
+                  OtpPinFieldDecoration.underlinedPinBoxDecoration,
             )
           ],
         ),

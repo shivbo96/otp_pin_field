@@ -40,5 +40,3 @@ class OtpPinField extends StatefulWidget {
     return OtpPinFieldState();
   }
 }
-
-
