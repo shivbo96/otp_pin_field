@@ -1,7 +1,3 @@
 ## [0.0.1] -Release
 
 * Initial release, working base functionality.
-
-## [0.0.2] -Release
-
-* Initial release, working functionality.
