@@ -1,4 +1,4 @@
-[![Pub](https://img.shields.io/pub/v/pin_code_text_field.svg)](https://pub.dartlang.org/packages/otp_pin_field)
+[![Pub](https://img.shields.io/pub/v/otp_pin_field.svg)](https://pub.dartlang.org/packages/otp_pin_field)
 
 # otp_pin_field
 
