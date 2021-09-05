@@ -91,7 +91,14 @@ refer to `example/lib/main.dart`
 
 #### Different Shapes
 
-<img src="https://raw.githubusercontent.com/adar2378/pin_code_fields/master/demo_media/box.png" width="250" height="480"><img src="https://raw.githubusercontent.com/adar2378/pin_code_fields/master/demo_media/circle.png" width="250" height="480"><img src="https://raw.githubusercontent.com/adar2378/pin_code_fields/master/demo_media/underline.png" width="250" height="480">
+<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/1.png" width="250" height="480">
+<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/2.png" width="250" height="480">
+<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/3.png" width="250" height="480">
+<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/4.png" width="250" height="480">
+<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/5.png" width="250" height="480">
+<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/6.png" width="250" height="480">
+<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/7.png" width="250" height="480">
+<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/8.png" width="250" height="480">
 
 ## More information
 [Pub package](https://pub.dartlang.org/packages/otp_pin_field)
