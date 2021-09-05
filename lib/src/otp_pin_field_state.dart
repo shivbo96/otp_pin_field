@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../otp_pin.dart';
+import '../otp_pin_field.dart';
 
 class OtpPinFieldState extends State<OtpPinField>
     with SingleTickerProviderStateMixin {

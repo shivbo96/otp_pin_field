@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:otp_pin_field/otp_pin.dart';
+import 'package:otp_pin_field/otp_pin_field.dart';
 
 void main() {
   runApp(MyApp());
