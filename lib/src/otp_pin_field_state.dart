@@ -26,8 +26,8 @@ class OtpPinFieldState extends State<OtpPinField>
   @override
   void dispose() {
     // Clean up the focus node when the Form is disposed.
-    _focusNode.dispose();
     _focusNode.removeListener(_focusListener);
+    _focusNode.dispose();
     super.dispose();
   }
 

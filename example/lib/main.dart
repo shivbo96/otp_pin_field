@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'package:example_otp_pin_field/next_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:otp_pin_field/otp_pin_field.dart';
 
 void main() {
@@ -61,8 +60,15 @@ class _MyHomePageState extends State<MyHomePage> {
               // predefine decorate of pinField use  OtpPinFieldDecoration.defaultPinBoxDecoration||OtpPinFieldDecoration.underlinedPinBoxDecoration||OtpPinFieldDecoration.roundedPinBoxDecoration
               //use OtpPinFieldDecoration.custom  (by using this you can make Otp_Pin_Field according to yourself like you can give fieldBorderRadius,fieldBorderWidth and etc things)
               otpPinFieldDecoration:
-                  OtpPinFieldDecoration.underlinedPinBoxDecoration,
-            )
+                  OtpPinFieldDecoration.defaultPinBoxDecoration,
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            ElevatedButton(
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => NextPage())),
+                child: Text("Next Class"))
           ],
         ),
       ),
