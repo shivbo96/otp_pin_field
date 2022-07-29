@@ -44,6 +44,9 @@ class _MyHomePageState extends State<MyHomePage> {
               onSubmit: (text) {
                 print('Entered pin is $text'); // return the entered pin
               },
+              onChange: (text) {
+                print('Enter on change pin is $text'); // return the entered pin
+              },
               // to decorate your Otp_Pin_Field
               otpPinFieldStyle: OtpPinFieldStyle(
                 // border color for inactive/unfocused Otp_Pin_Field

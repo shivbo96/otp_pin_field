@@ -61,6 +61,7 @@ class OtpPinFieldState extends State<OtpPinField>
               }
               _bindTextIntoWidget(text);
               setState(() {});
+              widget.onChange!(text);
               ending = text.length == widget.maxLength;
               if (ending) {
                 widget.onSubmit(text);

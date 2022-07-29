@@ -3,6 +3,7 @@ import 'package:otp_pin_field/otp_pin_field.dart';
 import 'package:otp_pin_field/src/otp_pin_field_state.dart';
 
 typedef OnDone = void Function(String text);
+typedef OnChange = void Function(String text);
 
 class OtpPinField extends StatefulWidget {
   final double fieldHeight;
@@ -10,6 +11,7 @@ class OtpPinField extends StatefulWidget {
   final int maxLength;
   final OtpPinFieldStyle? otpPinFieldStyle;
   final OnDone onSubmit;
+  final OnChange? onChange;
   final OtpPinFieldInputType otpPinFieldInputType;
   final String otpPinInputCustom;
   final OtpPinFieldDecoration otpPinFieldDecoration;
@@ -27,6 +29,7 @@ class OtpPinField extends StatefulWidget {
         OtpPinFieldDecoration.underlinedPinBoxDecoration,
     this.otpPinInputCustom = "*",
     required this.onSubmit,
+    this.onChange,
     this.keyboardType = TextInputType.number,
     this.autoFocus = true,
     this.highlightBorder = true,

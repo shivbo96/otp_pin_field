@@ -9,3 +9,6 @@
 
 ## [1.0.1] -Release
 * FocusNode issue resolved.
+
+## [1.0.2] -Release
+* added on change while entering the otp.
