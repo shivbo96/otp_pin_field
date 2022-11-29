@@ -15,3 +15,6 @@
 
 ## [1.0.3] -Release
 * added cursor with animation ,accessibility to manage otp pin field spacing and also added custom keyboard option in place on default keyboard
+
+## [1.0.4] -Release
+* custom keyboard on submit callback issue resolved.

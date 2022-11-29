@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   activeFieldBackgroundColor: Colors
                       .cyanAccent // Background Color for active/focused Otp_Pin_Field
                   ),
-              maxLength: 4,
+              maxLength: 6,
               // no of pin field
               showCursor: true,
               //bool to show cursor in pin field or not
@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   SizedBox(height: 30),
                   Icon(Icons.flutter_dash_outlined, size: 150),
-                  SizedBox(height: 10),
+                  SizedBox(height: 20),
                 ],
               ),
               middleChild: Column(

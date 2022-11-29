@@ -4,10 +4,12 @@ class OtpKeyboard extends StatelessWidget {
   OtpKeyboard(
       {super.key,
       required this.callbackValue,
+      required this.callbackSubmitValue,
       required this.callbackDeleteValue});
 
   final Function(String) callbackValue;
   final VoidCallback callbackDeleteValue;
+  final VoidCallback callbackSubmitValue;
   late final FocusNode myFocusNode;
 
   @override
@@ -17,6 +19,7 @@ class OtpKeyboard extends StatelessWidget {
     return CustomKeyboard(
       onTextInput: (myText) => callbackValue(myText),
       onBackspace: () => callbackDeleteValue(),
+      onSubmit: () => callbackSubmitValue(),
     );
   }
 
@@ -30,14 +33,17 @@ class CustomKeyboard extends StatelessWidget {
     Key? key,
     required this.onTextInput,
     required this.onBackspace,
+    required this.onSubmit,
   }) : super(key: key);
 
   final ValueSetter<String> onTextInput;
   final VoidCallback onBackspace;
+  final VoidCallback onSubmit;
 
   void _textInputHandler(String text) => onTextInput.call(text);
 
   void _backspaceHandler() => onBackspace.call();
+  void _onSubmitHandler() => onSubmit.call();
 
   @override
   Widget build(BuildContext context) {
@@ -139,7 +145,7 @@ class CustomKeyboard extends StatelessWidget {
           height: 60,
           color: Colors.grey.withOpacity(0.4),
         ),
-        CheckKey(onCheck: () {})
+        CheckKey(onCheck:_onSubmitHandler)
       ],
     );
   }

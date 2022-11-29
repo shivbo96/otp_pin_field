@@ -137,7 +137,13 @@ class OtpPinFieldState extends State<OtpPinField>
                   _bindTextIntoWidget(text);
                   setState(() {});
                   widget.onChange!(text);
-                },
+                }, callbackSubmitValue: () {
+                  if(controller.text.length != widget.maxLength){
+                    return;
+                  }
+                  widget.onSubmit(controller.text);
+
+              },
               ))
         ],
       ),
