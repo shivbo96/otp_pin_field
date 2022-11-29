@@ -18,6 +18,13 @@ class OtpPinField extends StatefulWidget {
   final TextInputType keyboardType;
   final bool autoFocus;
   final bool highlightBorder;
+  final Color? cursorColor;
+  final double? cursorWidth;
+  final bool? showCursor;
+  final MainAxisAlignment? mainAxisAlignment;
+  final Widget? upperChild;
+  final Widget? middleChild;
+  final bool? showCustomKeyboard;
 
   OtpPinField({
     this.fieldHeight = 50.0,
@@ -33,6 +40,13 @@ class OtpPinField extends StatefulWidget {
     this.keyboardType = TextInputType.number,
     this.autoFocus = true,
     this.highlightBorder = true,
+    this.showCursor = true,
+    this.cursorColor,
+    this.cursorWidth=2,
+    this.mainAxisAlignment,
+    this.upperChild,
+    this.middleChild,
+    this.showCustomKeyboard
   });
 
   @override

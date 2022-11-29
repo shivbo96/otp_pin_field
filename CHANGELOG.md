@@ -12,3 +12,6 @@
 
 ## [1.0.2] -Release
 * added on change while entering the otp.
+
+## [1.0.3] -Release
+* added cursor with animation ,accessibility to manage otp pin field spacing and also added custom keyboard option in place on default keyboard

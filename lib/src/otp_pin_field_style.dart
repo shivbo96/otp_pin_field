@@ -11,10 +11,7 @@ class OtpPinFieldStyle {
   final double fieldBorderWidth;
 
   const OtpPinFieldStyle({
-    this.textStyle = const TextStyle(
-      fontSize: 18.0,
-      color: Colors.black,
-    ),
+    this.textStyle = const TextStyle(fontSize: 18.0, color: Colors.black),
     this.activeFieldBorderColor = Colors.black,
     this.defaultFieldBorderColor = Colors.black45,
     this.activeFieldBackgroundColor = Colors.transparent,
