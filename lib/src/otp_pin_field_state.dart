@@ -51,11 +51,12 @@ class OtpPinFieldState extends State<OtpPinField>
 
   @override
   Widget build(BuildContext context) {
-    return widget.showCustomKeyboard??false?_viewWithCustomKeyBoard():_viewWithOutCustomKeyBoard();
+    return widget.showCustomKeyboard ?? false
+        ? _viewWithCustomKeyBoard()
+        : _viewWithOutCustomKeyBoard();
   }
 
-
-  Widget _viewWithCustomKeyBoard(){
+  Widget _viewWithCustomKeyBoard() {
     return Container(
       height: MediaQuery.of(context).size.height - 150,
       child: Column(
@@ -67,19 +68,19 @@ class OtpPinFieldState extends State<OtpPinField>
             child: Stack(children: [
               Row(
                   mainAxisAlignment:
-                  widget.mainAxisAlignment ?? MainAxisAlignment.center,
+                      widget.mainAxisAlignment ?? MainAxisAlignment.center,
                   children: _buildBody(context)),
               Opacity(
                 child: TextField(
                   controller: controller,
                   maxLength: widget.maxLength,
-                  readOnly: widget.showCustomKeyboard??false,
+                  readOnly: widget.showCustomKeyboard ?? false,
                   autofocus: !kIsWeb ? widget.autoFocus : false,
                   enableInteractiveSelection: false,
                   inputFormatters: widget.keyboardType == TextInputType.number
                       ? <TextInputFormatter>[
-                    FilteringTextInputFormatter.digitsOnly
-                  ]
+                          FilteringTextInputFormatter.digitsOnly
+                        ]
                       : null,
                   focusNode: _focusNode,
                   keyboardType: widget.keyboardType,
@@ -137,37 +138,36 @@ class OtpPinFieldState extends State<OtpPinField>
                   _bindTextIntoWidget(text);
                   setState(() {});
                   widget.onChange!(text);
-                }, callbackSubmitValue: () {
-                  if(controller.text.length != widget.maxLength){
+                },
+                callbackSubmitValue: () {
+                  if (controller.text.length != widget.maxLength) {
                     return;
                   }
                   widget.onSubmit(controller.text);
-
-              },
+                },
               ))
         ],
       ),
     );
   }
-  Widget _viewWithOutCustomKeyBoard(){
+
+  Widget _viewWithOutCustomKeyBoard() {
     return Container(
       height: widget.fieldHeight,
       child: Stack(children: [
         Row(
             mainAxisAlignment:
-            widget.mainAxisAlignment ?? MainAxisAlignment.center,
+                widget.mainAxisAlignment ?? MainAxisAlignment.center,
             children: _buildBody(context)),
         Opacity(
           child: TextField(
             controller: controller,
             maxLength: widget.maxLength,
-            readOnly: widget.showCustomKeyboard??false,
+            readOnly: widget.showCustomKeyboard ?? false,
             autofocus: !kIsWeb ? widget.autoFocus : false,
             enableInteractiveSelection: false,
             inputFormatters: widget.keyboardType == TextInputType.number
-                ? <TextInputFormatter>[
-              FilteringTextInputFormatter.digitsOnly
-            ]
+                ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly]
                 : null,
             focusNode: _focusNode,
             keyboardType: widget.keyboardType,
@@ -195,7 +195,6 @@ class OtpPinFieldState extends State<OtpPinField>
       ]),
     );
   }
-
 
   List<Widget> _buildBody(BuildContext context) {
     var tmp = <Widget>[];
