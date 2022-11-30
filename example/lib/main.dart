@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   activeFieldBackgroundColor: Colors
                       .cyanAccent // Background Color for active/focused Otp_Pin_Field
                   ),
-              maxLength: 6,
+              maxLength: 4,
               // no of pin field
               showCursor: true,
               //bool to show cursor in pin field or not

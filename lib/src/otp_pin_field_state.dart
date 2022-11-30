@@ -56,7 +56,7 @@ class OtpPinFieldState extends State<OtpPinField>
 
   Widget _viewWithCustomKeyBoard() {
     return Container(
-      height: MediaQuery.of(context).size.height - 150,
+      height: MediaQuery.of(context).size.height - 115,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

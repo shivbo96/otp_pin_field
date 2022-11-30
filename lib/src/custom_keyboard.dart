@@ -50,9 +50,10 @@ class CustomKeyboard extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 30, left: 16, right: 16),
+        padding: const EdgeInsets.only(bottom: 16, left: 16, right: 16),
         child: Container(
           // height: 280,
+          // margin:const EdgeInsets.only(bottom: 30) ,
           decoration: BoxDecoration(
               color: const Color(0xffEDEDED).withOpacity(0.4),
               //  border: Border.all(  color: Colors.grey.withOpacity(0.4),),
