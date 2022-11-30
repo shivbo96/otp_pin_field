@@ -1,8 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:otp_pin_field/src/cursor_painter.dart';
-import 'package:otp_pin_field/src/custom_keyboard.dart';
 
 import '../otp_pin_field.dart';
 
