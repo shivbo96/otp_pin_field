@@ -24,3 +24,6 @@
 
 ## [1.1.0] -Release
 * `Stable`  animation ,accessibility to manage otp pin field spacing and also added custom keyboard option in place on default keyboard
+
+## [1.1.0+1] -Release
+* Hot fix custom keyboard view
