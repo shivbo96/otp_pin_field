@@ -18,3 +18,9 @@
 
 ## [1.0.4] -Release
 * custom keyboard on submit callback issue resolved.
+
+## [1.0.4+1] -Release
+* Removed unused imports to increase Pass static analysis.
+
+## [1.1.0] -Release
+* `Stable`  animation ,accessibility to manage otp pin field spacing and also added custom keyboard option in place on default keyboard
