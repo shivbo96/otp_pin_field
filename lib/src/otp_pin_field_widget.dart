@@ -11,7 +11,7 @@ class OtpPinField extends StatefulWidget {
   final int maxLength;
   final OtpPinFieldStyle? otpPinFieldStyle;
   final OnDone onSubmit;
-  final OnChange? onChange;
+  final OnChange onChange;
   final OtpPinFieldInputType otpPinFieldInputType;
   final String otpPinInputCustom;
   final OtpPinFieldDecoration otpPinFieldDecoration;
@@ -36,7 +36,7 @@ class OtpPinField extends StatefulWidget {
         OtpPinFieldDecoration.underlinedPinBoxDecoration,
     this.otpPinInputCustom = "*",
     required this.onSubmit,
-    this.onChange,
+    required this.onChange,
     this.keyboardType = TextInputType.number,
     this.autoFocus = true,
     this.highlightBorder = true,

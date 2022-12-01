@@ -93,7 +93,7 @@ class OtpPinFieldState extends State<OtpPinField>
                     }
                     _bindTextIntoWidget(text);
                     setState(() {});
-                    widget.onChange!(text);
+                    widget.onChange(text);
                     ending = text.length == widget.maxLength;
                     if (ending) {
                       widget.onSubmit(text);
@@ -118,10 +118,10 @@ class OtpPinFieldState extends State<OtpPinField>
                   this.text = controller.text;
                   _bindTextIntoWidget(text);
                   setState(() {});
-                  widget.onChange!(text);
+                  widget.onChange(text);
                   ending = text.length == widget.maxLength;
                   if (ending) {
-                    widget.onSubmit(text);
+                    // widget.onSubmit(text);
                     FocusScope.of(context).unfocus();
                   }
                 },
@@ -135,7 +135,7 @@ class OtpPinFieldState extends State<OtpPinField>
                   this.text = controller.text;
                   _bindTextIntoWidget(text);
                   setState(() {});
-                  widget.onChange!(text);
+                  widget.onChange(text);
                 },
                 callbackSubmitValue: () {
                   if (controller.text.length != widget.maxLength) {
@@ -180,7 +180,7 @@ class OtpPinFieldState extends State<OtpPinField>
               }
               _bindTextIntoWidget(text);
               setState(() {});
-              widget.onChange!(text);
+              widget.onChange(text);
               ending = text.length == widget.maxLength;
               if (ending) {
                 widget.onSubmit(text);
