@@ -27,3 +27,6 @@
 
 ## [1.1.0+1] -Release
 * Hot fix custom keyboard view
+
+## [1.1.1] -Release
+* Hot fix for on change for on custom keyboard
