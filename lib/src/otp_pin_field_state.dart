@@ -26,8 +26,6 @@ class OtpPinFieldState extends State<OtpPinField>
     _focusNode.addListener(_focusListener);
     _cursorController = AnimationController(
         duration: Duration(milliseconds: 1000), vsync: this);
-    _cursorController = AnimationController(
-        duration: Duration(milliseconds: 1000), vsync: this);
     _cursorAnimation = Tween<double>(
       begin: 1,
       end: 0,
@@ -44,6 +42,7 @@ class OtpPinFieldState extends State<OtpPinField>
     _focusNode.removeListener(_focusListener);
     _focusNode.dispose();
     controller.dispose();
+    _cursorController.dispose();
     super.dispose();
   }
 
