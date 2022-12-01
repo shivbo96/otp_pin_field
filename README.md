@@ -6,6 +6,9 @@ A flutter package which will help you to generate pin code fields with beautiful
 animations. It's a beautiful and highly customizable Flutter widget for entering pin code. Can be
 useful for OTP or pin code inputs.
 
+
+Created by Shivam Mishra [@shivbo96](https://github.com/shivbo96)
+
 # Usage
 
 ## Use this package as a library

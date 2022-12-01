@@ -170,7 +170,7 @@ class TextKey extends StatelessWidget {
       flex: flex,
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 10.0),
-        child: InkWell(
+        child: GestureDetector(
           onTap: () {
             onTextInput.call(text);
           },
@@ -202,16 +202,19 @@ class BackspaceKey extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       flex: flex,
-      child: Padding(
-        padding: const EdgeInsets.all(1.0),
-        child: InkWell(
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 10.0),
+        child:GestureDetector(
           onTap: () {
             onBackspace.call();
           },
-          child: const Center(
-            child: Icon(
-              Icons.backspace_outlined,
-              color: Colors.red,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: const Center(
+              child: Icon(
+                Icons.backspace_outlined,
+                color: Colors.red,
+              ),
             ),
           ),
         ),
@@ -231,16 +234,19 @@ class CheckKey extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.all(1.0),
-        child: InkWell(
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 10.0),
+        child: GestureDetector(
           onTap: () {
             onCheck.call();
           },
-          child: const Center(
-            child: Icon(
-              Icons.check,
-              color: Colors.black,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: const Center(
+              child: Icon(
+                Icons.check,
+                color: Colors.black,
+              ),
             ),
           ),
         ),
