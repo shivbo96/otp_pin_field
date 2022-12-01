@@ -30,3 +30,6 @@
 
 ## [1.1.1] -Release
 * Hot fix for on change for on custom keyboard
+
+## [1.1.1+1] -Release
+* Hot fix for Animation in custom keyboard
