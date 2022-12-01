@@ -33,3 +33,6 @@
 
 ## [1.1.1+1] -Release
 * Hot fix for Animation in custom keyboard
+
+## [1.1.1+2] -Release
+* Hot fix

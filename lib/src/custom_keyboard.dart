@@ -171,6 +171,7 @@ class TextKey extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 10.0),
         child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
           onTap: () {
             onTextInput.call(text);
           },
@@ -205,6 +206,7 @@ class BackspaceKey extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 10.0),
         child:GestureDetector(
+          behavior: HitTestBehavior.opaque,
           onTap: () {
             onBackspace.call();
           },
@@ -237,6 +239,7 @@ class CheckKey extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 10.0),
         child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
           onTap: () {
             onCheck.call();
           },
