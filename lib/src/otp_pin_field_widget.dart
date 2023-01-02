@@ -28,30 +28,29 @@ class OtpPinField extends StatefulWidget {
   final bool? showCustomKeyboard;
   final bool? showDefaultKeyboard;
 
-  OtpPinField({
-    this.fieldHeight = 50.0,
-    this.fieldWidth = 50.0,
-    this.maxLength = 4,
-    this.otpPinFieldStyle = const OtpPinFieldStyle(),
-    this.otpPinFieldInputType = OtpPinFieldInputType.none,
-    this.otpPinFieldDecoration =
-        OtpPinFieldDecoration.underlinedPinBoxDecoration,
-    this.otpPinInputCustom = "*",
-    required this.onSubmit,
-    required this.onChange,
-    this.keyboardType = TextInputType.number,
-    this.autoFocus = true,
-    this.highlightBorder = true,
-    this.showCursor = true,
-    this.cursorColor,
-    this.cursorWidth=2,
-    this.mainAxisAlignment,
-    this.upperChild,
-    this.middleChild,
-    this.customKeyboard,
-    this.showCustomKeyboard,
-    this.showDefaultKeyboard=true
-  });
+  OtpPinField(
+      {this.fieldHeight = 50.0,
+      this.fieldWidth = 50.0,
+      this.maxLength = 4,
+      this.otpPinFieldStyle = const OtpPinFieldStyle(),
+      this.otpPinFieldInputType = OtpPinFieldInputType.none,
+      this.otpPinFieldDecoration =
+          OtpPinFieldDecoration.underlinedPinBoxDecoration,
+      this.otpPinInputCustom = "*",
+      required this.onSubmit,
+      required this.onChange,
+      this.keyboardType = TextInputType.number,
+      this.autoFocus = true,
+      this.highlightBorder = true,
+      this.showCursor = true,
+      this.cursorColor,
+      this.cursorWidth = 2,
+      this.mainAxisAlignment,
+      this.upperChild,
+      this.middleChild,
+      this.customKeyboard,
+      this.showCustomKeyboard,
+      this.showDefaultKeyboard = true});
 
   @override
   State<StatefulWidget> createState() {
