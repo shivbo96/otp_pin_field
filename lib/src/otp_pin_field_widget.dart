@@ -24,7 +24,9 @@ class OtpPinField extends StatefulWidget {
   final MainAxisAlignment? mainAxisAlignment;
   final Widget? upperChild;
   final Widget? middleChild;
+  final Widget? customKeyboard;
   final bool? showCustomKeyboard;
+  final bool? showDefaultKeyboard;
 
   OtpPinField({
     this.fieldHeight = 50.0,
@@ -46,7 +48,9 @@ class OtpPinField extends StatefulWidget {
     this.mainAxisAlignment,
     this.upperChild,
     this.middleChild,
-    this.showCustomKeyboard
+    this.customKeyboard,
+    this.showCustomKeyboard,
+    this.showDefaultKeyboard=true
   });
 
   @override

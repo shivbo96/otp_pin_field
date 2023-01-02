@@ -82,6 +82,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               showCustomKeyboard: true,
               //bool which manage to show custom keyboard
+              customKeyboard: Container(),
+              showDefaultKeyboard: true,
               cursorWidth: 3,
               // to select cursor width
               mainAxisAlignment: MainAxisAlignment.center,
