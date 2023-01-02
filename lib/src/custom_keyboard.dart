@@ -146,7 +146,7 @@ class CustomKeyboard extends StatelessWidget {
           height: 60,
           color: Colors.grey.withOpacity(0.4),
         ),
-        CheckKey(onCheck:_onSubmitHandler)
+        CheckKey(onCheck: _onSubmitHandler)
       ],
     );
   }
@@ -205,7 +205,7 @@ class BackspaceKey extends StatelessWidget {
       flex: flex,
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 10.0),
-        child:GestureDetector(
+        child: GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
             onBackspace.call();

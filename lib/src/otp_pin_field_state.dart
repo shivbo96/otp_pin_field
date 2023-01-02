@@ -71,7 +71,7 @@ class OtpPinFieldState extends State<OtpPinField>
                 child: TextField(
                   controller: controller,
                   maxLength: widget.maxLength,
-                  readOnly: widget.showCustomKeyboard ??true,
+                  readOnly: widget.showCustomKeyboard ?? true,
                   autofocus: !kIsWeb ? widget.autoFocus : false,
                   enableInteractiveSelection: false,
                   inputFormatters: widget.keyboardType == TextInputType.number
@@ -107,42 +107,43 @@ class OtpPinFieldState extends State<OtpPinField>
           Expanded(child: widget.middleChild ?? Container()),
           Align(
               alignment: Alignment.bottomCenter,
-              child: widget.customKeyboard??OtpKeyboard(
-                callbackValue: (myText) {
-                  // FocusScope.of(context).nextFocus();
-                  if (ending && text.length == widget.maxLength) {
-                    return;
-                  }
-                  controller.text = controller.text + myText;
-                  this.text = controller.text;
-                  _bindTextIntoWidget(text);
-                  setState(() {});
-                  widget.onChange(text);
-                  ending = text.length == widget.maxLength;
-                  if (ending) {
-                    // widget.onSubmit(text);
-                    FocusScope.of(context).unfocus();
-                  }
-                },
-                callbackDeleteValue: () {
-                  if (controller.text.isEmpty) {
-                    return;
-                  }
-                  _focusNode.requestFocus();
-                  controller.text =
-                      controller.text.substring(0, controller.text.length - 1);
-                  this.text = controller.text;
-                  _bindTextIntoWidget(text);
-                  setState(() {});
-                  widget.onChange(text);
-                },
-                callbackSubmitValue: () {
-                  if (controller.text.length != widget.maxLength) {
-                    return;
-                  }
-                  widget.onSubmit(controller.text);
-                },
-              ))
+              child: widget.customKeyboard ??
+                  OtpKeyboard(
+                    callbackValue: (myText) {
+                      // FocusScope.of(context).nextFocus();
+                      if (ending && text.length == widget.maxLength) {
+                        return;
+                      }
+                      controller.text = controller.text + myText;
+                      this.text = controller.text;
+                      _bindTextIntoWidget(text);
+                      setState(() {});
+                      widget.onChange(text);
+                      ending = text.length == widget.maxLength;
+                      if (ending) {
+                        // widget.onSubmit(text);
+                        FocusScope.of(context).unfocus();
+                      }
+                    },
+                    callbackDeleteValue: () {
+                      if (controller.text.isEmpty) {
+                        return;
+                      }
+                      _focusNode.requestFocus();
+                      controller.text = controller.text
+                          .substring(0, controller.text.length - 1);
+                      this.text = controller.text;
+                      _bindTextIntoWidget(text);
+                      setState(() {});
+                      widget.onChange(text);
+                    },
+                    callbackSubmitValue: () {
+                      if (controller.text.length != widget.maxLength) {
+                        return;
+                      }
+                      widget.onSubmit(controller.text);
+                    },
+                  ))
         ],
       ),
     );
@@ -160,7 +161,7 @@ class OtpPinFieldState extends State<OtpPinField>
           child: TextField(
             controller: controller,
             maxLength: widget.maxLength,
-            readOnly: !(widget.showDefaultKeyboard??true),
+            readOnly: !(widget.showDefaultKeyboard ?? true),
             autofocus: !kIsWeb ? widget.autoFocus : false,
             enableInteractiveSelection: false,
             inputFormatters: widget.keyboardType == TextInputType.number
