@@ -36,3 +36,6 @@
 
 ## [1.1.1+2] -Release
 * Hot fix
+
+## [1.1.2] -Release
+* Added functionality to add custom keyboard and also added ability to hide/un-hide the default keyboard of the OS

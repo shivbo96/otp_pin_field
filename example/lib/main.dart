@@ -80,12 +80,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   SizedBox(height: 30),
                 ],
               ),
-              showCustomKeyboard: true,
-              //bool which manage to show custom keyboard
-              cursorWidth: 3,
-              // to select cursor width
-              mainAxisAlignment: MainAxisAlignment.center,
-              // place otp pin field according to yourselft
+              showCustomKeyboard: true, //bool which manage to show custom keyboard
+              // customKeyboard: Container(),  // Widget which help you to show your own custom keyboard in place if default custom keyboard
+              // showDefaultKeyboard: true,  //bool which manage to show default OS keyboard
+              cursorWidth: 3, // to select cursor width
+              mainAxisAlignment: MainAxisAlignment.center, // place otp pin field according to yourselft
 
               // predefine decorate of pinField use  OtpPinFieldDecoration.defaultPinBoxDecoration||OtpPinFieldDecoration.underlinedPinBoxDecoration||OtpPinFieldDecoration.roundedPinBoxDecoration
               //use OtpPinFieldDecoration.custom  (by using this you can make Otp_Pin_Field according to yourself like you can give fieldBorderRadius,fieldBorderWidth and etc things)

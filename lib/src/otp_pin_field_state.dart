@@ -71,7 +71,7 @@ class OtpPinFieldState extends State<OtpPinField>
                 child: TextField(
                   controller: controller,
                   maxLength: widget.maxLength,
-                  readOnly: widget.showCustomKeyboard ?? false,
+                  readOnly: widget.showCustomKeyboard ??true,
                   autofocus: !kIsWeb ? widget.autoFocus : false,
                   enableInteractiveSelection: false,
                   inputFormatters: widget.keyboardType == TextInputType.number
@@ -107,7 +107,7 @@ class OtpPinFieldState extends State<OtpPinField>
           Expanded(child: widget.middleChild ?? Container()),
           Align(
               alignment: Alignment.bottomCenter,
-              child: OtpKeyboard(
+              child: widget.customKeyboard??OtpKeyboard(
                 callbackValue: (myText) {
                   // FocusScope.of(context).nextFocus();
                   if (ending && text.length == widget.maxLength) {
@@ -160,7 +160,7 @@ class OtpPinFieldState extends State<OtpPinField>
           child: TextField(
             controller: controller,
             maxLength: widget.maxLength,
-            readOnly: widget.showCustomKeyboard ?? false,
+            readOnly: !(widget.showDefaultKeyboard??true),
             autofocus: !kIsWeb ? widget.autoFocus : false,
             enableInteractiveSelection: false,
             inputFormatters: widget.keyboardType == TextInputType.number

@@ -66,11 +66,13 @@ import 'package:otp_pin_field/otp_pin.dart';
 | upperChild                  | Widget                | Container()                                      | Widget which will show above the otp pin fields only when `showCustomKeyboard` is set to be true                                                                                                                                                |
 | middleChild                 | Widget                | Container()                                      | Widget which will show between the otp pin fields and Custom Keyboard only when `showCustomKeyboard` is set to be true                                                                                                                          |
 | showCustomKeyboard          | bool                  | false                                            | To show custom keyboard in place default keyboard                                                                                                                                                                                               |
+| customKeyboard              | Widget                |                                                  | Widget which help you to show your own custom keyboard in place if default custom keyboard                                                                                                                                                      |
+| showDefaultKeyboard         | bool                  | true                                             | bool which manage to show default OS keyboard                                                                                                                                                                                                   |
 
 # Example
 
 ```
-  OtpPinField(
+   OtpPinField(
               onSubmit: (text) {
                 print('Entered pin is $text'); // return the entered pin
               },
@@ -98,12 +100,13 @@ import 'package:otp_pin_field/otp_pin.dart';
                 children: [
                   SizedBox(height: 30),
                   Icon(Icons.flutter_dash_outlined, size: 150),
-                  SizedBox(height: 10),
+                  SizedBox(height: 20),
                 ],
               ),
               middleChild: Column(
                 children: [
                   SizedBox(height: 30),
+                  SizedBox(height: 10),
                   ElevatedButton(
                       onPressed: () => Navigator.push(context,
                           MaterialPageRoute(builder: (context) => NextPage())),
@@ -111,12 +114,11 @@ import 'package:otp_pin_field/otp_pin.dart';
                   SizedBox(height: 30),
                 ],
               ),
-              showCustomKeyboard: true,
-              //bool which manage to show custom keyboard
-              cursorWidth: 3,
-              // to select cursor width
-              mainAxisAlignment: MainAxisAlignment.center,
-              // place otp pin field according to yourselft
+              showCustomKeyboard: true, //bool which manage to show custom keyboard
+              // customKeyboard: Container(),  // Widget which help you to show your own custom keyboard in place if default custom keyboard
+              // showDefaultKeyboard: true,  //bool which manage to show default OS keyboard
+              cursorWidth: 3, // to select cursor width
+              mainAxisAlignment: MainAxisAlignment.center, // place otp pin field according to yourselft
 
               // predefine decorate of pinField use  OtpPinFieldDecoration.defaultPinBoxDecoration||OtpPinFieldDecoration.underlinedPinBoxDecoration||OtpPinFieldDecoration.roundedPinBoxDecoration
               //use OtpPinFieldDecoration.custom  (by using this you can make Otp_Pin_Field according to yourself like you can give fieldBorderRadius,fieldBorderWidth and etc things)
