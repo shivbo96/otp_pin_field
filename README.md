@@ -72,30 +72,42 @@ import 'package:otp_pin_field/otp_pin.dart';
 # Example
 
 ```
-   OtpPinField(
+
+///  Otp pin Controller
+  final _otpPinFieldController = GlobalKey<OtpPinFieldState>();
+  
+  
+    OtpPinField(
+              key: _otpPinFieldController,   /// to clear the Otp pin Controller
               onSubmit: (text) {
-                print('Entered pin is $text'); // return the entered pin
+                print('Entered pin is $text');  /// return the entered pin
               },
               onChange: (text) {
-                print('Enter on change pin is $text'); // return the entered pin
+                print('Enter on change pin is $text');   /// return the entered pin
               },
-              // to decorate your Otp_Pin_Field
+
+              /// to decorate your Otp_Pin_Field
               otpPinFieldStyle: OtpPinFieldStyle(
                   // border color for inactive/unfocused Otp_Pin_Field
                   defaultFieldBorderColor: Colors.red,
                   // border color for active/focused Otp_Pin_Field
                   activeFieldBorderColor: Colors.indigo,
-                  // Background Color for inactive/unfocused Otp_Pin_Field
+
+                  /// Background Color for inactive/unfocused Otp_Pin_Field
                   defaultFieldBackgroundColor: Colors.yellow,
-                  activeFieldBackgroundColor: Colors
-                      .cyanAccent // Background Color for active/focused Otp_Pin_Field
+                  activeFieldBackgroundColor: Colors.cyanAccent
+
+                  /// Background Color for active/focused Otp_Pin_Field
                   ),
               maxLength: 4,
-              // no of pin field
+
+              /// no of pin field
               showCursor: true,
-              //bool to show cursor in pin field or not
+
+              /// bool to show cursor in pin field or not
               cursorColor: Colors.indigo,
-              // to choose cursor color
+
+              /// to choose cursor color
               upperChild: Column(
                 children: [
                   SizedBox(height: 30),
@@ -106,6 +118,12 @@ import 'package:otp_pin_field/otp_pin.dart';
               middleChild: Column(
                 children: [
                   SizedBox(height: 30),
+                  ElevatedButton(
+                      onPressed: () {
+                        _otpPinFieldController.currentState
+                            ?.clearOtp(); // clear controller
+                      },
+                      child: Text("clear OTP")),
                   SizedBox(height: 10),
                   ElevatedButton(
                       onPressed: () => Navigator.push(context,
@@ -114,14 +132,20 @@ import 'package:otp_pin_field/otp_pin.dart';
                   SizedBox(height: 30),
                 ],
               ),
-              showCustomKeyboard: true, //bool which manage to show custom keyboard
-              // customKeyboard: Container(),  // Widget which help you to show your own custom keyboard in place if default custom keyboard
-              // showDefaultKeyboard: true,  //bool which manage to show default OS keyboard
-              cursorWidth: 3, // to select cursor width
-              mainAxisAlignment: MainAxisAlignment.center, // place otp pin field according to yourselft
+              showCustomKeyboard: true,
 
-              // predefine decorate of pinField use  OtpPinFieldDecoration.defaultPinBoxDecoration||OtpPinFieldDecoration.underlinedPinBoxDecoration||OtpPinFieldDecoration.roundedPinBoxDecoration
-              //use OtpPinFieldDecoration.custom  (by using this you can make Otp_Pin_Field according to yourself like you can give fieldBorderRadius,fieldBorderWidth and etc things)
+              ///bool which manage to show custom keyboard
+              // customKeyboard: Container(),  /// Widget which help you to show your own custom keyboard in place if default custom keyboard
+              // showDefaultKeyboard: true,  ///bool which manage to show default OS keyboard
+              cursorWidth: 3,
+
+              /// to select cursor width
+              mainAxisAlignment: MainAxisAlignment.center,
+
+              /// place otp pin field according to yourselft
+
+              /// predefine decorate of pinField use  OtpPinFieldDecoration.defaultPinBoxDecoration||OtpPinFieldDecoration.underlinedPinBoxDecoration||OtpPinFieldDecoration.roundedPinBoxDecoration
+              ///use OtpPinFieldDecoration.custom  (by using this you can make Otp_Pin_Field according to yourself like you can give fieldBorderRadius,fieldBorderWidth and etc things)
               otpPinFieldDecoration:
                   OtpPinFieldDecoration.defaultPinBoxDecoration),
 ```

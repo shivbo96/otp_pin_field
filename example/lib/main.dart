@@ -42,28 +42,41 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           OtpPinField(
-            key: _otpPinFieldController,  /// to clear the Otp pin Controller
+              key: _otpPinFieldController,
+
+              /// to clear the Otp pin Controller
               onSubmit: (text) {
-                print('Entered pin is $text'); /// return the entered pin
+                print('Entered pin is $text');
+
+                /// return the entered pin
               },
               onChange: (text) {
-                print('Enter on change pin is $text'); /// return the entered pin
+                print('Enter on change pin is $text');
+
+                /// return the entered pin
               },
+
               /// to decorate your Otp_Pin_Field
               otpPinFieldStyle: OtpPinFieldStyle(
                   // border color for inactive/unfocused Otp_Pin_Field
                   defaultFieldBorderColor: Colors.red,
                   // border color for active/focused Otp_Pin_Field
                   activeFieldBorderColor: Colors.indigo,
+
                   /// Background Color for inactive/unfocused Otp_Pin_Field
                   defaultFieldBackgroundColor: Colors.yellow,
-                  activeFieldBackgroundColor: Colors.cyanAccent /// Background Color for active/focused Otp_Pin_Field
+                  activeFieldBackgroundColor: Colors.cyanAccent
+
+                  /// Background Color for active/focused Otp_Pin_Field
                   ),
               maxLength: 4,
+
               /// no of pin field
               showCursor: true,
+
               /// bool to show cursor in pin field or not
               cursorColor: Colors.indigo,
+
               /// to choose cursor color
               upperChild: Column(
                 children: [
@@ -76,8 +89,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   SizedBox(height: 30),
                   ElevatedButton(
-                      onPressed: (){
-                        _otpPinFieldController.currentState?.clearOtp(); // clear controller
+                      onPressed: () {
+                        _otpPinFieldController.currentState
+                            ?.clearOtp(); // clear controller
                       },
                       child: Text("clear OTP")),
                   SizedBox(height: 10),
@@ -88,12 +102,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   SizedBox(height: 30),
                 ],
               ),
-              showCustomKeyboard: true, ///bool which manage to show custom keyboard
+              showCustomKeyboard: true,
+
+              ///bool which manage to show custom keyboard
               // customKeyboard: Container(),  /// Widget which help you to show your own custom keyboard in place if default custom keyboard
               // showDefaultKeyboard: true,  ///bool which manage to show default OS keyboard
-              cursorWidth: 3, /// to select cursor width
-              mainAxisAlignment: MainAxisAlignment
-                  .center, /// place otp pin field according to yourselft
+              cursorWidth: 3,
+
+              /// to select cursor width
+              mainAxisAlignment: MainAxisAlignment.center,
+
+              /// place otp pin field according to yourselft
 
               /// predefine decorate of pinField use  OtpPinFieldDecoration.defaultPinBoxDecoration||OtpPinFieldDecoration.underlinedPinBoxDecoration||OtpPinFieldDecoration.roundedPinBoxDecoration
               ///use OtpPinFieldDecoration.custom  (by using this you can make Otp_Pin_Field according to yourself like you can give fieldBorderRadius,fieldBorderWidth and etc things)

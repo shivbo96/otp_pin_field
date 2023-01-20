@@ -351,8 +351,8 @@ class OtpPinFieldState extends State<OtpPinField>
             (i == text.length - 1 && text.length == widget.maxLength));
   }
 
-  clearOtp(){
-    controller.text='';
+  clearOtp() {
+    controller.text = '';
     setState(() {
       _focusNode = FocusNode();
       pinsInputed = [];
@@ -365,5 +365,4 @@ class OtpPinFieldState extends State<OtpPinField>
       text = "";
     });
   }
-
 }

@@ -42,3 +42,6 @@
 
 ## [1.1.2+1] -Release
 * added function to `clear the text field controller`
+
+## [1.1.2+2] -Release
+* (Hot Fix)added function to `clear the text field controller`

@@ -28,7 +28,8 @@ class OtpPinField extends StatefulWidget {
   final bool? showDefaultKeyboard;
 
   OtpPinField(
-      { Key? key,this.fieldHeight = 50.0,
+      {Key? key,
+      this.fieldHeight = 50.0,
       this.fieldWidth = 50.0,
       this.maxLength = 4,
       this.otpPinFieldStyle = const OtpPinFieldStyle(),
@@ -49,7 +50,8 @@ class OtpPinField extends StatefulWidget {
       this.middleChild,
       this.customKeyboard,
       this.showCustomKeyboard,
-      this.showDefaultKeyboard = true}): super(key: key);
+      this.showDefaultKeyboard = true})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
