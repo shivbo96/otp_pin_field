@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:otp_pin_field/otp_pin_field.dart';
-import 'package:otp_pin_field/src/otp_pin_field_state.dart';
 
 typedef OnDone = void Function(String text);
 typedef OnChange = void Function(String text);
@@ -29,7 +28,7 @@ class OtpPinField extends StatefulWidget {
   final bool? showDefaultKeyboard;
 
   OtpPinField(
-      {this.fieldHeight = 50.0,
+      { Key? key,this.fieldHeight = 50.0,
       this.fieldWidth = 50.0,
       this.maxLength = 4,
       this.otpPinFieldStyle = const OtpPinFieldStyle(),
@@ -50,7 +49,7 @@ class OtpPinField extends StatefulWidget {
       this.middleChild,
       this.customKeyboard,
       this.showCustomKeyboard,
-      this.showDefaultKeyboard = true});
+      this.showDefaultKeyboard = true}): super(key: key);
 
   @override
   State<StatefulWidget> createState() {

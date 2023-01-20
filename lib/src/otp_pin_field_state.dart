@@ -350,4 +350,20 @@ class OtpPinFieldState extends State<OtpPinField>
         (i == text.length ||
             (i == text.length - 1 && text.length == widget.maxLength));
   }
+
+  clearOtp(){
+    controller.text='';
+    setState(() {
+      _focusNode = FocusNode();
+      pinsInputed = [];
+      for (var i = 0; i < widget.maxLength; i++) {
+        pinsInputed.add("");
+      }
+      _focusNode.addListener(_focusListener);
+      ending = false;
+      hasFocus = widget.highlightBorder;
+      text = "";
+    });
+  }
+
 }
