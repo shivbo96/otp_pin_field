@@ -31,6 +31,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  final _clearOtp = GlobalKey<OtpPinFieldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           OtpPinField(
+            key: _clearOtp,
               onSubmit: (text) {
                 print('Entered pin is $text'); // return the entered pin
               },
@@ -72,6 +76,11 @@ class _MyHomePageState extends State<MyHomePage> {
               middleChild: Column(
                 children: [
                   SizedBox(height: 30),
+                  ElevatedButton(
+                      onPressed: (){
+                        _clearOtp.currentState?.clearOtp();
+                      },
+                      child: Text("clear OTP")),
                   SizedBox(height: 10),
                   ElevatedButton(
                       onPressed: () => Navigator.push(context,
