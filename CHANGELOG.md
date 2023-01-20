@@ -39,3 +39,6 @@
 
 ## [1.1.2] -Release
 * Added functionality to add custom keyboard and also added ability to hide/un-hide the default keyboard of the OS
+
+## [1.1.2+1] -Release
+* added function to `clear the text field controller`
