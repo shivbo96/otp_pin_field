@@ -15,7 +15,7 @@ Created by Shivam Mishra [@shivbo96](https://github.com/shivbo96)
 
 1. Depend on it Add this to your package's pubspec.yaml file:
 
-```
+```yaml
 dependencies:
   otp_pin_field: <VERSION>
 ```
@@ -24,7 +24,7 @@ dependencies:
    with Flutter:
 
 ```
-$ flutter pub get
+$ flutter packages get
 ```
 
 Alternatively, your editor might support flutter packages get. Check the docs for your editor to
@@ -32,7 +32,7 @@ learn more.
 
 3. Import it Now in your Dart code, you can use:
 
-```
+```dart
 import 'package:otp_pin_field/otp_pin.dart';
 ```
 
