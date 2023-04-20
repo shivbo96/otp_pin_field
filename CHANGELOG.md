@@ -48,3 +48,6 @@
 
 ## [1.2.0] -Release
 * Added ` sms auto fill functionality `
+
+## [1.2.0+1] -Release
+* (Hot Fix)added function to `sms auto fill functionality for sms-regex`

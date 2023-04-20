@@ -69,6 +69,7 @@ import 'package:otp_pin_field/otp_pin.dart';
 | customKeyboard              | Widget                |                                                  | Widget which help you to show your own custom keyboard in place if default custom keyboard                                                                                                                                                      |
 | showDefaultKeyboard         | bool                  | true                                             | bool which manage to show default OS keyboard                                                                                                                                                                                                   |
 | autoFillEnable              | bool                  | false                                            | bool which manage to enable auto fill functionality                                                                                                                                                                                             |
+| smsRegex                    | String                | '\\d{0,4}'                                       | String which take use to show the OTP from the message                                                                                                                                                                                          |
 
 # Example
 
@@ -86,7 +87,12 @@ import 'package:otp_pin_field/otp_pin.dart';
               onChange: (text) {
                 print('Enter on change pin is $text');   /// return the entered pin
               },
-
+              autoFillEnable: true, // to enable the sms auto fill
+              
+               onCodeChanged: (code){
+                print('onCodeChanged  is $code');  /// return the entered pin after autofill
+              },
+              
               /// to decorate your Otp_Pin_Field
               otpPinFieldStyle: OtpPinFieldStyle(
                   // border color for inactive/unfocused Otp_Pin_Field
