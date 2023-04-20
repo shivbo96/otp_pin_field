@@ -188,6 +188,7 @@ refer to `example/lib/main.dart`
 
 
 ### video 
+![auto_fill](https://user-images.githubusercontent.com/37922543/233455524-43332b0b-c315-46f8-b4bf-8a64e1786108.gif)
 
 
 
