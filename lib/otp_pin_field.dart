@@ -26,7 +26,7 @@ class OtpPinFieldAutoFill {
   }
 
   Future<void> _didReceive(MethodCall method) async {
-    if (method.method == 'smscode') {
+    if (method.method == 'smsCode') {
       _code.add(method.arguments);
     }
   }
@@ -34,21 +34,20 @@ class OtpPinFieldAutoFill {
   Stream<String> get code => _code.stream;
 
   Future<String?> get hint async {
-    final String? hint = await _channel.invokeMethod('requestPhoneHint');
-    return hint;
+    return OtpPinFieldPlatform.instance.requestPhoneHint();
   }
 
   Future<void> listenForCode({String smsCodeRegexPattern = '\\d{0,4}'}) async {
-    await _channel.invokeMethod('listenForCode', <String, String>{'smsCodeRegexPattern': smsCodeRegexPattern});
+    OtpPinFieldPlatform.instance.listenForCode(
+        <String, String>{'smsCodeRegexPattern': smsCodeRegexPattern});
   }
 
   Future<void> unregisterListener() async {
-    await _channel.invokeMethod('unregisterListener');
+    OtpPinFieldPlatform.instance.unregisterListener();
   }
 
   Future<String> get getAppSignature async {
-    final String? appSignature = await _channel.invokeMethod('getAppSignature');
-    return appSignature ?? '';
+    return OtpPinFieldPlatform.instance.getAppSignature();
   }
 }
 
@@ -62,7 +61,6 @@ mixin CodeAutoFill {
       this.code = code;
       codeUpdated();
     });
-
 
     (smsCodeRegexPattern == null)
         ? _autoFill.listenForCode()

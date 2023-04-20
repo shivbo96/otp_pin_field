@@ -5,8 +5,7 @@ import 'package:flutter/services.dart';
 import '../otp_pin_field.dart';
 
 class OtpPinFieldState extends State<OtpPinField>
-    with TickerProviderStateMixin ,CodeAutoFill {
-
+    with TickerProviderStateMixin, CodeAutoFill {
   late FocusNode _focusNode;
   late List<String> pinsInputed;
   late AnimationController _cursorController;
@@ -21,10 +20,14 @@ class OtpPinFieldState extends State<OtpPinField>
     super.initState();
     _focusNode = FocusNode();
     pinsInputed = [];
-    if(widget.autoFillEnable==true){
+    if (widget.autoFillEnable == true) {
+      if (widget.phoneNumbersHint == true) {
+        OtpPinFieldAutoFill().hint;
+      }
       OtpPinFieldAutoFill().getAppSignature.then((value) {
         debugPrint("your hash value is $value");
-        OtpPinFieldAutoFill().listenForCode(smsCodeRegexPattern: widget.smsRegex??'\\d{0,4}');
+        OtpPinFieldAutoFill()
+            .listenForCode(smsCodeRegexPattern: widget.smsRegex ?? '\\d{0,4}');
       });
       listenForCode();
     }
@@ -43,12 +46,15 @@ class OtpPinFieldState extends State<OtpPinField>
       curve: Curves.easeIn,
     ));
     _cursorController.repeat();
-
   }
 
   @override
   void dispose() {
     // Clean up the focus node when the Form is disposed.
+    if (widget.autoFillEnable == true) {
+      cancel();
+      OtpPinFieldAutoFill().unregisterListener();
+    }
     _focusNode.removeListener(_focusListener);
     _focusNode.dispose();
     controller.dispose();
@@ -179,7 +185,7 @@ class OtpPinFieldState extends State<OtpPinField>
                 ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly]
                 : null,
             focusNode: _focusNode,
-            textInputAction:  widget.textInputAction,
+            textInputAction: widget.textInputAction,
             keyboardType: widget.keyboardType,
             onSubmitted: (text) {
               debugPrint(text);
@@ -379,25 +385,25 @@ class OtpPinFieldState extends State<OtpPinField>
 
   @override
   void codeUpdated() {
-   debugPrint('auto fill sms code is $code');
-   if (controller.text != code && code!=null) {
-     controller.value = TextEditingValue(text: code ?? '');
-     setState(() {
-       _focusNode = FocusNode();
-       if (code?.isNotEmpty == true) {
-         for (var i = 0; i < code!.length; i++) {
-           pinsInputed[i] = code![i];
-         }
-       }
-       _focusNode.addListener(_focusListener);
-       ending = true;
-       hasFocus = widget.highlightBorder;
-       text = code!;
-     });
-
-     if (widget.onCodeChanged != null) {
-       widget.onCodeChanged!(code ?? '');
-     }
-   }
+    debugPrint('auto fill sms code is $code');
+    if (controller.text != code && code != null) {
+      controller.value = TextEditingValue(text: code ?? '');
+      if (widget.onCodeChanged != null) {
+        widget.onCodeChanged!(code ?? '');
+      }
+      FocusManager.instance.primaryFocus?.unfocus();
+      setState(() {
+        _focusNode = FocusNode();
+        if (code?.isNotEmpty == true) {
+          for (var i = 0; i < code!.length; i++) {
+            pinsInputed[i] = code![i];
+          }
+        }
+        _focusNode.addListener(_focusListener);
+        ending = true;
+        hasFocus = widget.highlightBorder;
+        text = code!;
+      });
+    }
   }
 }

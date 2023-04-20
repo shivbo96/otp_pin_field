@@ -11,7 +11,32 @@ class MethodChannelOtpPinField extends OtpPinFieldPlatform {
 
   @override
   Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
+    final version =
+        await methodChannel.invokeMethod<String>('getPlatformVersion');
     return version;
+  }
+
+  @override
+  Future<String?> requestPhoneHint() async {
+    final requestPhoneHint =
+        await methodChannel.invokeMethod<String>('requestPhoneHint');
+    return requestPhoneHint;
+  }
+
+  @override
+  Future<void> listenForCode(Map<String, String> smsCodeRegexPattern) async {
+    await methodChannel.invokeMethod('listenForCode', smsCodeRegexPattern);
+  }
+
+  @override
+  Future<void> unregisterListener() async {
+    await methodChannel.invokeMethod('unregisterListener');
+  }
+
+  @override
+  Future<String> getAppSignature() async {
+    final getAppSignature =
+        await methodChannel.invokeMethod<String>('getAppSignature');
+    return getAppSignature ?? '';
   }
 }

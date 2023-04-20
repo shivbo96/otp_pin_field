@@ -51,3 +51,7 @@
 
 ## [1.2.0+1] -Release
 * (Hot Fix)added function to `sms auto fill functionality for sms-regex`
+
+
+## [1.2.0+2] -Release
+* documentation updated and minor bug fixes

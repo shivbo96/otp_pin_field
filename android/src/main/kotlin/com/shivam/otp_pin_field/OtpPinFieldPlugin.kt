@@ -64,7 +64,7 @@ class OtpPinFieldPlugin : FlutterPlugin, ActivityAware, MethodCallHandler {
   }
 
   fun setCode(code: String?) {
-    channel?.invokeMethod("smscode", code)
+    channel?.invokeMethod("smsCode", code)
   }
 
   override fun onMethodCall(call: MethodCall,  result: Result) {
@@ -315,7 +315,6 @@ class OtpPinFieldPlugin : FlutterPlugin, ActivityAware, MethodCallHandler {
               val pattern: Pattern = Pattern.compile(smsCodeRegexPattern)
               val matcher: Matcher = pattern.matcher(message)
               if (matcher.find()) {
-                Log.v("TAB","messages ${matcher.group(0)}")
                 plugin.get()!!.setCode(matcher.group(0))
               } else {
                 plugin.get()!!.setCode(message)

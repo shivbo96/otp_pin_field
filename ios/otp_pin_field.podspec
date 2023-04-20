@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'otp_pin_field'
-  s.version          = '1.2.0+1'
+  s.version          = '1.2.0+2'
   s.summary          = 'A new Flutter project.'
   s.description      = <<-DESC
 A new Flutter project.

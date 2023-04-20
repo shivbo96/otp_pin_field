@@ -45,6 +45,10 @@ class _MyHomePageState extends State<MyHomePage> {
               key: _otpPinFieldController,
               autoFillEnable: true,
 
+              ///for Ios it is not needed as the SMS autofill is provided by default, but not for Android, that's where this key is useful.
+              textInputAction: TextInputAction.done,
+
+              ///in case you want to change the action of keyboard
               /// to clear the Otp pin Controller
               onSubmit: (text) {
                 print('Entered pin is $text');
@@ -56,15 +60,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
                 /// return the entered pin
               },
-              onCodeChanged: (code){
+              onCodeChanged: (code) {
                 print('onCodeChanged  is $code');
               },
 
               /// to decorate your Otp_Pin_Field
               otpPinFieldStyle: OtpPinFieldStyle(
-                  // border color for inactive/unfocused Otp_Pin_Field
+
+                  /// border color for inactive/unfocused Otp_Pin_Field
                   defaultFieldBorderColor: Colors.red,
-                  // border color for active/focused Otp_Pin_Field
+
+                  /// border color for active/focused Otp_Pin_Field
                   activeFieldBorderColor: Colors.indigo,
 
                   /// Background Color for inactive/unfocused Otp_Pin_Field

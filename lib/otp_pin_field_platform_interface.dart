@@ -26,4 +26,20 @@ abstract class OtpPinFieldPlatform extends PlatformInterface {
   Future<String?> getPlatformVersion() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
+
+  Future<String?> requestPhoneHint() {
+    throw UnimplementedError('requestPhoneHint has not been implemented.');
+  }
+
+  Future<void> listenForCode(Map<String, String> smsCodeRegexPattern) {
+    throw UnimplementedError('listenForCode has not been implemented.');
+  }
+
+  Future<void> unregisterListener() {
+    throw UnimplementedError('unregisterListener has not been implemented.');
+  }
+
+  Future<String> getAppSignature() {
+    throw UnimplementedError('getAppSignature has not been implemented.');
+  }
 }
