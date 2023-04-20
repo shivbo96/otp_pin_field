@@ -187,8 +187,9 @@ refer to `example/lib/main.dart`
 <img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/9.png" width="250" height="480">
 
 
+
 ### video 
-![auto_fill](https://user-images.githubusercontent.com/37922543/233455524-43332b0b-c315-46f8-b4bf-8a64e1786108.gif)
+<img width="250" height="480" src="https://user-images.githubusercontent.com/37922543/233455524-43332b0b-c315-46f8-b4bf-8a64e1786108.gif" />
 
 
 
