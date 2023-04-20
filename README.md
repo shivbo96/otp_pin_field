@@ -68,6 +68,7 @@ import 'package:otp_pin_field/otp_pin.dart';
 | showCustomKeyboard          | bool                  | false                                            | To show custom keyboard in place default keyboard                                                                                                                                                                                               |
 | customKeyboard              | Widget                |                                                  | Widget which help you to show your own custom keyboard in place if default custom keyboard                                                                                                                                                      |
 | showDefaultKeyboard         | bool                  | true                                             | bool which manage to show default OS keyboard                                                                                                                                                                                                   |
+| autoFillEnable              | bool                  | false                                            | bool which manage to enable auto fill functionality                                                                                                                                                                                             |
 
 # Example
 

@@ -15,7 +15,10 @@ class OtpPinField extends StatefulWidget {
   final String otpPinInputCustom;
   final OtpPinFieldDecoration otpPinFieldDecoration;
   final TextInputType keyboardType;
+  final TextInputAction textInputAction;
   final bool autoFocus;
+  final bool? autoFillEnable;
+  final String? smsRegex;
   final bool highlightBorder;
   final Color? cursorColor;
   final double? cursorWidth;
@@ -26,21 +29,26 @@ class OtpPinField extends StatefulWidget {
   final Widget? customKeyboard;
   final bool? showCustomKeyboard;
   final bool? showDefaultKeyboard;
+  final Function(String)? onCodeChanged;
 
-  OtpPinField(
+  const OtpPinField(
       {Key? key,
       this.fieldHeight = 50.0,
       this.fieldWidth = 50.0,
       this.maxLength = 4,
+      this.onCodeChanged,
       this.otpPinFieldStyle = const OtpPinFieldStyle(),
+      this.textInputAction = TextInputAction.done,
       this.otpPinFieldInputType = OtpPinFieldInputType.none,
       this.otpPinFieldDecoration =
           OtpPinFieldDecoration.underlinedPinBoxDecoration,
       this.otpPinInputCustom = "*",
+      this.smsRegex,
       required this.onSubmit,
       required this.onChange,
       this.keyboardType = TextInputType.number,
       this.autoFocus = true,
+      this.autoFillEnable = false,
       this.highlightBorder = true,
       this.showCursor = true,
       this.cursorColor,

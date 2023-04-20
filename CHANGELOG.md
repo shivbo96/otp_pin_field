@@ -45,3 +45,6 @@
 
 ## [1.1.2+2] -Release
 * (Hot Fix)added function to `clear the text field controller`
+
+## [1.2.0] -Release
+* Added ` sms auto fill functionality `

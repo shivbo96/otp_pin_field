@@ -43,6 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           OtpPinField(
               key: _otpPinFieldController,
+              autoFillEnable: true,
 
               /// to clear the Otp pin Controller
               onSubmit: (text) {
@@ -54,6 +55,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 print('Enter on change pin is $text');
 
                 /// return the entered pin
+              },
+              onCodeChanged: (code){
+                print('onCodeChanged  is $code');
               },
 
               /// to decorate your Otp_Pin_Field

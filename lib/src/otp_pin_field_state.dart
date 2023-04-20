@@ -5,7 +5,8 @@ import 'package:flutter/services.dart';
 import '../otp_pin_field.dart';
 
 class OtpPinFieldState extends State<OtpPinField>
-    with TickerProviderStateMixin {
+    with TickerProviderStateMixin ,CodeAutoFill {
+
   late FocusNode _focusNode;
   late List<String> pinsInputed;
   late AnimationController _cursorController;
@@ -20,12 +21,20 @@ class OtpPinFieldState extends State<OtpPinField>
     super.initState();
     _focusNode = FocusNode();
     pinsInputed = [];
+    if(widget.autoFillEnable==true){
+      OtpPinFieldAutoFill().getAppSignature.then((value) {
+        debugPrint("your hash value is $value");
+        OtpPinFieldAutoFill().listenForCode(smsCodeRegexPattern: widget.smsRegex??'\\d{0,4}');
+      });
+      listenForCode();
+    }
     for (var i = 0; i < widget.maxLength; i++) {
       pinsInputed.add("");
     }
+
     _focusNode.addListener(_focusListener);
     _cursorController = AnimationController(
-        duration: Duration(milliseconds: 1000), vsync: this);
+        duration: const Duration(milliseconds: 1000), vsync: this);
     _cursorAnimation = Tween<double>(
       begin: 1,
       end: 0,
@@ -34,6 +43,7 @@ class OtpPinFieldState extends State<OtpPinField>
       curve: Curves.easeIn,
     ));
     _cursorController.repeat();
+
   }
 
   @override
@@ -54,13 +64,13 @@ class OtpPinFieldState extends State<OtpPinField>
   }
 
   Widget _viewWithCustomKeyBoard() {
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.height - 115,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           widget.upperChild ?? Container(height: 150),
-          Container(
+          SizedBox(
             height: widget.fieldHeight,
             child: Stack(children: [
               Row(
@@ -68,6 +78,7 @@ class OtpPinFieldState extends State<OtpPinField>
                       widget.mainAxisAlignment ?? MainAxisAlignment.center,
                   children: _buildBody(context)),
               Opacity(
+                opacity: 0.0,
                 child: TextField(
                   controller: controller,
                   maxLength: widget.maxLength,
@@ -82,7 +93,7 @@ class OtpPinFieldState extends State<OtpPinField>
                   focusNode: _focusNode,
                   keyboardType: widget.keyboardType,
                   onSubmitted: (text) {
-                    print(text);
+                    debugPrint(text);
                   },
                   onChanged: (text) {
                     this.text = text;
@@ -100,7 +111,6 @@ class OtpPinFieldState extends State<OtpPinField>
                     }
                   },
                 ),
-                opacity: 0.0,
               )
             ]),
           ),
@@ -115,7 +125,7 @@ class OtpPinFieldState extends State<OtpPinField>
                         return;
                       }
                       controller.text = controller.text + myText;
-                      this.text = controller.text;
+                      text = controller.text;
                       _bindTextIntoWidget(text);
                       setState(() {});
                       widget.onChange(text);
@@ -132,7 +142,7 @@ class OtpPinFieldState extends State<OtpPinField>
                       _focusNode.requestFocus();
                       controller.text = controller.text
                           .substring(0, controller.text.length - 1);
-                      this.text = controller.text;
+                      text = controller.text;
                       _bindTextIntoWidget(text);
                       setState(() {});
                       widget.onChange(text);
@@ -150,7 +160,7 @@ class OtpPinFieldState extends State<OtpPinField>
   }
 
   Widget _viewWithOutCustomKeyBoard() {
-    return Container(
+    return SizedBox(
       height: widget.fieldHeight,
       child: Stack(children: [
         Row(
@@ -158,6 +168,7 @@ class OtpPinFieldState extends State<OtpPinField>
                 widget.mainAxisAlignment ?? MainAxisAlignment.center,
             children: _buildBody(context)),
         Opacity(
+          opacity: 0.0,
           child: TextField(
             controller: controller,
             maxLength: widget.maxLength,
@@ -168,9 +179,10 @@ class OtpPinFieldState extends State<OtpPinField>
                 ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly]
                 : null,
             focusNode: _focusNode,
+            textInputAction:  widget.textInputAction,
             keyboardType: widget.keyboardType,
             onSubmitted: (text) {
-              print(text);
+              debugPrint(text);
             },
             onChanged: (text) {
               this.text = text;
@@ -188,7 +200,6 @@ class OtpPinFieldState extends State<OtpPinField>
               }
             },
           ),
-          opacity: 0.0,
         )
       ]),
     );
@@ -212,7 +223,7 @@ class OtpPinFieldState extends State<OtpPinField>
       child: FadeTransition(
         opacity: _cursorAnimation,
         child: CustomPaint(
-          size: Size(0, 25),
+          size: const Size(0, 25),
           painter: CursorPainter(
             cursorColor: cursorColor,
             cursorWidth: cursorWidth,
@@ -286,6 +297,7 @@ class OtpPinFieldState extends State<OtpPinField>
       child: Container(
           width: widget.fieldWidth,
           alignment: Alignment.center,
+          decoration: boxDecoration,
           child: Stack(
             children: [
               showCursorWidget(),
@@ -303,8 +315,7 @@ class OtpPinFieldState extends State<OtpPinField>
                 ),
               ),
             ],
-          ),
-          decoration: boxDecoration),
+          )),
     );
   }
 
@@ -364,5 +375,29 @@ class OtpPinFieldState extends State<OtpPinField>
       hasFocus = widget.highlightBorder;
       text = "";
     });
+  }
+
+  @override
+  void codeUpdated() {
+   debugPrint('auto fill sms code is $code');
+   if (controller.text != code && code!=null) {
+     controller.value = TextEditingValue(text: code ?? '');
+     setState(() {
+       _focusNode = FocusNode();
+       if (code?.isNotEmpty == true) {
+         for (var i = 0; i < code!.length; i++) {
+           pinsInputed[i] = code![i];
+         }
+       }
+       _focusNode.addListener(_focusListener);
+       ending = true;
+       hasFocus = widget.highlightBorder;
+       text = code!;
+     });
+
+     if (widget.onCodeChanged != null) {
+       widget.onCodeChanged!(code ?? '');
+     }
+   }
   }
 }

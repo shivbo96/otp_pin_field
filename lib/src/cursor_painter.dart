@@ -8,7 +8,7 @@ class CursorPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final p1 = Offset(0, 0);
+    const p1 = Offset(0, 0);
     final p2 = Offset(0, size.height);
     final paint = Paint()
       ..color = cursorColor ?? Colors.black
@@ -17,5 +17,5 @@ class CursorPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(CustomPainter old) => false;
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

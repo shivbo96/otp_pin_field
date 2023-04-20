@@ -10,12 +10,10 @@ class OtpKeyboard extends StatelessWidget {
   final Function(String) callbackValue;
   final VoidCallback callbackDeleteValue;
   final VoidCallback callbackSubmitValue;
-  late final FocusNode myFocusNode;
+  final FocusNode myFocusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
-    myFocusNode = FocusNode();
-
     return CustomKeyboard(
       onTextInput: (myText) => callbackValue(myText),
       onBackspace: () => callbackDeleteValue(),
@@ -210,9 +208,9 @@ class BackspaceKey extends StatelessWidget {
           onTap: () {
             onBackspace.call();
           },
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: const Center(
+          child: const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Center(
               child: Icon(
                 Icons.backspace_outlined,
                 color: Colors.red,
@@ -243,9 +241,9 @@ class CheckKey extends StatelessWidget {
           onTap: () {
             onCheck.call();
           },
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: const Center(
+          child: const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Center(
               child: Icon(
                 Icons.check,
                 color: Colors.black,
