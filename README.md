@@ -1,5 +1,7 @@
 [![Pub](https://img.shields.io/pub/v/otp_pin_field.svg)](https://pub.dartlang.org/packages/otp_pin_field)
 
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="smishra" data-color="#FF5F5F" data-emoji="🍕"  data-font="Comic" data-text="Buy me a pizza" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
+
 # otp_pin_field
 
 A flutter package which will help you to generate pin code fields with beautiful design and
