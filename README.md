@@ -1,12 +1,11 @@
 [![Pub](https://img.shields.io/pub/v/otp_pin_field.svg)](https://pub.dartlang.org/packages/otp_pin_field)
 
-<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="smishra" data-color="#FF5F5F" data-emoji="🍕"  data-font="Comic" data-text="Buy me a pizza" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
+<a href="https://www.buymeacoffee.com/smishra" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
 # otp_pin_field
 
 A flutter package which will help you to generate pin code fields with beautiful design and
-animations. It's a beautiful and highly customizable Flutter widget for entering pin code. Can be
-useful for OTP or pin code inputs.
+animations. It's a beautiful and highly customizable Flutter widget for entering pin code.
 
 
 Created by Shivam Mishra [@shivbo96](https://github.com/shivbo96)
