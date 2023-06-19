@@ -7,6 +7,7 @@ class OtpPinFieldStyle {
   final Color defaultFieldBackgroundColor;
   final Color activeFieldBorderColor;
   final Color defaultFieldBorderColor;
+  final Color filledBackgroundColor;
   final double fieldBorderRadius;
   final double fieldBorderWidth;
 
@@ -19,5 +20,6 @@ class OtpPinFieldStyle {
     this.fieldPadding = 10.0,
     this.fieldBorderRadius = 2.0,
     this.fieldBorderWidth = 2.0,
+    this.filledBackgroundColor = Colors.transparent,
   });
 }

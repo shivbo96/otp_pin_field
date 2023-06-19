@@ -55,3 +55,6 @@
 
 ## [1.2.0+2] -Release
 * documentation updated and minor bug fixes
+
+## [1.3.0+1] -Release
+* adds `filledBackgroundColor` property to `OtpPinFieldStyle`

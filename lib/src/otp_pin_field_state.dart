@@ -257,7 +257,7 @@ class OtpPinFieldState extends State<OtpPinField>
         : widget.otpPinFieldStyle!.defaultFieldBorderColor;
     fieldBackgroundColor = widget.highlightBorder && _shouldHighlight(i)
         ? widget.otpPinFieldStyle!.activeFieldBackgroundColor
-        : widget.otpPinFieldStyle!.defaultFieldBackgroundColor;
+        : _getPinDisplay(i) != "" ? widget.otpPinFieldStyle!.filledBackgroundColor : widget.otpPinFieldStyle!.defaultFieldBackgroundColor;
 
     if (widget.otpPinFieldDecoration ==
         OtpPinFieldDecoration.underlinedPinBoxDecoration) {
