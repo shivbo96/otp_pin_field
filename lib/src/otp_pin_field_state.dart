@@ -62,6 +62,10 @@ class OtpPinFieldState extends State<OtpPinField>
     super.dispose();
   }
 
+  void requestFocus(){
+    _focusNode.requestFocus();
+  }
+
   @override
   Widget build(BuildContext context) {
     return widget.showCustomKeyboard ?? false

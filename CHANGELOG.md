@@ -58,3 +58,6 @@
 
 ## [1.3.0+1] -Release
 * adds `filledBackgroundColor` property to `OtpPinFieldStyle`
+
+## [1.4.0+1] -Release
+* adds `requestFocus()` to controller
