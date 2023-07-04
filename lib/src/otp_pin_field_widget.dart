@@ -31,7 +31,7 @@ class OtpPinField extends StatefulWidget {
   final bool? showCustomKeyboard;
   final bool? showDefaultKeyboard;
   final Function(String)? onCodeChanged;
-  final FocusNode focusNode;
+  final FocusNode? focusNode;
 
   const OtpPinField(
       {Key? key,

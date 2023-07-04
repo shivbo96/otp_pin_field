@@ -18,7 +18,7 @@ class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin,
   void initState() {
     super.initState();
     if (widget.focusNode != null) {
-      _focusNode = FocusNode();
+      _focusNode = widget.focusNode!;
     }
     pinsInputed = [];
     if (widget.autoFillEnable == true) {
