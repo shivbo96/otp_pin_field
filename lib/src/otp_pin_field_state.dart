@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import '../otp_pin_field.dart';
 
 class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin, CodeAutoFill {
-  late FocusNode _focusNode;
+  FocusNode? _focusNode;
   late List<String> pinsInputed;
   late AnimationController _cursorController;
   late Animation<double> _cursorAnimation;
