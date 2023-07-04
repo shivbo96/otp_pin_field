@@ -31,6 +31,7 @@ class OtpPinField extends StatefulWidget {
   final bool? showCustomKeyboard;
   final bool? showDefaultKeyboard;
   final Function(String)? onCodeChanged;
+  final FocusNode focusNode;
 
   const OtpPinField(
       {Key? key,
@@ -41,8 +42,7 @@ class OtpPinField extends StatefulWidget {
       this.otpPinFieldStyle = const OtpPinFieldStyle(),
       this.textInputAction = TextInputAction.done,
       this.otpPinFieldInputType = OtpPinFieldInputType.none,
-      this.otpPinFieldDecoration =
-          OtpPinFieldDecoration.underlinedPinBoxDecoration,
+      this.otpPinFieldDecoration = OtpPinFieldDecoration.underlinedPinBoxDecoration,
       this.otpPinInputCustom = "*",
       this.smsRegex,
       required this.onSubmit,
@@ -60,6 +60,7 @@ class OtpPinField extends StatefulWidget {
       this.middleChild,
       this.customKeyboard,
       this.showCustomKeyboard,
+      this.focusNode,
       this.showDefaultKeyboard = true})
       : super(key: key);
 

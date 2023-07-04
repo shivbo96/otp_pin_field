@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import '../otp_pin_field.dart';
 
 class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin, CodeAutoFill {
-  // late FocusNode _focusNode;
+  late FocusNode _focusNode;
   late List<String> pinsInputed;
   late AnimationController _cursorController;
   late Animation<double> _cursorAnimation;
@@ -17,7 +17,9 @@ class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin,
   @override
   void initState() {
     super.initState();
-    // _focusNode = FocusNode();
+    if (widget.focusNode != null) {
+      _focusNode = FocusNode();
+    }
     pinsInputed = [];
     if (widget.autoFillEnable == true) {
       if (widget.phoneNumbersHint == true) {
@@ -89,7 +91,7 @@ class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin,
                   enableInteractiveSelection: false,
                   inputFormatters:
                       widget.keyboardType == TextInputType.number ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly] : null,
-                  // focusNode: _focusNode,
+                  focusNode: _focusNode,
                   keyboardType: widget.keyboardType,
                   onSubmitted: (text) {
                     debugPrint(text);
