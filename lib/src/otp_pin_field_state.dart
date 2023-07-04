@@ -91,7 +91,7 @@ class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin,
                   enableInteractiveSelection: false,
                   inputFormatters:
                       widget.keyboardType == TextInputType.number ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly] : null,
-                  focusNode: _focusNode,
+                  // focusNode: _focusNode,
                   keyboardType: widget.keyboardType,
                   onSubmitted: (text) {
                     debugPrint(text);
@@ -174,7 +174,7 @@ class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin,
             enableInteractiveSelection: false,
             inputFormatters:
                 widget.keyboardType == TextInputType.number ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly] : null,
-            // focusNode: _focusNode,
+            focusNode: _focusNode,
             textInputAction: widget.textInputAction,
             keyboardType: widget.keyboardType,
             onSubmitted: (text) {
