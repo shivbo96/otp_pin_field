@@ -7,7 +7,7 @@ class NextPage extends StatelessWidget {
       appBar: AppBar(),
       body: Container(
         child: Center(
-          child: Text("Next Page "),
+          child: Text('Next Page '),
         ),
       ),
     );

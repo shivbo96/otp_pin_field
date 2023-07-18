@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'dart:async';
+import 'package:otp_pin_field/otp_pin_field_platform_interface.dart';
 import '../otp_pin_field.dart';
 
-class OtpPinFieldState extends State<OtpPinField>
-    with TickerProviderStateMixin, CodeAutoFill {
+class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin, OtpPinAutoFill {
   late FocusNode _focusNode;
   late List<String> pinsInputed;
   late AnimationController _cursorController;
@@ -13,7 +13,7 @@ class OtpPinFieldState extends State<OtpPinField>
   final TextEditingController controller = TextEditingController();
   bool ending = false;
   bool hasFocus = false;
-  String text = "";
+  String text = '';
 
   @override
   void initState() {
@@ -22,22 +22,20 @@ class OtpPinFieldState extends State<OtpPinField>
     pinsInputed = [];
     if (widget.autoFillEnable == true) {
       if (widget.phoneNumbersHint == true) {
-        OtpPinFieldAutoFill().hint;
+        _OtpPinFieldAutoFill().hint;
       }
-      OtpPinFieldAutoFill().getAppSignature.then((value) {
-        debugPrint("your hash value is $value");
-        OtpPinFieldAutoFill()
-            .listenForCode(smsCodeRegexPattern: widget.smsRegex ?? '\\d{0,4}');
+      _OtpPinFieldAutoFill().getAppSignature.then((value) {
+        debugPrint('your hash value is $value');
+        _OtpPinFieldAutoFill().listenForCode(smsCodeRegexPattern: widget.smsRegex ?? '\\d{0,4}');
       });
       listenForCode();
     }
     for (var i = 0; i < widget.maxLength; i++) {
-      pinsInputed.add("");
+      pinsInputed.add('');
     }
 
     _focusNode.addListener(_focusListener);
-    _cursorController = AnimationController(
-        duration: const Duration(milliseconds: 1000), vsync: this);
+    _cursorController = AnimationController(duration: const Duration(milliseconds: 1000), vsync: this);
     _cursorAnimation = Tween<double>(
       begin: 1,
       end: 0,
@@ -53,7 +51,7 @@ class OtpPinFieldState extends State<OtpPinField>
     // Clean up the focus node when the Form is disposed.
     if (widget.autoFillEnable == true) {
       cancel();
-      OtpPinFieldAutoFill().unregisterListener();
+      _OtpPinFieldAutoFill().unregisterListener();
     }
     _focusNode.removeListener(_focusListener);
     _focusNode.dispose();
@@ -64,9 +62,7 @@ class OtpPinFieldState extends State<OtpPinField>
 
   @override
   Widget build(BuildContext context) {
-    return widget.showCustomKeyboard ?? false
-        ? _viewWithCustomKeyBoard()
-        : _viewWithOutCustomKeyBoard();
+    return widget.showCustomKeyboard ?? false ? _viewWithCustomKeyBoard() : _viewWithOutCustomKeyBoard();
   }
 
   Widget _viewWithCustomKeyBoard() {
@@ -79,10 +75,7 @@ class OtpPinFieldState extends State<OtpPinField>
           SizedBox(
             height: widget.fieldHeight,
             child: Stack(children: [
-              Row(
-                  mainAxisAlignment:
-                      widget.mainAxisAlignment ?? MainAxisAlignment.center,
-                  children: _buildBody(context)),
+              Row(mainAxisAlignment: widget.mainAxisAlignment ?? MainAxisAlignment.center, children: _buildBody(context)),
               Opacity(
                 opacity: 0.0,
                 child: TextField(
@@ -91,11 +84,7 @@ class OtpPinFieldState extends State<OtpPinField>
                   readOnly: widget.showCustomKeyboard ?? true,
                   autofocus: !kIsWeb ? widget.autoFocus : false,
                   enableInteractiveSelection: false,
-                  inputFormatters: widget.keyboardType == TextInputType.number
-                      ? <TextInputFormatter>[
-                          FilteringTextInputFormatter.digitsOnly
-                        ]
-                      : null,
+                  inputFormatters: widget.keyboardType == TextInputType.number ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly] : null,
                   focusNode: _focusNode,
                   keyboardType: widget.keyboardType,
                   onSubmitted: (text) {
@@ -103,7 +92,6 @@ class OtpPinFieldState extends State<OtpPinField>
                   },
                   onChanged: (text) {
                     this.text = text;
-                    // FocusScope.of(context).nextFocus();
                     if (ending && text.length == widget.maxLength) {
                       return;
                     }
@@ -126,7 +114,6 @@ class OtpPinFieldState extends State<OtpPinField>
               child: widget.customKeyboard ??
                   OtpKeyboard(
                     callbackValue: (myText) {
-                      // FocusScope.of(context).nextFocus();
                       if (ending && text.length == widget.maxLength) {
                         return;
                       }
@@ -137,7 +124,6 @@ class OtpPinFieldState extends State<OtpPinField>
                       widget.onChange(text);
                       ending = text.length == widget.maxLength;
                       if (ending) {
-                        // widget.onSubmit(text);
                         FocusScope.of(context).unfocus();
                       }
                     },
@@ -146,8 +132,7 @@ class OtpPinFieldState extends State<OtpPinField>
                         return;
                       }
                       _focusNode.requestFocus();
-                      controller.text = controller.text
-                          .substring(0, controller.text.length - 1);
+                      controller.text = controller.text.substring(0, controller.text.length - 1);
                       text = controller.text;
                       _bindTextIntoWidget(text);
                       setState(() {});
@@ -169,10 +154,7 @@ class OtpPinFieldState extends State<OtpPinField>
     return SizedBox(
       height: widget.fieldHeight,
       child: Stack(children: [
-        Row(
-            mainAxisAlignment:
-                widget.mainAxisAlignment ?? MainAxisAlignment.center,
-            children: _buildBody(context)),
+        Row(mainAxisAlignment: widget.mainAxisAlignment ?? MainAxisAlignment.center, children: _buildBody(context)),
         Opacity(
           opacity: 0.0,
           child: TextField(
@@ -181,9 +163,7 @@ class OtpPinFieldState extends State<OtpPinField>
             readOnly: !(widget.showDefaultKeyboard ?? true),
             autofocus: !kIsWeb ? widget.autoFocus : false,
             enableInteractiveSelection: false,
-            inputFormatters: widget.keyboardType == TextInputType.number
-                ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly]
-                : null,
+            inputFormatters: widget.keyboardType == TextInputType.number ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly] : null,
             focusNode: _focusNode,
             textInputAction: widget.textInputAction,
             keyboardType: widget.keyboardType,
@@ -224,8 +204,9 @@ class OtpPinFieldState extends State<OtpPinField>
     return tmp;
   }
 
-  Widget cursorWidget({Color? cursorColor, double? cursorWidth}) {
-    return Center(
+  Widget cursorWidget({Color? cursorColor, double? cursorWidth, int? index}) {
+    return Container(
+      padding: pinsInputed[index ?? 0].isNotEmpty ? const EdgeInsets.only(left: 15) : EdgeInsets.zero,
       child: FadeTransition(
         opacity: _cursorAnimation,
         child: CustomPaint(
@@ -246,21 +227,22 @@ class OtpPinFieldState extends State<OtpPinField>
 
     Widget showCursorWidget() => widget.showCursor!
         ? _shouldHighlight(i)
-            ? cursorWidget(
-                cursorColor: widget.cursorColor,
-                cursorWidth: widget.cursorWidth)
+            ? cursorWidget(cursorColor: widget.cursorColor, cursorWidth: widget.cursorWidth, index: i)
             : Container()
         : Container();
 
     fieldBorderColor = widget.highlightBorder && _shouldHighlight(i)
         ? widget.otpPinFieldStyle!.activeFieldBorderColor
-        : widget.otpPinFieldStyle!.defaultFieldBorderColor;
+        : (pinsInputed[i].isNotEmpty && widget.otpPinFieldStyle?.filledFieldBorderColor != Colors.transparent)
+            ? widget.otpPinFieldStyle!.filledFieldBorderColor
+            : widget.otpPinFieldStyle!.defaultFieldBorderColor;
     fieldBackgroundColor = widget.highlightBorder && _shouldHighlight(i)
         ? widget.otpPinFieldStyle!.activeFieldBackgroundColor
-        : widget.otpPinFieldStyle!.defaultFieldBackgroundColor;
+        : (pinsInputed[i].isNotEmpty && widget.otpPinFieldStyle?.filledFieldBackgroundColor != Colors.transparent)
+            ? widget.otpPinFieldStyle!.filledFieldBackgroundColor
+            : widget.otpPinFieldStyle!.defaultFieldBackgroundColor;
 
-    if (widget.otpPinFieldDecoration ==
-        OtpPinFieldDecoration.underlinedPinBoxDecoration) {
+    if (widget.otpPinFieldDecoration == OtpPinFieldDecoration.underlinedPinBoxDecoration) {
       boxDecoration = BoxDecoration(
         border: Border(
           bottom: BorderSide(
@@ -269,14 +251,9 @@ class OtpPinFieldState extends State<OtpPinField>
           ),
         ),
       );
-    } else if (widget.otpPinFieldDecoration ==
-        OtpPinFieldDecoration.defaultPinBoxDecoration) {
-      boxDecoration = BoxDecoration(
-          border: Border.all(color: fieldBorderColor, width: 2.0),
-          color: fieldBackgroundColor,
-          borderRadius: BorderRadius.circular(5.0));
-    } else if (widget.otpPinFieldDecoration ==
-        OtpPinFieldDecoration.roundedPinBoxDecoration) {
+    } else if (widget.otpPinFieldDecoration == OtpPinFieldDecoration.defaultPinBoxDecoration) {
+      boxDecoration = BoxDecoration(border: Border.all(color: fieldBorderColor, width: 2.0), color: fieldBackgroundColor, borderRadius: BorderRadius.circular(5.0));
+    } else if (widget.otpPinFieldDecoration == OtpPinFieldDecoration.roundedPinBoxDecoration) {
       boxDecoration = BoxDecoration(
         border: Border.all(
           color: fieldBorderColor,
@@ -292,8 +269,7 @@ class OtpPinFieldState extends State<OtpPinField>
             width: 2.0,
           ),
           color: fieldBackgroundColor,
-          borderRadius: BorderRadius.circular(
-              widget.otpPinFieldStyle!.fieldBorderRadius));
+          borderRadius: BorderRadius.circular(widget.otpPinFieldStyle!.fieldBorderRadius));
     }
 
     return InkWell(
@@ -326,11 +302,11 @@ class OtpPinFieldState extends State<OtpPinField>
   }
 
   String _getPinDisplay(int position) {
-    var display = "";
+    var display = '';
     var value = pinsInputed[position];
     switch (widget.otpPinFieldInputType) {
       case OtpPinFieldInputType.password:
-        display = "*";
+        display = '*';
         break;
       case OtpPinFieldInputType.custom:
         display = widget.otpPinInputCustom;
@@ -345,7 +321,7 @@ class OtpPinFieldState extends State<OtpPinField>
   void _bindTextIntoWidget(String text) {
     ///Reset value
     for (var i = text.length; i < pinsInputed.length; i++) {
-      pinsInputed[i] = "";
+      pinsInputed[i] = '';
     }
     if (text.isNotEmpty) {
       for (var i = 0; i < text.length; i++) {
@@ -363,9 +339,7 @@ class OtpPinFieldState extends State<OtpPinField>
   }
 
   bool _shouldHighlight(int i) {
-    return hasFocus &&
-        (i == text.length ||
-            (i == text.length - 1 && text.length == widget.maxLength));
+    return hasFocus && (i == text.length || (i == text.length - 1 && text.length == widget.maxLength));
   }
 
   clearOtp() {
@@ -374,12 +348,12 @@ class OtpPinFieldState extends State<OtpPinField>
       _focusNode = FocusNode();
       pinsInputed = [];
       for (var i = 0; i < widget.maxLength; i++) {
-        pinsInputed.add("");
+        pinsInputed.add('');
       }
       _focusNode.addListener(_focusListener);
       ending = false;
       hasFocus = widget.highlightBorder;
-      text = "";
+      text = '';
     });
   }
 
@@ -406,4 +380,69 @@ class OtpPinFieldState extends State<OtpPinField>
       });
     }
   }
+}
+
+class _OtpPinFieldAutoFill {
+  static _OtpPinFieldAutoFill? _singleton;
+  static const MethodChannel _channel = MethodChannel('otp_pin_field');
+  final StreamController<String> _code = StreamController.broadcast();
+
+  factory _OtpPinFieldAutoFill() => _singleton ??= _OtpPinFieldAutoFill._();
+
+  _OtpPinFieldAutoFill._() {
+    _channel.setMethodCallHandler(_didReceive);
+  }
+
+  Future<String?> getPlatformVersion() {
+    return OtpPinFieldPlatform.instance.getPlatformVersion();
+  }
+
+  Future<void> _didReceive(MethodCall method) async {
+    if (method.method == 'smsCode') {
+      _code.add(method.arguments);
+    }
+  }
+
+  Stream<String> get code => _code.stream;
+
+  Future<String?> get hint async {
+    return OtpPinFieldPlatform.instance.requestPhoneHint();
+  }
+
+  Future<void> listenForCode({String smsCodeRegexPattern = '\\d{0,4}'}) async {
+    OtpPinFieldPlatform.instance.listenForCode(<String, String>{'smsCodeRegexPattern': smsCodeRegexPattern});
+  }
+
+  Future<void> unregisterListener() async {
+    OtpPinFieldPlatform.instance.unregisterListener();
+  }
+
+  Future<String> get getAppSignature async {
+    return OtpPinFieldPlatform.instance.getAppSignature();
+  }
+}
+
+mixin OtpPinAutoFill {
+  final _OtpPinFieldAutoFill _autoFill = _OtpPinFieldAutoFill();
+  String? code;
+  StreamSubscription? _subscription;
+
+  void listenForCode({String? smsCodeRegexPattern}) {
+    _subscription = _autoFill.code.listen((code) {
+      this.code = code;
+      codeUpdated();
+    });
+
+    (smsCodeRegexPattern == null) ? _autoFill.listenForCode() : _autoFill.listenForCode(smsCodeRegexPattern: smsCodeRegexPattern);
+  }
+
+  Future<void> cancel() async {
+    return _subscription?.cancel();
+  }
+
+  Future<void> unregisterListener() {
+    return _autoFill.unregisterListener();
+  }
+
+  void codeUpdated();
 }
