@@ -59,3 +59,6 @@
 * fixed minor issue with animated cursor
 * added `prefilled color property` in OtpPinFieldStyle  
 * documentation updated
+
+## [1.2.2] -Release
+* documentation updated
