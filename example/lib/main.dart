@@ -79,10 +79,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 activeFieldBackgroundColor: Colors.cyanAccent,
 
                 /// Background Color for filled field pin box
-                filledFieldBackgroundColor: Colors.transparent,
+                filledFieldBackgroundColor: Colors.green,
 
                 /// border Color for filled field pin box
-                filledFieldBorderColor: Colors.transparent,
+                filledFieldBorderColor: Colors.green,
               ),
               maxLength: 4,
 
