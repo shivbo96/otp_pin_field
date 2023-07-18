@@ -50,8 +50,12 @@
 * Added ` sms auto fill functionality `
 
 ## [1.2.0+1] -Release
-* (Hot Fix)added function to `sms auto fill functionality for sms-regex`
-
+* (Hot Fix) added function to `sms auto fill functionality for sms-regex`
 
 ## [1.2.0+2] -Release
 * documentation updated and minor bug fixes
+
+## [1.2.1] -Release
+* fixed minor issue with animated cursor
+* added `prefilled color property` in OtpPinFieldStyle  
+* documentation updated

@@ -43,7 +43,7 @@ class OtpPinField extends StatefulWidget {
       this.otpPinFieldInputType = OtpPinFieldInputType.none,
       this.otpPinFieldDecoration =
           OtpPinFieldDecoration.underlinedPinBoxDecoration,
-      this.otpPinInputCustom = "*",
+      this.otpPinInputCustom = '*',
       this.smsRegex,
       required this.onSubmit,
       required this.onChange,

@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           OtpPinField(
               key: _otpPinFieldController,
-              autoFillEnable: true,
+              autoFillEnable: false,
 
               ///for Ios it is not needed as the SMS autofill is provided by default, but not for Android, that's where this key is useful.
               textInputAction: TextInputAction.done,
@@ -66,19 +66,24 @@ class _MyHomePageState extends State<MyHomePage> {
 
               /// to decorate your Otp_Pin_Field
               otpPinFieldStyle: OtpPinFieldStyle(
+                /// border color for inactive/unfocused Otp_Pin_Field
+                defaultFieldBorderColor: Colors.red,
 
-                  /// border color for inactive/unfocused Otp_Pin_Field
-                  defaultFieldBorderColor: Colors.red,
+                /// border color for active/focused Otp_Pin_Field
+                activeFieldBorderColor: Colors.indigo,
 
-                  /// border color for active/focused Otp_Pin_Field
-                  activeFieldBorderColor: Colors.indigo,
+                /// Background Color for inactive/unfocused Otp_Pin_Field
+                defaultFieldBackgroundColor: Colors.yellow,
 
-                  /// Background Color for inactive/unfocused Otp_Pin_Field
-                  defaultFieldBackgroundColor: Colors.yellow,
-                  activeFieldBackgroundColor: Colors.cyanAccent
+                /// Background Color for active/focused Otp_Pin_Field
+                activeFieldBackgroundColor: Colors.cyanAccent,
 
-                  /// Background Color for active/focused Otp_Pin_Field
-                  ),
+                /// Background Color for filled field pin box
+                filledFieldBackgroundColor: Colors.transparent,
+
+                /// border Color for filled field pin box
+                filledFieldBorderColor: Colors.transparent,
+              ),
               maxLength: 4,
 
               /// no of pin field
@@ -100,40 +105,32 @@ class _MyHomePageState extends State<MyHomePage> {
                   SizedBox(height: 30),
                   ElevatedButton(
                       onPressed: () {
-                        _otpPinFieldController.currentState
-                            ?.clearOtp(); // clear controller
+                        _otpPinFieldController.currentState?.clearOtp(); // clear controller
                       },
-                      child: Text("clear OTP")),
+                      child: Text('clear OTP')),
                   SizedBox(height: 10),
-                  ElevatedButton(
-                      onPressed: () => Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => NextPage())),
-                      child: Text("Next Class")),
+                  ElevatedButton(onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage())), child: Text('Next Class')),
                   SizedBox(height: 30),
                 ],
               ),
               showCustomKeyboard: true,
 
               ///bool which manage to show custom keyboard
-              // customKeyboard: Container(),  /// Widget which help you to show your own custom keyboard in place if default custom keyboard
-              // showDefaultKeyboard: true,  ///bool which manage to show default OS keyboard
+              // customKeyboard: Container(),
+              /// Widget which help you to show your own custom keyboard in place if default custom keyboard
+              showDefaultKeyboard: true,
+
+              ///bool which manage to show default OS keyboard
               cursorWidth: 3,
 
               /// to select cursor width
               mainAxisAlignment: MainAxisAlignment.center,
 
-              /// place otp pin field according to yourselft
+              /// place otp pin field according to yourself
 
               /// predefine decorate of pinField use  OtpPinFieldDecoration.defaultPinBoxDecoration||OtpPinFieldDecoration.underlinedPinBoxDecoration||OtpPinFieldDecoration.roundedPinBoxDecoration
               ///use OtpPinFieldDecoration.custom  (by using this you can make Otp_Pin_Field according to yourself like you can give fieldBorderRadius,fieldBorderWidth and etc things)
-              otpPinFieldDecoration:
-                  OtpPinFieldDecoration.defaultPinBoxDecoration),
-          // SizedBox(height: 30),
-          // ElevatedButton(
-          //     onPressed: (){
-          //       _otpPinFieldController.currentState?.clearOtp();
-          //     },
-          //     child: Text("clear OTP")),
+              otpPinFieldDecoration: OtpPinFieldDecoration.defaultPinBoxDecoration),
         ],
       ),
     );
