@@ -141,7 +141,7 @@ class _MyHomePageState extends State<MyHomePage> {
             /// predefine decorate of pinField use  OtpPinFieldDecoration.defaultPinBoxDecoration||OtpPinFieldDecoration.underlinedPinBoxDecoration||OtpPinFieldDecoration.roundedPinBoxDecoration
             ///use OtpPinFieldDecoration.custom  (by using this you can make Otp_Pin_Field according to yourself like you can give fieldBorderRadius,fieldBorderWidth and etc things)
             otpPinFieldDecoration:
-                OtpPinFieldDecoration.roundedPinBoxDecoration,
+                OtpPinFieldDecoration.defaultPinBoxDecoration,
           ),
         ],
       ),

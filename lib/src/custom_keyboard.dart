@@ -28,11 +28,11 @@ class OtpKeyboard extends StatelessWidget {
 
 class CustomKeyboard extends StatelessWidget {
   const CustomKeyboard({
-    Key? key,
+    super.key,
     required this.onTextInput,
     required this.onBackspace,
     required this.onSubmit,
-  }) : super(key: key);
+  });
 
   final ValueSetter<String> onTextInput;
   final VoidCallback onBackspace;
@@ -152,11 +152,11 @@ class CustomKeyboard extends StatelessWidget {
 
 class TextKey extends StatelessWidget {
   const TextKey({
-    Key? key,
+    super.key,
     required this.text,
     required this.onTextInput,
     this.flex = 1,
-  }) : super(key: key);
+  });
 
   final String text;
   final ValueSetter<String> onTextInput;
@@ -189,10 +189,10 @@ class TextKey extends StatelessWidget {
 
 class BackspaceKey extends StatelessWidget {
   const BackspaceKey({
-    Key? key,
+    super.key,
     required this.onBackspace,
     this.flex = 1,
-  }) : super(key: key);
+  });
 
   final VoidCallback onBackspace;
   final int flex;
@@ -225,9 +225,9 @@ class BackspaceKey extends StatelessWidget {
 
 class CheckKey extends StatelessWidget {
   const CheckKey({
-    Key? key,
+    super.key,
     required this.onCheck,
-  }) : super(key: key);
+  });
 
   final VoidCallback onCheck;
 
@@ -238,9 +238,7 @@ class CheckKey extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 10.0),
         child: GestureDetector(
           behavior: HitTestBehavior.opaque,
-          onTap: () {
-            onCheck.call();
-          },
+          onTap: () => onCheck.call(),
           child: const Padding(
             padding: EdgeInsets.all(8.0),
             child: Center(
