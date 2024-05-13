@@ -62,3 +62,8 @@
 
 ## [1.2.2] -Release
 * documentation updated
+
+## [1.2.3] -Release
+* Added copy paste OTP feature 
+* Added `border gradient color property` in OtpPinFieldStyle
+* dart formatted

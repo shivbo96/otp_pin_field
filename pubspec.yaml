@@ -1,6 +1,6 @@
 name: otp_pin_field
 description: A flutter package which will help you to generate pin code fields with beautiful design and animations. Can be useful for OTP or pin code inputs.
-version: 1.2.2
+version: 1.2.3
 homepage: https://github.com/shivbo96/otp_pin_field
 
 environment:
@@ -17,7 +17,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^4.0.0
 
 
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:otp_pin_field/otp_pin_field.dart';
 
 typedef OnDone = void Function(String text);
@@ -31,6 +32,7 @@ class OtpPinField extends StatefulWidget {
   final bool? showCustomKeyboard;
   final bool? showDefaultKeyboard;
   final Function(String)? onCodeChanged;
+  final bool Function(String? text)? beforeTextPaste;
 
   const OtpPinField(
       {Key? key,
@@ -45,6 +47,7 @@ class OtpPinField extends StatefulWidget {
           OtpPinFieldDecoration.underlinedPinBoxDecoration,
       this.otpPinInputCustom = '*',
       this.smsRegex,
+      this.beforeTextPaste,
       required this.onSubmit,
       required this.onChange,
       this.keyboardType = TextInputType.number,
@@ -67,4 +70,8 @@ class OtpPinField extends StatefulWidget {
   State<StatefulWidget> createState() {
     return OtpPinFieldState();
   }
+}
+
+void hideKeyboard() {
+  SystemChannels.textInput.invokeMethod('TextInput.hide');
 }

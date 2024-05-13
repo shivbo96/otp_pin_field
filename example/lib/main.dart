@@ -11,7 +11,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      debugShowMaterialGrid: false,
+      // debugShowMaterialGrid: false,
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -42,95 +43,106 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           OtpPinField(
-              key: _otpPinFieldController,
-              autoFillEnable: false,
+            key: _otpPinFieldController,
 
-              ///for Ios it is not needed as the SMS autofill is provided by default, but not for Android, that's where this key is useful.
-              textInputAction: TextInputAction.done,
+            ///in case you want to enable autoFill
+            autoFillEnable: false,
 
-              ///in case you want to change the action of keyboard
-              /// to clear the Otp pin Controller
-              onSubmit: (text) {
-                print('Entered pin is $text');
+            ///for Ios it is not needed as the SMS autofill is provided by default, but not for Android, that's where this key is useful.
+            textInputAction: TextInputAction.done,
 
-                /// return the entered pin
-              },
-              onChange: (text) {
-                print('Enter on change pin is $text');
+            ///in case you want to change the action of keyboard
+            /// to clear the Otp pin Controller
+            onSubmit: (text) {
+              print('Entered pin is $text');
 
-                /// return the entered pin
-              },
-              onCodeChanged: (code) {
-                print('onCodeChanged  is $code');
-              },
+              /// return the entered pin
+            },
+            onChange: (text) {
+              print('Enter on change pin is $text');
 
-              /// to decorate your Otp_Pin_Field
-              otpPinFieldStyle: OtpPinFieldStyle(
-                /// border color for inactive/unfocused Otp_Pin_Field
-                defaultFieldBorderColor: Colors.red,
+              /// return the entered pin
+            },
+            onCodeChanged: (code) {
+              print('onCodeChanged  is $code');
+            },
 
-                /// border color for active/focused Otp_Pin_Field
-                activeFieldBorderColor: Colors.indigo,
+            /// to decorate your Otp_Pin_Field
+            otpPinFieldStyle: OtpPinFieldStyle(
+              /// border color for inactive/unfocused Otp_Pin_Field
+              defaultFieldBorderColor: Colors.red,
 
-                /// Background Color for inactive/unfocused Otp_Pin_Field
-                defaultFieldBackgroundColor: Colors.yellow,
+              /// border color for active/focused Otp_Pin_Field
+              activeFieldBorderColor: Colors.indigo,
 
-                /// Background Color for active/focused Otp_Pin_Field
-                activeFieldBackgroundColor: Colors.cyanAccent,
+              /// Background Color for inactive/unfocused Otp_Pin_Field
+              defaultFieldBackgroundColor: Colors.yellow,
 
-                /// Background Color for filled field pin box
-                filledFieldBackgroundColor: Colors.green,
+              /// Background Color for active/focused Otp_Pin_Field
+              activeFieldBackgroundColor: Colors.cyanAccent,
 
-                /// border Color for filled field pin box
-                filledFieldBorderColor: Colors.green,
-              ),
-              maxLength: 4,
+              /// Background Color for filled field pin box
+              filledFieldBackgroundColor: Colors.green,
 
-              /// no of pin field
-              showCursor: true,
+              /// border Color for filled field pin box
+              filledFieldBorderColor: Colors.green,
+              //
+              /// gradient border Color for field pin box
+              // fieldBorderGradient: LinearGradient(colors: [Colors.black, Colors.redAccent]),
+            ),
+            maxLength: 4,
 
-              /// bool to show cursor in pin field or not
-              cursorColor: Colors.indigo,
+            /// no of pin field
+            showCursor: true,
 
-              /// to choose cursor color
-              upperChild: Column(
-                children: [
-                  SizedBox(height: 30),
-                  Icon(Icons.flutter_dash_outlined, size: 150),
-                  SizedBox(height: 20),
-                ],
-              ),
-              middleChild: Column(
-                children: [
-                  SizedBox(height: 30),
-                  ElevatedButton(
-                      onPressed: () {
-                        _otpPinFieldController.currentState?.clearOtp(); // clear controller
-                      },
-                      child: Text('clear OTP')),
-                  SizedBox(height: 10),
-                  ElevatedButton(onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage())), child: Text('Next Class')),
-                  SizedBox(height: 30),
-                ],
-              ),
-              showCustomKeyboard: true,
+            /// bool to show cursor in pin field or not
+            cursorColor: Colors.indigo,
 
-              ///bool which manage to show custom keyboard
-              // customKeyboard: Container(),
-              /// Widget which help you to show your own custom keyboard in place if default custom keyboard
-              showDefaultKeyboard: true,
+            /// to choose cursor color
+            upperChild: Column(
+              children: [
+                SizedBox(height: 30),
+                Icon(Icons.flutter_dash_outlined, size: 150),
+                SizedBox(height: 20),
+              ],
+            ),
+            middleChild: Column(
+              children: [
+                SizedBox(height: 30),
+                ElevatedButton(
+                    onPressed: () {
+                      _otpPinFieldController.currentState
+                          ?.clearOtp(); // clear controller
+                    },
+                    child: Text('clear OTP')),
+                SizedBox(height: 10),
+                ElevatedButton(
+                    onPressed: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => NextPage())),
+                    child: Text('Next Class')),
+                SizedBox(height: 30),
+              ],
+            ),
 
-              ///bool which manage to show default OS keyboard
-              cursorWidth: 3,
+            ///bool which manage to show custom keyboard
+            showCustomKeyboard: true,
 
-              /// to select cursor width
-              mainAxisAlignment: MainAxisAlignment.center,
+            /// Widget which help you to show your own custom keyboard in place if default custom keyboard
+            // customKeyboard: Container(),
+            ///bool which manage to show default OS keyboard
+            // showDefaultKeyboard: true,
 
-              /// place otp pin field according to yourself
+            /// to select cursor width
+            cursorWidth: 3,
 
-              /// predefine decorate of pinField use  OtpPinFieldDecoration.defaultPinBoxDecoration||OtpPinFieldDecoration.underlinedPinBoxDecoration||OtpPinFieldDecoration.roundedPinBoxDecoration
-              ///use OtpPinFieldDecoration.custom  (by using this you can make Otp_Pin_Field according to yourself like you can give fieldBorderRadius,fieldBorderWidth and etc things)
-              otpPinFieldDecoration: OtpPinFieldDecoration.defaultPinBoxDecoration),
+            /// place otp pin field according to yourself
+            mainAxisAlignment: MainAxisAlignment.center,
+
+            /// predefine decorate of pinField use  OtpPinFieldDecoration.defaultPinBoxDecoration||OtpPinFieldDecoration.underlinedPinBoxDecoration||OtpPinFieldDecoration.roundedPinBoxDecoration
+            ///use OtpPinFieldDecoration.custom  (by using this you can make Otp_Pin_Field according to yourself like you can give fieldBorderRadius,fieldBorderWidth and etc things)
+            otpPinFieldDecoration:
+                OtpPinFieldDecoration.roundedPinBoxDecoration,
+          ),
         ],
       ),
     );
