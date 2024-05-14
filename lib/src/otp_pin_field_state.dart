@@ -262,6 +262,7 @@ class OtpPinFieldState extends State<OtpPinField>
   Widget _buildFieldInput(BuildContext context, int i) {
     Color fieldBorderColor;
     Color? fieldBackgroundColor;
+    Gradient? fieldBorderGradient;
     BoxDecoration boxDecoration;
     BoxDecoration? foregroundBoxDecoration;
 
@@ -289,6 +290,15 @@ class OtpPinFieldState extends State<OtpPinField>
             ? widget.otpPinFieldStyle!.filledFieldBackgroundColor
             : widget.otpPinFieldStyle!.defaultFieldBackgroundColor;
 
+    fieldBorderGradient = widget.highlightBorder &&
+            _shouldHighlight(i) &&
+            widget.otpPinFieldStyle?.activeFieldBorderGradient != null
+        ? widget.otpPinFieldStyle!.activeFieldBorderGradient
+        : (pinsInputed[i].isNotEmpty &&
+                widget.otpPinFieldStyle?.filledFieldBorderGradient != null)
+            ? widget.otpPinFieldStyle!.filledFieldBorderGradient
+            : widget.otpPinFieldStyle?.defaultFieldBorderGradient;
+
     if (widget.otpPinFieldDecoration ==
         OtpPinFieldDecoration.underlinedPinBoxDecoration) {
       boxDecoration = BoxDecoration(
@@ -306,10 +316,10 @@ class OtpPinFieldState extends State<OtpPinField>
           color: fieldBackgroundColor,
           borderRadius: BorderRadius.circular(5.0));
 
-      if (widget.otpPinFieldStyle?.fieldBorderGradient != null) {
+      if (fieldBorderGradient != null) {
         foregroundBoxDecoration = BoxDecoration(
             border: GradientBoxBorder(
-              gradient: widget.otpPinFieldStyle!.fieldBorderGradient!,
+              gradient: fieldBorderGradient,
               width: 2.0,
             ),
             borderRadius: BorderRadius.circular(5.0));
@@ -324,10 +334,10 @@ class OtpPinFieldState extends State<OtpPinField>
         shape: BoxShape.circle,
         color: fieldBackgroundColor,
       );
-      if (widget.otpPinFieldStyle?.fieldBorderGradient != null) {
+      if (fieldBorderGradient != null) {
         foregroundBoxDecoration = BoxDecoration(
           border: GradientBoxBorder(
-            gradient: widget.otpPinFieldStyle!.fieldBorderGradient!,
+            gradient: fieldBorderGradient,
             width: 2.0,
           ),
           shape: BoxShape.circle,
@@ -339,10 +349,10 @@ class OtpPinFieldState extends State<OtpPinField>
           color: fieldBackgroundColor,
           borderRadius: BorderRadius.circular(
               widget.otpPinFieldStyle!.fieldBorderRadius));
-      if (widget.otpPinFieldStyle?.fieldBorderGradient != null) {
+      if (fieldBorderGradient != null) {
         foregroundBoxDecoration = BoxDecoration(
             border: GradientBoxBorder(
-              gradient: widget.otpPinFieldStyle!.fieldBorderGradient!,
+              gradient: fieldBorderGradient,
               width: 2.0,
             ),
             borderRadius: BorderRadius.circular(

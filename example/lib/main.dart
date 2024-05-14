@@ -70,25 +70,30 @@ class _MyHomePageState extends State<MyHomePage> {
             /// to decorate your Otp_Pin_Field
             otpPinFieldStyle: OtpPinFieldStyle(
               /// border color for inactive/unfocused Otp_Pin_Field
-              defaultFieldBorderColor: Colors.red,
+              // defaultFieldBorderColor: Colors.red,
 
               /// border color for active/focused Otp_Pin_Field
-              activeFieldBorderColor: Colors.indigo,
+              // activeFieldBorderColor: Colors.indigo,
 
               /// Background Color for inactive/unfocused Otp_Pin_Field
-              defaultFieldBackgroundColor: Colors.yellow,
+              // defaultFieldBackgroundColor: Colors.yellow,
 
               /// Background Color for active/focused Otp_Pin_Field
-              activeFieldBackgroundColor: Colors.cyanAccent,
+              // activeFieldBackgroundColor: Colors.cyanAccent,
 
               /// Background Color for filled field pin box
-              filledFieldBackgroundColor: Colors.green,
+              // filledFieldBackgroundColor: Colors.green,
 
               /// border Color for filled field pin box
-              filledFieldBorderColor: Colors.green,
+              // filledFieldBorderColor: Colors.green,
               //
               /// gradient border Color for field pin box
-              // fieldBorderGradient: LinearGradient(colors: [Colors.black, Colors.redAccent]),
+              activeFieldBorderGradient:
+                  LinearGradient(colors: [Colors.black, Colors.redAccent]),
+              filledFieldBorderGradient:
+                  LinearGradient(colors: [Colors.green, Colors.tealAccent]),
+              defaultFieldBorderGradient:
+                  LinearGradient(colors: [Colors.orange, Colors.brown]),
             ),
             maxLength: 4,
 

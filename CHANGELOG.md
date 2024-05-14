@@ -11,7 +11,7 @@
 * FocusNode issue resolved.
 
 ## [1.0.2] -Release
-* added on change while entering the otp.
+* added onChange while entering the otp.
 
 ## [1.0.3] -Release
 * added cursor with animation ,accessibility to manage otp pin field spacing and also added custom keyboard option in place on default keyboard
@@ -66,4 +66,10 @@
 ## [1.2.3] -Release
 * Added copy paste OTP feature 
 * Added `border gradient color property` in OtpPinFieldStyle
+* dart formatted
+
+## [1.2.4] -Release
+* Added `border gradient color property for active pin field box` in OtpPinFieldStyle
+* Added `border gradient color property for filled pin field box` in OtpPinFieldStyle
+* Added `border gradient color property for default pin field box` in OtpPinFieldStyle
 * dart formatted

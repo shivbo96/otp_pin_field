@@ -11,7 +11,9 @@ class OtpPinFieldStyle {
   final Color filledFieldBorderColor;
   final double fieldBorderRadius;
   final double fieldBorderWidth;
-  final Gradient? fieldBorderGradient;
+  final Gradient? activeFieldBorderGradient;
+  final Gradient? filledFieldBorderGradient;
+  final Gradient? defaultFieldBorderGradient;
 
   const OtpPinFieldStyle({
     this.textStyle = const TextStyle(fontSize: 18.0, color: Colors.black),
@@ -21,7 +23,9 @@ class OtpPinFieldStyle {
     this.defaultFieldBackgroundColor = Colors.transparent,
     this.filledFieldBackgroundColor = Colors.transparent,
     this.filledFieldBorderColor = Colors.transparent,
-    this.fieldBorderGradient,
+    this.activeFieldBorderGradient,
+    this.filledFieldBorderGradient,
+    this.defaultFieldBorderGradient,
     this.fieldPadding = 10.0,
     this.fieldBorderRadius = 2.0,
     this.fieldBorderWidth = 2.0,

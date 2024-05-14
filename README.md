@@ -74,7 +74,9 @@ import 'package:otp_pin_field/otp_pin.dart';
 | textInputAction             | TextInputAction       | TextInputAction.done                             | In case you want to change the action of keyboard                                                                                                                                                                                               |
 | filledFieldBackgroundColor  | Color                 | Colors.transparent                               | Set background color of the filled field pin box.                                                                                                                                                                                               |
 | filledFieldBorderColor      | Color                 | Colors.transparent                               | Set color of the border of filled field pin box.                                                                                                                                                                                                |
-| fieldBorderGradient         | Gradient              |                                                  | Set gradient border Color for field pin box.                                                                                                                                                                                                    |
+| activeFieldBorderGradient   | Gradient              |                                                  | Set gradient border Color for focused field pin box.                                                                                                                                                                                            |
+| filledFieldBorderGradient   | Gradient              |                                                  | Set gradient border Color for filled field pin box.                                                                                                                                                                                             |
+| defaultFieldBorderGradient  | Gradient              |                                                  | Set gradient border Color for unfocused/default field pin box.                                                                                                                                                                                  |
 
 # Example
 
@@ -86,6 +88,7 @@ import 'package:otp_pin_field/otp_pin.dart';
   
          OtpPinField(
             key: _otpPinFieldController,
+
             ///in case you want to enable autoFill
             autoFillEnable: false,
 
@@ -111,25 +114,27 @@ import 'package:otp_pin_field/otp_pin.dart';
             /// to decorate your Otp_Pin_Field
             otpPinFieldStyle: OtpPinFieldStyle(
               /// border color for inactive/unfocused Otp_Pin_Field
-              defaultFieldBorderColor: Colors.red,
+              // defaultFieldBorderColor: Colors.red,
 
               /// border color for active/focused Otp_Pin_Field
-              activeFieldBorderColor: Colors.indigo,
+              // activeFieldBorderColor: Colors.indigo,
 
               /// Background Color for inactive/unfocused Otp_Pin_Field
-              defaultFieldBackgroundColor: Colors.yellow,
+              // defaultFieldBackgroundColor: Colors.yellow,
 
               /// Background Color for active/focused Otp_Pin_Field
-              activeFieldBackgroundColor: Colors.cyanAccent,
+              // activeFieldBackgroundColor: Colors.cyanAccent,
 
               /// Background Color for filled field pin box
-              filledFieldBackgroundColor: Colors.green,
+              // filledFieldBackgroundColor: Colors.green,
 
               /// border Color for filled field pin box
-              filledFieldBorderColor: Colors.green,
+              // filledFieldBorderColor: Colors.green,
               //
               /// gradient border Color for field pin box
-              // fieldBorderGradient: LinearGradient(colors: [Colors.black, Colors.redAccent]),
+              activeFieldBorderGradient: LinearGradient(colors: [Colors.black, Colors.redAccent]),
+              filledFieldBorderGradient: LinearGradient(colors: [Colors.green, Colors.tealAccent]),
+              defaultFieldBorderGradient: LinearGradient(colors: [Colors.orange, Colors.brown]),
             ),
             maxLength: 4,
 
@@ -152,12 +157,14 @@ import 'package:otp_pin_field/otp_pin.dart';
                 SizedBox(height: 30),
                 ElevatedButton(
                     onPressed: () {
-                      _otpPinFieldController.currentState?.clearOtp(); // clear controller
+                      _otpPinFieldController.currentState
+                          ?.clearOtp(); // clear controller
                     },
                     child: Text('clear OTP')),
                 SizedBox(height: 10),
                 ElevatedButton(
-                    onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage())),
+                    onPressed: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => NextPage())),
                     child: Text('Next Class')),
                 SizedBox(height: 30),
               ],
@@ -165,6 +172,7 @@ import 'package:otp_pin_field/otp_pin.dart';
 
             ///bool which manage to show custom keyboard
             showCustomKeyboard: true,
+
             /// Widget which help you to show your own custom keyboard in place if default custom keyboard
             // customKeyboard: Container(),
             ///bool which manage to show default OS keyboard
@@ -176,11 +184,10 @@ import 'package:otp_pin_field/otp_pin.dart';
             /// place otp pin field according to yourself
             mainAxisAlignment: MainAxisAlignment.center,
 
-
-
             /// predefine decorate of pinField use  OtpPinFieldDecoration.defaultPinBoxDecoration||OtpPinFieldDecoration.underlinedPinBoxDecoration||OtpPinFieldDecoration.roundedPinBoxDecoration
             ///use OtpPinFieldDecoration.custom  (by using this you can make Otp_Pin_Field according to yourself like you can give fieldBorderRadius,fieldBorderWidth and etc things)
-            otpPinFieldDecoration: OtpPinFieldDecoration.roundedPinBoxDecoration,
+            otpPinFieldDecoration:
+                OtpPinFieldDecoration.defaultPinBoxDecoration,
           ),
               
 ```
@@ -214,6 +221,7 @@ refer to `example/lib/main.dart`
 <img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/7.png" width="250" height="480">
 <img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/8.png" width="250" height="480">
 <img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/9.png" width="250" height="480">
+<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/10.png" width="250" height="480">
 
 ### video
 
