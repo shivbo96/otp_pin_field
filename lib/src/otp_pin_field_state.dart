@@ -8,7 +8,8 @@ import 'package:otp_pin_field/otp_pin_field_platform_interface.dart';
 import '../otp_pin_field.dart';
 import 'gradient_outline_input_border.dart';
 
-class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin, OtpPinAutoFill {
+class OtpPinFieldState extends State<OtpPinField>
+    with TickerProviderStateMixin, OtpPinAutoFill {
   late FocusNode _focusNode;
   late List<String> pinsInputed;
   late AnimationController _cursorController;
@@ -29,7 +30,8 @@ class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin,
       }
       _OtpPinFieldAutoFill().getAppSignature.then((value) {
         debugPrint('your hash value is $value');
-        _OtpPinFieldAutoFill().listenForCode(smsCodeRegexPattern: widget.smsRegex ?? '\\d{0,4}');
+        _OtpPinFieldAutoFill()
+            .listenForCode(smsCodeRegexPattern: widget.smsRegex ?? '\\d{0,4}');
       });
       listenForCode();
     }
@@ -38,7 +40,8 @@ class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin,
     }
 
     _focusNode.addListener(_focusListener);
-    _cursorController = AnimationController(duration: const Duration(milliseconds: 1000), vsync: this);
+    _cursorController = AnimationController(
+        duration: const Duration(milliseconds: 1000), vsync: this);
     _cursorAnimation = Tween<double>(
       begin: 1,
       end: 0,
@@ -65,7 +68,9 @@ class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin,
 
   @override
   Widget build(BuildContext context) {
-    return widget.showCustomKeyboard ?? false ? _viewWithCustomKeyBoard() : _viewWithOutCustomKeyBoard();
+    return widget.showCustomKeyboard ?? false
+        ? _viewWithCustomKeyBoard()
+        : _viewWithOutCustomKeyBoard();
   }
 
   Widget _viewWithCustomKeyBoard() {
@@ -83,7 +88,8 @@ class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin,
               height: widget.fieldHeight,
               child: Stack(children: [
                 Row(
-                    mainAxisAlignment: widget.mainAxisAlignment ?? MainAxisAlignment.center,
+                    mainAxisAlignment:
+                        widget.mainAxisAlignment ?? MainAxisAlignment.center,
                     children: _buildBody(context)),
                 AbsorbPointer(
                   child: Opacity(
@@ -95,9 +101,12 @@ class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin,
                       readOnly: widget.showCustomKeyboard ?? true,
                       autofocus: !kIsWeb ? widget.autoFocus : false,
                       enableInteractiveSelection: false,
-                      inputFormatters: widget.keyboardType == TextInputType.number
-                          ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly]
-                          : null,
+                      inputFormatters:
+                          widget.keyboardType == TextInputType.number
+                              ? <TextInputFormatter>[
+                                  FilteringTextInputFormatter.digitsOnly
+                                ]
+                              : null,
                       focusNode: _focusNode,
                       keyboardType: widget.keyboardType,
                       onSubmitted: (text) {
@@ -147,7 +156,8 @@ class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin,
                         return;
                       }
                       _focusNode.requestFocus();
-                      controller.text = controller.text.substring(0, controller.text.length - 1);
+                      controller.text = controller.text
+                          .substring(0, controller.text.length - 1);
                       text = controller.text;
                       _bindTextIntoWidget(text);
                       setState(() {});
@@ -173,7 +183,10 @@ class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin,
       child: SizedBox(
         height: widget.fieldHeight,
         child: Stack(children: [
-          Row(mainAxisAlignment: widget.mainAxisAlignment ?? MainAxisAlignment.center, children: _buildBody(context)),
+          Row(
+              mainAxisAlignment:
+                  widget.mainAxisAlignment ?? MainAxisAlignment.center,
+              children: _buildBody(context)),
           AbsorbPointer(
             absorbing: true,
             child: Opacity(
@@ -185,7 +198,9 @@ class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin,
                 autofocus: !kIsWeb ? widget.autoFocus : false,
                 enableInteractiveSelection: false,
                 inputFormatters: widget.keyboardType == TextInputType.number
-                    ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly]
+                    ? <TextInputFormatter>[
+                        FilteringTextInputFormatter.digitsOnly
+                      ]
                     : null,
                 focusNode: _focusNode,
                 textInputAction: widget.textInputAction,
@@ -217,7 +232,8 @@ class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin,
   }
 
   void onFieldFocus() {
-    if (View.of(context).viewInsets.bottom <= 0.0 && text.length != widget.maxLength) {
+    if (View.of(context).viewInsets.bottom <= 0.0 &&
+        text.length != widget.maxLength) {
       FocusScope.of(context).unfocus();
       _focusNode = FocusNode();
       _focusNode.addListener(_focusListener);
@@ -240,7 +256,9 @@ class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin,
 
   Widget cursorWidget({Color? cursorColor, double? cursorWidth, int? index}) {
     return Container(
-      padding: pinsInputed[index ?? 0].isNotEmpty ? const EdgeInsets.only(left: 15) : EdgeInsets.zero,
+      padding: pinsInputed[index ?? 0].isNotEmpty
+          ? const EdgeInsets.only(left: 15)
+          : EdgeInsets.zero,
       child: FadeTransition(
         opacity: _cursorAnimation,
         child: CustomPaint(
@@ -263,29 +281,39 @@ class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin,
 
     Widget showCursorWidget() => widget.showCursor!
         ? _shouldHighlight(i)
-            ? cursorWidget(cursorColor: widget.cursorColor, cursorWidth: widget.cursorWidth, index: i)
+            ? cursorWidget(
+                cursorColor: widget.cursorColor,
+                cursorWidth: widget.cursorWidth,
+                index: i)
             : const SizedBox.shrink()
         : const SizedBox.shrink();
 
     fieldBorderColor = widget.highlightBorder && _shouldHighlight(i)
         ? widget.otpPinFieldStyle!.activeFieldBorderColor
-        : (pinsInputed[i].isNotEmpty && widget.otpPinFieldStyle?.filledFieldBorderColor != Colors.transparent)
+        : (pinsInputed[i].isNotEmpty &&
+                widget.otpPinFieldStyle?.filledFieldBorderColor !=
+                    Colors.transparent)
             ? widget.otpPinFieldStyle!.filledFieldBorderColor
             : widget.otpPinFieldStyle!.defaultFieldBorderColor;
     fieldBackgroundColor = widget.highlightBorder && _shouldHighlight(i)
         ? widget.otpPinFieldStyle!.activeFieldBackgroundColor
-        : (pinsInputed[i].isNotEmpty && widget.otpPinFieldStyle?.filledFieldBackgroundColor != Colors.transparent)
+        : (pinsInputed[i].isNotEmpty &&
+                widget.otpPinFieldStyle?.filledFieldBackgroundColor !=
+                    Colors.transparent)
             ? widget.otpPinFieldStyle!.filledFieldBackgroundColor
             : widget.otpPinFieldStyle!.defaultFieldBackgroundColor;
 
-    fieldBorderGradient =
-        widget.highlightBorder && _shouldHighlight(i) && widget.otpPinFieldStyle?.activeFieldBorderGradient != null
-            ? widget.otpPinFieldStyle!.activeFieldBorderGradient
-            : (pinsInputed[i].isNotEmpty && widget.otpPinFieldStyle?.filledFieldBorderGradient != null)
-                ? widget.otpPinFieldStyle!.filledFieldBorderGradient
-                : widget.otpPinFieldStyle?.defaultFieldBorderGradient;
+    fieldBorderGradient = widget.highlightBorder &&
+            _shouldHighlight(i) &&
+            widget.otpPinFieldStyle?.activeFieldBorderGradient != null
+        ? widget.otpPinFieldStyle!.activeFieldBorderGradient
+        : (pinsInputed[i].isNotEmpty &&
+                widget.otpPinFieldStyle?.filledFieldBorderGradient != null)
+            ? widget.otpPinFieldStyle!.filledFieldBorderGradient
+            : widget.otpPinFieldStyle?.defaultFieldBorderGradient;
 
-    if (widget.otpPinFieldDecoration == OtpPinFieldDecoration.underlinedPinBoxDecoration) {
+    if (widget.otpPinFieldDecoration ==
+        OtpPinFieldDecoration.underlinedPinBoxDecoration) {
       boxDecoration = BoxDecoration(
         border: Border(
           bottom: BorderSide(
@@ -294,7 +322,8 @@ class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin,
           ),
         ),
       );
-    } else if (widget.otpPinFieldDecoration == OtpPinFieldDecoration.defaultPinBoxDecoration) {
+    } else if (widget.otpPinFieldDecoration ==
+        OtpPinFieldDecoration.defaultPinBoxDecoration) {
       boxDecoration = BoxDecoration(
           border: Border.all(color: fieldBorderColor, width: 2.0),
           color: fieldBackgroundColor,
@@ -308,7 +337,8 @@ class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin,
             ),
             borderRadius: BorderRadius.circular(5.0));
       }
-    } else if (widget.otpPinFieldDecoration == OtpPinFieldDecoration.roundedPinBoxDecoration) {
+    } else if (widget.otpPinFieldDecoration ==
+        OtpPinFieldDecoration.roundedPinBoxDecoration) {
       boxDecoration = BoxDecoration(
         border: Border.all(
           color: fieldBorderColor,
@@ -330,14 +360,16 @@ class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin,
       boxDecoration = BoxDecoration(
           border: Border.all(color: fieldBorderColor, width: 2.0),
           color: fieldBackgroundColor,
-          borderRadius: BorderRadius.circular(widget.otpPinFieldStyle!.fieldBorderRadius));
+          borderRadius: BorderRadius.circular(
+              widget.otpPinFieldStyle!.fieldBorderRadius));
       if (fieldBorderGradient != null) {
         foregroundBoxDecoration = BoxDecoration(
             border: GradientBoxBorder(
               gradient: fieldBorderGradient,
               width: 2.0,
             ),
-            borderRadius: BorderRadius.circular(widget.otpPinFieldStyle!.fieldBorderRadius));
+            borderRadius: BorderRadius.circular(
+                widget.otpPinFieldStyle!.fieldBorderRadius));
       }
     }
 
@@ -400,7 +432,9 @@ class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin,
   }
 
   bool _shouldHighlight(int i) {
-    return hasFocus && (i == text.length || (i == text.length - 1 && text.length == widget.maxLength));
+    return hasFocus &&
+        (i == text.length ||
+            (i == text.length - 1 && text.length == widget.maxLength));
   }
 
   clearOtp() {
@@ -444,9 +478,11 @@ class OtpPinFieldState extends State<OtpPinField> with TickerProviderStateMixin,
 
   void _pasteCopyCode(ClipboardData? data) {
     if (controller.text != data?.text && (data?.text ?? '').isNotEmpty) {
-      controller.value = TextEditingValue(text: (data?.text ?? '').substring(0, widget.maxLength));
+      controller.value = TextEditingValue(
+          text: (data?.text ?? '').substring(0, widget.maxLength));
 
-      if ((data?.text ?? '').substring(0, widget.maxLength).isNotEmpty == true) {
+      if ((data?.text ?? '').substring(0, widget.maxLength).isNotEmpty ==
+          true) {
         for (var i = 0; i < widget.maxLength; i++) {
           pinsInputed[i] = (data?.text ?? '')[i];
         }
@@ -506,7 +542,8 @@ class _OtpPinFieldAutoFill {
   }
 
   Future<void> listenForCode({String smsCodeRegexPattern = '\\d{0,4}'}) async {
-    OtpPinFieldPlatform.instance.listenForCode(<String, String>{'smsCodeRegexPattern': smsCodeRegexPattern});
+    OtpPinFieldPlatform.instance.listenForCode(
+        <String, String>{'smsCodeRegexPattern': smsCodeRegexPattern});
   }
 
   Future<void> unregisterListener() async {
