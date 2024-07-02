@@ -1,8 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'dart:async';
 import 'package:otp_pin_field/otp_pin_field_platform_interface.dart';
+
 import '../otp_pin_field.dart';
 import 'gradient_outline_input_border.dart';
 
@@ -81,7 +83,7 @@ class OtpPinFieldState extends State<OtpPinField>
           GestureDetector(
             behavior: HitTestBehavior.opaque,
             onLongPress: pasteCode,
-            onTap: () => _focusNode.requestFocus(),
+            onTap: onFieldFocus,
             child: SizedBox(
               height: widget.fieldHeight,
               child: Stack(children: [
@@ -95,6 +97,7 @@ class OtpPinFieldState extends State<OtpPinField>
                     child: TextField(
                       controller: controller,
                       maxLength: widget.maxLength,
+                      autofillHints: const [AutofillHints.oneTimeCode],
                       readOnly: widget.showCustomKeyboard ?? true,
                       autofocus: !kIsWeb ? widget.autoFocus : false,
                       enableInteractiveSelection: false,
@@ -176,7 +179,7 @@ class OtpPinFieldState extends State<OtpPinField>
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onLongPress: pasteCode,
-      onTap: () => _focusNode.requestFocus(),
+      onTap: onFieldFocus,
       child: SizedBox(
         height: widget.fieldHeight,
         child: Stack(children: [
@@ -226,6 +229,16 @@ class OtpPinFieldState extends State<OtpPinField>
         ]),
       ),
     );
+  }
+
+  void onFieldFocus() {
+    if (View.of(context).viewInsets.bottom <= 0.0 &&
+        text.length != widget.maxLength) {
+      FocusScope.of(context).unfocus();
+      _focusNode = FocusNode();
+      _focusNode.addListener(_focusListener);
+    }
+    _focusNode.requestFocus();
   }
 
   List<Widget> _buildBody(BuildContext context) {

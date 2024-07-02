@@ -73,3 +73,14 @@
 * Added `border gradient color property for filled pin field box` in OtpPinFieldStyle
 * Added `border gradient color property for default pin field box` in OtpPinFieldStyle
 * dart formatted
+
+## [1.2.5] -Release
+feat: Resolve autofillHints for iOS, enable suggestions and autocorrect, manage keyboard for Android
+
+- Resolved the issue with `autofillHints` not working on iOS by properly wrapping TextFields in `AutofillGroup`.
+- Enabled `enableSuggestions` and `autocorrect` for better user experience while inputting text.
+- Improved keyboard handling for Android to ensure seamless user interaction.
+- Added a demo implementation for OTP autofill using `AutofillHints.oneTimeCode` in a TextField.
+- Wrapped TextFields in `AutofillGroup` to support autofill functionalities.
+- Ensured `enableSuggestions` and `autocorrect` properties are set to true in relevant TextFields.
+- Managed keyboard types and behaviors for both iOS and Android to ensure consistent behavior across platforms.
