@@ -68,7 +68,6 @@ class _MyHomePageState extends State<MyHomePage> {
               onCodeChanged: (code) {
                 print('onCodeChanged  is $code');
               },
-              enableSuggestions: true,
 
               /// to decorate your Otp_Pin_Field
               otpPinFieldStyle: OtpPinFieldStyle(
@@ -91,12 +90,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 // filledFieldBorderColor: Colors.green,
                 //
                 /// gradient border Color for field pin box
-                activeFieldBorderGradient:
-                    LinearGradient(colors: [Colors.black, Colors.redAccent]),
-                filledFieldBorderGradient:
-                    LinearGradient(colors: [Colors.green, Colors.tealAccent]),
-                defaultFieldBorderGradient:
-                    LinearGradient(colors: [Colors.orange, Colors.brown]),
+                activeFieldBorderGradient: LinearGradient(colors: [Colors.black, Colors.redAccent]),
+                filledFieldBorderGradient: LinearGradient(colors: [Colors.green, Colors.tealAccent]),
+                defaultFieldBorderGradient: LinearGradient(colors: [Colors.orange, Colors.brown]),
               ),
               maxLength: 6,
 
@@ -120,14 +116,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   SizedBox(height: 30),
                   ElevatedButton(
                       onPressed: () {
-                        _otpPinFieldController.currentState
-                            ?.clearOtp(); // clear controller
+                        _otpPinFieldController.currentState?.clearOtp(); // clear controller
                       },
                       child: Text('clear OTP')),
                   SizedBox(height: 10),
                   ElevatedButton(
-                      onPressed: () => Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => NextPage())),
+                      onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => NextPage())),
                       child: Text('Next Class')),
                   SizedBox(height: 30),
                 ],
@@ -149,8 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
               /// predefine decorate of pinField use  OtpPinFieldDecoration.defaultPinBoxDecoration||OtpPinFieldDecoration.underlinedPinBoxDecoration||OtpPinFieldDecoration.roundedPinBoxDecoration
               ///use OtpPinFieldDecoration.custom  (by using this you can make Otp_Pin_Field according to yourself like you can give fieldBorderRadius,fieldBorderWidth and etc things)
-              otpPinFieldDecoration:
-                  OtpPinFieldDecoration.defaultPinBoxDecoration,
+              otpPinFieldDecoration: OtpPinFieldDecoration.defaultPinBoxDecoration,
             ),
           ],
         ),

@@ -25,7 +25,6 @@ class OtpPinField extends StatefulWidget {
   final Color? cursorColor;
   final double? cursorWidth;
   final bool? showCursor;
-  final bool enableSuggestions;
   final MainAxisAlignment? mainAxisAlignment;
   final Widget? upperChild;
   final Widget? middleChild;
@@ -55,7 +54,6 @@ class OtpPinField extends StatefulWidget {
       this.autoFocus = true,
       this.autoFillEnable = false,
       this.phoneNumbersHint = false,
-      this.enableSuggestions = true,
       this.highlightBorder = true,
       this.showCursor = true,
       this.cursorColor,
