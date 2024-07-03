@@ -33,6 +33,7 @@ class OtpPinField extends StatefulWidget {
   final bool? showDefaultKeyboard;
   final Function(String)? onCodeChanged;
   final bool Function(String? text)? beforeTextPaste;
+  final Function(String?)? onPhoneHintSelected;
 
   const OtpPinField(
       {super.key,
@@ -63,6 +64,7 @@ class OtpPinField extends StatefulWidget {
       this.middleChild,
       this.customKeyboard,
       this.showCustomKeyboard,
+      this.onPhoneHintSelected,
       this.showDefaultKeyboard = true});
 
   @override
