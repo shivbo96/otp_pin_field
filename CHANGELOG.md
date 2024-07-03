@@ -98,3 +98,6 @@ Documentation:
 - Added details about new border width customization option in `OtpPinFieldDecoration`.
 - Provided examples and explanation on handling copy-paste functionality for OTP fields.
 
+
+## [1.2.6] -Release
+- Resolved an issue where the keyboard would not open after clearing all text fields when using the autoFillEnable: true property.
