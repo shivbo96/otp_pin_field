@@ -97,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 defaultFieldBorderGradient:
                     LinearGradient(colors: [Colors.orange, Colors.brown]),
               ),
-              maxLength: 6,
+              maxLength: 4,
 
               /// no of pin field
               showCursor: true,

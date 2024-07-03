@@ -78,9 +78,23 @@
 feat: Resolve autofillHints for iOS, enable suggestions and autocorrect, manage keyboard for Android
 
 - Resolved the issue with `autofillHints` not working on iOS by properly wrapping TextFields in `AutofillGroup`.
-- Enabled `enableSuggestions` and `autocorrect` for better user experience while inputting text.
 - Improved keyboard handling for Android to ensure seamless user interaction.
 - Added a demo implementation for OTP autofill using `AutofillHints.oneTimeCode` in a TextField.
 - Wrapped TextFields in `AutofillGroup` to support autofill functionalities.
 - Ensured `enableSuggestions` and `autocorrect` properties are set to true in relevant TextFields.
 - Managed keyboard types and behaviors for both iOS and Android to ensure consistent behavior across platforms.
+
+## [1.2.5+2] -Release
+feat: Add flexibility to change border width for custom OtpPinFieldDecoration and handle OTP copy-paste scenarios
+
+- Added support to change border width in custom `OtpPinFieldDecoration` for enhanced customization.
+- Improved OTP copy-paste functionality:
+    - Handled cases where copied string includes non-numeric characters.
+    - Managed scenarios where copied numeric string is shorter than the max length of the OTP PinField.
+- Updated documentation for the `beforeTextPaste` function to provide clear guidance on usage.
+- Updated CHANGELOG and README to reflect new features and improvements.
+
+Documentation:
+- Added details about new border width customization option in `OtpPinFieldDecoration`.
+- Provided examples and explanation on handling copy-paste functionality for OTP fields.
+

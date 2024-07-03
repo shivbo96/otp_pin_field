@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,9 @@ class OtpPinFieldState extends State<OtpPinField>
     pinsInputed = [];
     if (widget.autoFillEnable == true) {
       if (widget.phoneNumbersHint == true) {
-        _OtpPinFieldAutoFill().hint;
+        _OtpPinFieldAutoFill().hint.then((value) {
+          widget.onPhoneHintSelected?.call(value);
+        });
       }
       _OtpPinFieldAutoFill().getAppSignature.then((value) {
         debugPrint('your hash value is $value');
@@ -358,7 +361,9 @@ class OtpPinFieldState extends State<OtpPinField>
       }
     } else {
       boxDecoration = BoxDecoration(
-          border: Border.all(color: fieldBorderColor, width: 2.0),
+          border: Border.all(
+              color: fieldBorderColor,
+              width: widget.otpPinFieldStyle!.fieldBorderWidth),
           color: fieldBackgroundColor,
           borderRadius: BorderRadius.circular(
               widget.otpPinFieldStyle!.fieldBorderRadius));
@@ -477,7 +482,30 @@ class OtpPinFieldState extends State<OtpPinField>
   }
 
   void _pasteCopyCode(ClipboardData? data) {
+    try {
+      int.parse(data?.text ?? '');
+    } catch (e) {
+      return log(
+          name: 'OTP Pin Field',
+          'Copied content error ',
+          error: 'The content that is copied should be a number.');
+    }
+
+    if ((data?.text ?? '').length < widget.maxLength) {
+      return log(
+          name: 'OTP Pin Field',
+          'Copied content error',
+          error: "The copied content doesn't seem to be the correct OTP.");
+    }
+
     if (controller.text != data?.text && (data?.text ?? '').isNotEmpty) {
+      if ((data?.text ?? '').length < widget.maxLength) {
+        return log(
+            name: 'OTP Pin Field',
+            'Copied content error',
+            error: "The copied content doesn't seem to be the correct OTP.");
+      }
+
       controller.value = TextEditingValue(
           text: (data?.text ?? '').substring(0, widget.maxLength));
 
@@ -501,11 +529,17 @@ class OtpPinFieldState extends State<OtpPinField>
   }
 
   void pasteCode() async {
-    var data = await Clipboard.getData('text/plain');
+    var data = await Clipboard.getData(Clipboard.kTextPlain);
     if (data?.text?.isNotEmpty ?? false) {
       if (widget.beforeTextPaste != null) {
-        if (widget.beforeTextPaste!(data!.text)) {
+        if (widget.beforeTextPaste?.call(data!.text) ?? false) {
           _pasteCopyCode(data);
+        } else {
+          log(
+              name: 'OTP Pin Field',
+              'beforeTextPaste error ',
+              error:
+                  'return true in beforeTextPaste order to execute copy paste ');
         }
       } else {
         _pasteCopyCode(data);
