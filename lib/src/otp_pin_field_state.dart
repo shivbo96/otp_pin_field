@@ -18,7 +18,6 @@ class OtpPinFieldState extends State<OtpPinField>
   final TextEditingController controller = TextEditingController();
   bool ending = false;
   bool hasFocus = false;
-  String text = '';
 
   @override
   void initState() {
@@ -116,7 +115,7 @@ class OtpPinFieldState extends State<OtpPinField>
                         debugPrint(text);
                       },
                       onChanged: (text) {
-                        this.text = text;
+                        // this.text = text;
                         if (ending && text.length == widget.maxLength) {
                           return;
                         }
@@ -141,15 +140,16 @@ class OtpPinFieldState extends State<OtpPinField>
               child: widget.customKeyboard ??
                   OtpKeyboard(
                     callbackValue: (myText) {
-                      if (ending && text.length == widget.maxLength) {
+                      if (ending &&
+                          controller.text.trim().length == widget.maxLength) {
                         return;
                       }
                       controller.text = controller.text + myText;
-                      text = controller.text;
-                      _bindTextIntoWidget(text);
+                      _bindTextIntoWidget(controller.text.trim());
                       setState(() {});
-                      widget.onChange(text);
-                      ending = text.length == widget.maxLength;
+                      widget.onChange(controller.text.trim());
+                      ending =
+                          controller.text.trim().length == widget.maxLength;
                       if (ending) {
                         FocusScope.of(context).unfocus();
                       }
@@ -161,10 +161,9 @@ class OtpPinFieldState extends State<OtpPinField>
                       _focusNode.requestFocus();
                       controller.text = controller.text
                           .substring(0, controller.text.length - 1);
-                      text = controller.text;
-                      _bindTextIntoWidget(text);
+                      _bindTextIntoWidget(controller.text.trim());
                       setState(() {});
-                      widget.onChange(text);
+                      widget.onChange(controller.text.trim());
                     },
                     callbackSubmitValue: () {
                       if (controller.text.length != widget.maxLength) {
@@ -212,8 +211,7 @@ class OtpPinFieldState extends State<OtpPinField>
                   debugPrint(text);
                 },
                 onChanged: (text) {
-                  this.text = text;
-                  // FocusScope.of(context).nextFocus();
+                  // this.text = text;
                   if (ending && text.length == widget.maxLength) {
                     return;
                   }
@@ -236,12 +234,13 @@ class OtpPinFieldState extends State<OtpPinField>
 
   void onFieldFocus() {
     if (View.of(context).viewInsets.bottom <= 0.0 &&
-        text.length != widget.maxLength) {
+        controller.text.trim().length != widget.maxLength) {
       FocusScope.of(context).unfocus();
       _focusNode = FocusNode();
       _focusNode.addListener(_focusListener);
     }
     _focusNode.requestFocus();
+    setState(() {});
   }
 
   List<Widget> _buildBody(BuildContext context) {
@@ -438,8 +437,9 @@ class OtpPinFieldState extends State<OtpPinField>
 
   bool _shouldHighlight(int i) {
     return hasFocus &&
-        (i == text.length ||
-            (i == text.length - 1 && text.length == widget.maxLength));
+        (i == controller.text.trim().length ||
+            (i == controller.text.trim().length - 1 &&
+                controller.text.trim().length == widget.maxLength));
   }
 
   clearOtp() {
@@ -453,7 +453,6 @@ class OtpPinFieldState extends State<OtpPinField>
       _focusNode.addListener(_focusListener);
       ending = false;
       hasFocus = widget.highlightBorder;
-      text = '';
     });
   }
 
@@ -476,7 +475,7 @@ class OtpPinFieldState extends State<OtpPinField>
         _focusNode.addListener(_focusListener);
         ending = true;
         hasFocus = widget.highlightBorder;
-        text = code!;
+        controller.text = code!;
       });
     }
   }
@@ -515,13 +514,13 @@ class OtpPinFieldState extends State<OtpPinField>
           pinsInputed[i] = (data?.text ?? '')[i];
         }
       }
-      text = (data?.text ?? '').substring(0, widget.maxLength);
+      controller.text = (data?.text ?? '').substring(0, widget.maxLength);
       setState(() {});
 
-      widget.onChange(text);
-      ending = text.length == widget.maxLength;
+      widget.onChange(controller.text.trim());
+      ending = controller.text.trim().length == widget.maxLength;
       if (ending) {
-        widget.onSubmit(text);
+        widget.onSubmit(controller.text.trim());
         FocusScope.of(context).unfocus();
         hideKeyboard();
       }
