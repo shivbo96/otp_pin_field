@@ -41,6 +41,7 @@ class CustomKeyboard extends StatelessWidget {
   void _textInputHandler(String text) => onTextInput.call(text);
 
   void _backspaceHandler() => onBackspace.call();
+
   void _onSubmitHandler() => onSubmit.call();
 
   @override
