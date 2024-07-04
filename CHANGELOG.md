@@ -101,6 +101,12 @@ Documentation:
 ## [1.2.6] -Release
 - Resolved an issue where the keyboard would not open after clearing all text fields.
 
-
 ## [1.2.6+1] -Release
 - Documents updated.
+- 
+## [1.2.6+2] -Release
+feat: Add support for custom border colors and width in OTP pin field
+
+- Added ability to customize border colors using defaultFieldBorderColor and activeFieldBorderColor properties.
+- Introduced fieldBorderWidth property to set the width of the border.
+- Updated documentation to guide users on how to achieve custom border effects.
