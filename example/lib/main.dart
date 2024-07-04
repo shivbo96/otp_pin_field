@@ -96,6 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     LinearGradient(colors: [Colors.green, Colors.tealAccent]),
                 defaultFieldBorderGradient:
                     LinearGradient(colors: [Colors.orange, Colors.brown]),
+                fieldBorderWidth: 3,
               ),
               maxLength: 4,
 
@@ -149,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
               /// predefine decorate of pinField use  OtpPinFieldDecoration.defaultPinBoxDecoration||OtpPinFieldDecoration.underlinedPinBoxDecoration||OtpPinFieldDecoration.roundedPinBoxDecoration
               ///use OtpPinFieldDecoration.custom  (by using this you can make Otp_Pin_Field according to yourself like you can give fieldBorderRadius,fieldBorderWidth and etc things)
               otpPinFieldDecoration:
-                  OtpPinFieldDecoration.defaultPinBoxDecoration,
+                  OtpPinFieldDecoration.underlinedPinBoxDecoration,
             ),
           ],
         ),
