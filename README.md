@@ -7,7 +7,10 @@ animations. It's a beautiful and highly customizable Flutter widget for entering
 
 Created by Shivam Mishra [@shivbo96](https://github.com/shivbo96)
 
-<a href="https://paypal.me/shivam131197" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+<a href="https://www.buymeacoffee.com/smishra" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
+<a href="https://paypal.me/shivam131197" target="_blank"><img src="https://raw.githubusercontent.com/stefan-niedermann/paypal-donate-button/master/paypal-donate-button.png" width="174"></a>
+
 
 # Usage
 
