@@ -320,14 +320,17 @@ class OtpPinFieldState extends State<OtpPinField>
         border: Border(
           bottom: BorderSide(
             color: fieldBorderColor,
-            width: 2.0,
+            width: widget.otpPinFieldStyle!.fieldBorderWidth,
           ),
         ),
       );
     } else if (widget.otpPinFieldDecoration ==
         OtpPinFieldDecoration.defaultPinBoxDecoration) {
       boxDecoration = BoxDecoration(
-          border: Border.all(color: fieldBorderColor, width: 2.0),
+          border: Border.all(
+            color: fieldBorderColor,
+            width: widget.otpPinFieldStyle!.fieldBorderWidth,
+          ),
           color: fieldBackgroundColor,
           borderRadius: BorderRadius.circular(5.0));
 
@@ -335,7 +338,7 @@ class OtpPinFieldState extends State<OtpPinField>
         foregroundBoxDecoration = BoxDecoration(
             border: GradientBoxBorder(
               gradient: fieldBorderGradient,
-              width: 2.0,
+              width: widget.otpPinFieldStyle!.fieldBorderWidth,
             ),
             borderRadius: BorderRadius.circular(5.0));
       }
@@ -353,7 +356,7 @@ class OtpPinFieldState extends State<OtpPinField>
         foregroundBoxDecoration = BoxDecoration(
           border: GradientBoxBorder(
             gradient: fieldBorderGradient,
-            width: 2.0,
+            width: widget.otpPinFieldStyle!.fieldBorderWidth,
           ),
           shape: BoxShape.circle,
         );
@@ -370,7 +373,7 @@ class OtpPinFieldState extends State<OtpPinField>
         foregroundBoxDecoration = BoxDecoration(
             border: GradientBoxBorder(
               gradient: fieldBorderGradient,
-              width: 2.0,
+              width: widget.otpPinFieldStyle!.fieldBorderWidth,
             ),
             borderRadius: BorderRadius.circular(
                 widget.otpPinFieldStyle!.fieldBorderRadius));

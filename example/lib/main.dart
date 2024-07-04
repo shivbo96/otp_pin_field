@@ -96,6 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     LinearGradient(colors: [Colors.green, Colors.tealAccent]),
                 defaultFieldBorderGradient:
                     LinearGradient(colors: [Colors.orange, Colors.brown]),
+                fieldBorderWidth: 3,
               ),
               maxLength: 4,
 
