@@ -56,7 +56,6 @@ class OtpPinFieldState extends State<OtpPinField>
 
   @override
   void dispose() {
-    // Clean up the focus node when the Form is disposed.
     if (widget.autoFillEnable == true) {
       cancel();
       _OtpPinFieldAutoFill().unregisterListener();
@@ -115,7 +114,6 @@ class OtpPinFieldState extends State<OtpPinField>
                         debugPrint(text);
                       },
                       onChanged: (text) {
-                        // this.text = text;
                         if (ending && text.length == widget.maxLength) {
                           return;
                         }
@@ -211,7 +209,6 @@ class OtpPinFieldState extends State<OtpPinField>
                   debugPrint(text);
                 },
                 onChanged: (text) {
-                  // this.text = text;
                   if (ending && text.length == widget.maxLength) {
                     return;
                   }
@@ -277,9 +274,8 @@ class OtpPinFieldState extends State<OtpPinField>
   Widget _buildFieldInput(BuildContext context, int i) {
     Color fieldBorderColor;
     Color? fieldBackgroundColor;
-    Gradient? fieldBorderGradient;
-    BoxDecoration boxDecoration;
-    BoxDecoration? foregroundBoxDecoration;
+    Gradient fieldBorderGradient;
+    BoxDecoration foregroundBoxDecoration;
     List<BoxShadow>? boxShadow;
 
     Widget showCursorWidget() => widget.showCursor!
@@ -313,21 +309,23 @@ class OtpPinFieldState extends State<OtpPinField>
             ? widget.otpPinFieldStyle!.filledFieldBackgroundColor
             : widget.otpPinFieldStyle!.defaultFieldBackgroundColor;
 
-    fieldBorderGradient = widget.otpPinFieldDecoration ==
-            OtpPinFieldDecoration.underlinedPinBoxDecoration
-        ? null
-        : widget.highlightBorder &&
-                _shouldHighlight(i) &&
-                widget.otpPinFieldStyle?.activeFieldBorderGradient != null
-            ? widget.otpPinFieldStyle!.activeFieldBorderGradient
-            : (pinsInputed[i].isNotEmpty &&
-                    widget.otpPinFieldStyle?.filledFieldBorderGradient != null)
-                ? widget.otpPinFieldStyle!.filledFieldBorderGradient
-                : widget.otpPinFieldStyle?.defaultFieldBorderGradient;
+    fieldBorderGradient = (widget.otpPinFieldDecoration ==
+                OtpPinFieldDecoration.underlinedPinBoxDecoration
+            ? null
+            : widget.highlightBorder &&
+                    _shouldHighlight(i) &&
+                    widget.otpPinFieldStyle?.activeFieldBorderGradient != null
+                ? widget.otpPinFieldStyle!.activeFieldBorderGradient
+                : (pinsInputed[i].isNotEmpty &&
+                        widget.otpPinFieldStyle?.filledFieldBorderGradient !=
+                            null)
+                    ? widget.otpPinFieldStyle!.filledFieldBorderGradient
+                    : widget.otpPinFieldStyle?.defaultFieldBorderGradient) ??
+        LinearGradient(colors: [fieldBorderColor, fieldBorderColor]);
 
     if (widget.otpPinFieldDecoration ==
         OtpPinFieldDecoration.underlinedPinBoxDecoration) {
-      boxDecoration = BoxDecoration(
+      foregroundBoxDecoration = BoxDecoration(
         border: Border(
           bottom: BorderSide(
             color: fieldBorderColor,
@@ -337,78 +335,41 @@ class OtpPinFieldState extends State<OtpPinField>
       );
     } else if (widget.otpPinFieldDecoration ==
         OtpPinFieldDecoration.defaultPinBoxDecoration) {
-      boxDecoration = BoxDecoration(
-          boxShadow: boxShadow,
-          border: Border.all(
-            color: fieldBorderColor,
-            width: widget.otpPinFieldStyle!.fieldBorderWidth,
-          ),
-          color: fieldBackgroundColor,
-          borderRadius: BorderRadius.circular(5.0));
-
-      if (fieldBorderGradient != null) {
-        foregroundBoxDecoration = BoxDecoration(
-            boxShadow: boxShadow,
-            color: fieldBackgroundColor,
-            border: GradientBoxBorder(
-              gradient: fieldBorderGradient,
-              width: widget.otpPinFieldStyle!.fieldBorderWidth,
-            ),
-            borderRadius: BorderRadius.circular(5.0));
-      }
-    } else if (widget.otpPinFieldDecoration ==
-        OtpPinFieldDecoration.roundedPinBoxDecoration) {
-      boxDecoration = BoxDecoration(
-        boxShadow: boxShadow,
-        border: Border.all(
-          color: fieldBorderColor,
-          width: widget.otpPinFieldStyle!.fieldBorderWidth,
-        ),
-        shape: BoxShape.circle,
-        color: fieldBackgroundColor,
-      );
-      if (fieldBorderGradient != null) {
-        foregroundBoxDecoration = BoxDecoration(
+      foregroundBoxDecoration = BoxDecoration(
           boxShadow: boxShadow,
           color: fieldBackgroundColor,
           border: GradientBoxBorder(
             gradient: fieldBorderGradient,
             width: widget.otpPinFieldStyle!.fieldBorderWidth,
           ),
-          shape: BoxShape.circle,
-        );
-      }
+          borderRadius: BorderRadius.circular(5.0));
+    } else if (widget.otpPinFieldDecoration ==
+        OtpPinFieldDecoration.roundedPinBoxDecoration) {
+      foregroundBoxDecoration = BoxDecoration(
+        boxShadow: boxShadow,
+        color: fieldBackgroundColor,
+        border: GradientBoxBorder(
+          gradient: fieldBorderGradient,
+          width: widget.otpPinFieldStyle!.fieldBorderWidth,
+        ),
+        shape: BoxShape.circle,
+      );
     } else {
-      boxDecoration = BoxDecoration(
+      foregroundBoxDecoration = BoxDecoration(
           boxShadow: boxShadow,
-          border: Border.all(
-              color: fieldBorderColor,
-              width: widget.otpPinFieldStyle!.fieldBorderWidth),
           color: fieldBackgroundColor,
+          border: GradientBoxBorder(
+            gradient: fieldBorderGradient,
+            width: widget.otpPinFieldStyle!.fieldBorderWidth,
+          ),
           borderRadius: BorderRadius.circular(
               widget.otpPinFieldStyle!.fieldBorderRadius));
-      if (fieldBorderGradient != null) {
-        foregroundBoxDecoration = BoxDecoration(
-            boxShadow: boxShadow,
-            color: fieldBackgroundColor,
-            border: GradientBoxBorder(
-              gradient: fieldBorderGradient,
-              width: widget.otpPinFieldStyle!.fieldBorderWidth,
-            ),
-            borderRadius: BorderRadius.circular(
-                widget.otpPinFieldStyle!.fieldBorderRadius));
-      }
     }
 
     return Container(
         width: widget.fieldWidth,
         alignment: Alignment.center,
-        foregroundDecoration: fieldBorderGradient != null && boxShadow != null
-            ? null
-            : foregroundBoxDecoration,
-        decoration: fieldBorderGradient != null && boxShadow != null
-            ? foregroundBoxDecoration
-            : boxDecoration,
+        decoration: foregroundBoxDecoration,
         child: Stack(
           children: [
             Center(
@@ -443,7 +404,6 @@ class OtpPinFieldState extends State<OtpPinField>
   }
 
   void _bindTextIntoWidget(String text) {
-    ///Reset value
     for (var i = text.length; i < pinsInputed.length; i++) {
       pinsInputed[i] = '';
     }

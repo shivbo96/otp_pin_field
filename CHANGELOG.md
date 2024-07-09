@@ -127,3 +127,15 @@ feat: Add support for custom border colors and width in OTP pin field
 - Updated documentation and example code to demonstrate new features and proper usage of custom decorations.
 
 
+
+#### [Version 1.2.8+1] - 2024-07-09
+
+**Improvements:**
+- Refactored `OtpPinFieldState` to streamline decoration handling.
+- Removed `foregroundBoxDecoration` and integrated its logic into `BoxDecoration`.
+- Improved handling of `fieldBorderGradient` with a fallback mechanism.
+- Enhanced code readability and maintainability.
+
+**Bug Fixes:**
+- Fixed potential issues with the decoration logic by consolidating it within `BoxDecoration`.
+- Addressed minor inconsistencies in field highlighting and cursor behavior.
