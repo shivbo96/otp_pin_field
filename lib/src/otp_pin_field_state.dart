@@ -98,7 +98,7 @@ class OtpPinFieldState extends State<OtpPinField>
                     child: TextField(
                       controller: controller,
                       maxLength: widget.maxLength,
-                      // autofillHints: const [AutofillHints.oneTimeCode],
+                      autofillHints: const [AutofillHints.oneTimeCode],
                       readOnly: widget.showCustomKeyboard ?? true,
                       autofocus: !kIsWeb ? widget.autoFocus : false,
                       enableInteractiveSelection: false,
@@ -194,6 +194,7 @@ class OtpPinFieldState extends State<OtpPinField>
               child: TextField(
                 controller: controller,
                 maxLength: widget.maxLength,
+                autofillHints: const [AutofillHints.oneTimeCode],
                 readOnly: !(widget.showDefaultKeyboard ?? true),
                 autofocus: !kIsWeb ? widget.autoFocus : false,
                 enableInteractiveSelection: false,
@@ -230,12 +231,16 @@ class OtpPinFieldState extends State<OtpPinField>
   }
 
   void onFieldFocus() {
-    // if (View.of(context).viewInsets.bottom <= 0.0 &&
-    //     controller.text.trim().length != widget.maxLength) {
-    //   FocusScope.of(context).unfocus();
-    //   _focusNode = FocusNode();
-    //   _focusNode.addListener(_focusListener);
-    // }
+    if (kIsWeb) {
+      _focusNode.requestFocus();
+      return;
+    }
+    if (View.of(context).viewInsets.bottom <= 0.0 &&
+        controller.text.trim().length != widget.maxLength) {
+      FocusScope.of(context).unfocus();
+      _focusNode = FocusNode();
+      _focusNode.addListener(_focusListener);
+    }
     _focusNode.requestFocus();
     setState(() {});
   }

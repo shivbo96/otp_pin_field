@@ -139,3 +139,18 @@ feat: Add support for custom border colors and width in OTP pin field
 **Bug Fixes:**
 - Fixed potential issues with the decoration logic by consolidating it within `BoxDecoration`.
 - Addressed minor inconsistencies in field highlighting and cursor behavior.
+
+
+#### [Version 1.2.9] - 2024-07-09
+
+**Improvements:**
+- Added handling for keyboard not opening issue in webview apps.
+- Improved focus management for webview apps in the `onFieldFocus` method.
+
+**Bug Fixes:**
+- Fixed potential issues with the decoration logic by consolidating it within `BoxDecoration`.
+- Addressed minor inconsistencies in field highlighting and cursor behavior.
+
+**Documentation:**
+- Updated README file with the latest changes and usage instructions.
+- Updated changelog file with version 1.2.9 release notes.
