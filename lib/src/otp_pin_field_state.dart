@@ -98,7 +98,7 @@ class OtpPinFieldState extends State<OtpPinField>
                     child: TextField(
                       controller: controller,
                       maxLength: widget.maxLength,
-                      autofillHints: const [AutofillHints.oneTimeCode],
+                      // autofillHints: const [AutofillHints.oneTimeCode],
                       readOnly: widget.showCustomKeyboard ?? true,
                       autofocus: !kIsWeb ? widget.autoFocus : false,
                       enableInteractiveSelection: false,
