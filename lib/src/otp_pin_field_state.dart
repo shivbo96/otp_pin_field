@@ -230,12 +230,12 @@ class OtpPinFieldState extends State<OtpPinField>
   }
 
   void onFieldFocus() {
-    if (View.of(context).viewInsets.bottom <= 0.0 &&
-        controller.text.trim().length != widget.maxLength) {
-      FocusScope.of(context).unfocus();
-      _focusNode = FocusNode();
-      _focusNode.addListener(_focusListener);
-    }
+    // if (View.of(context).viewInsets.bottom <= 0.0 &&
+    //     controller.text.trim().length != widget.maxLength) {
+    //   FocusScope.of(context).unfocus();
+    //   _focusNode = FocusNode();
+    //   _focusNode.addListener(_focusListener);
+    // }
     _focusNode.requestFocus();
     setState(() {});
   }
