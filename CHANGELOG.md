@@ -154,3 +154,12 @@ feat: Add support for custom border colors and width in OTP pin field
 **Documentation:**
 - Updated README file with the latest changes and usage instructions.
 - Updated changelog file with version 1.2.9 release notes.
+
+
+#### [Version 1.2.9+1] - 2024-07-30
+
+**Improvements:**
+- Add conditional for AGP <4.2 compatibility in Android configuration
+
+**Documentation:**
+- Updated changelog file with version 1.2.9+1 release notes.
