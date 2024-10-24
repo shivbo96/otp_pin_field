@@ -35,44 +35,41 @@ class OtpPinField extends StatefulWidget {
   final bool Function(String? text)? beforeTextPaste;
   final Function(String?)? onPhoneHintSelected;
 
-  const OtpPinField(
-      {super.key,
-      this.fieldHeight = 50.0,
-      this.fieldWidth = 50.0,
-      this.maxLength = 4,
-      this.onCodeChanged,
-      this.otpPinFieldStyle = const OtpPinFieldStyle(),
-      this.textInputAction = TextInputAction.done,
-      this.otpPinFieldInputType = OtpPinFieldInputType.none,
-      this.otpPinFieldDecoration =
-          OtpPinFieldDecoration.underlinedPinBoxDecoration,
-      this.otpPinInputCustom = '*',
-      this.smsRegex,
-      this.beforeTextPaste,
-      required this.onSubmit,
-      required this.onChange,
-      this.keyboardType = TextInputType.number,
-      this.autoFocus = true,
-      this.autoFillEnable = false,
-      this.phoneNumbersHint = false,
-      this.highlightBorder = true,
-      this.showCursor = true,
-      this.cursorColor,
-      this.cursorWidth = 2,
-      this.mainAxisAlignment,
-      this.upperChild,
-      this.middleChild,
-      this.customKeyboard,
-      this.showCustomKeyboard,
-      this.onPhoneHintSelected,
-      this.showDefaultKeyboard = true});
+  const OtpPinField({
+    super.key,
+    this.fieldHeight = 50.0,
+    this.fieldWidth = 50.0,
+    this.maxLength = 4,
+    this.onCodeChanged,
+    this.otpPinFieldStyle = const OtpPinFieldStyle(),
+    this.textInputAction = TextInputAction.done,
+    this.otpPinFieldInputType = OtpPinFieldInputType.none,
+    this.otpPinFieldDecoration =
+        OtpPinFieldDecoration.underlinedPinBoxDecoration,
+    this.otpPinInputCustom = '*',
+    this.smsRegex,
+    this.beforeTextPaste,
+    required this.onSubmit,
+    required this.onChange,
+    this.keyboardType = TextInputType.number,
+    this.autoFocus = true,
+    this.autoFillEnable = false,
+    this.phoneNumbersHint = false,
+    this.highlightBorder = true,
+    this.showCursor = true,
+    this.cursorColor,
+    this.cursorWidth = 2,
+    this.mainAxisAlignment,
+    this.upperChild,
+    this.middleChild,
+    this.customKeyboard,
+    this.showCustomKeyboard,
+    this.onPhoneHintSelected,
+    this.showDefaultKeyboard = true,
+  });
 
   @override
   State<StatefulWidget> createState() {
     return OtpPinFieldState();
   }
-}
-
-void hideKeyboard() {
-  SystemChannels.textInput.invokeMethod('TextInput.hide');
 }

@@ -1,34 +1,40 @@
 import 'package:example_otp_pin_field/next_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:otp_pin_field/otp_pin_field.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      // debugShowMaterialGrid: false,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({super.key, required this.title});
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+void _hideKeyboard() {
+  SystemChannels.textInput.invokeMethod('TextInput.hide');
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -38,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: hideKeyboard,
+      onTap: () => _hideKeyboard(),
       child: Scaffold(
         appBar: AppBar(title: Text(widget.title)),
         body: Column(
@@ -56,21 +62,30 @@ class _MyHomePageState extends State<MyHomePage> {
               ///in case you want to change the action of keyboard
               /// to clear the Otp pin Controller
               onSubmit: (text) {
-                print('Entered pin is $text');
+                debugPrint('Entered pin is $text');
 
                 /// return the entered pin
               },
               onChange: (text) {
-                print('Enter on change pin is $text');
+                debugPrint('Enter on change pin is $text');
 
                 /// return the entered pin
               },
               onCodeChanged: (code) {
-                print('onCodeChanged  is $code');
+                debugPrint('onCodeChanged  is $code');
               },
 
               /// to decorate your Otp_Pin_Field
-              otpPinFieldStyle: OtpPinFieldStyle(
+              otpPinFieldStyle: const OtpPinFieldStyle(
+                /// bool to show hints in pin field or not
+                showHintText: true,
+
+                /// to set the color of hints in pin field or not
+                // hintTextColor: Colors.red,
+
+                /// to set the text  of hints in pin field
+                // hintText: '1',
+
                 /// border color for inactive/unfocused Otp_Pin_Field
                 // defaultFieldBorderColor: Colors.red,
 
@@ -107,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
               cursorColor: Colors.indigo,
 
               /// to choose cursor color
-              upperChild: Column(
+              upperChild: const Column(
                 children: [
                   SizedBox(height: 30),
                   Icon(Icons.flutter_dash_outlined, size: 150),
@@ -117,19 +132,19 @@ class _MyHomePageState extends State<MyHomePage> {
               // 123456
               middleChild: Column(
                 children: [
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
                   ElevatedButton(
                       onPressed: () {
                         _otpPinFieldController.currentState
                             ?.clearOtp(); // clear controller
                       },
-                      child: Text('clear OTP')),
-                  SizedBox(height: 10),
+                      child: const Text('clear OTP')),
+                  const SizedBox(height: 10),
                   ElevatedButton(
                       onPressed: () => Navigator.push(context,
                           MaterialPageRoute(builder: (context) => NextPage())),
-                      child: Text('Next Class')),
-                  SizedBox(height: 30),
+                      child: const Text('Next Class')),
+                  const SizedBox(height: 30),
                 ],
               ),
 
