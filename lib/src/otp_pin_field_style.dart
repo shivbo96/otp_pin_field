@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 class OtpPinFieldStyle {
   final TextStyle textStyle;
+  final bool showHintText;
+  final String hintText;
+  final Color hintTextColor;
   final double fieldPadding;
   final Color activeFieldBackgroundColor;
   final Color defaultFieldBackgroundColor;
@@ -19,7 +22,10 @@ class OtpPinFieldStyle {
   final List<BoxShadow>? defaultFieldBoxShadow;
 
   const OtpPinFieldStyle({
-    this.textStyle = const TextStyle(fontSize: 18.0, color: Colors.black),
+    this.textStyle = const TextStyle(fontSize: 22.0, color: Colors.black),
+    this.showHintText = false,
+    this.hintText = '0',
+    this.hintTextColor = Colors.black45,
     this.activeFieldBorderColor = Colors.black,
     this.defaultFieldBorderColor = Colors.black45,
     this.activeFieldBackgroundColor = Colors.transparent,

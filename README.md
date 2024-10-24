@@ -11,7 +11,6 @@ Created by Shivam Mishra [@shivbo96](https://github.com/shivbo96)
 
 <a href="https://paypal.me/shivam131197" target="_blank"><img src="https://raw.githubusercontent.com/stefan-niedermann/paypal-donate-button/master/paypal-donate-button.png" width="174"></a>
 
-
 # Usage
 
 ## Use this package as a library
@@ -83,6 +82,9 @@ import 'package:otp_pin_field/otp_pin.dart';
 | defaultFieldBorderGradient  | Gradient                |                                                  | Set gradient border Color for unfocused/default field pin box.                                                                                                                                                                                  |
 | onPhoneHintSelected         | Function(String)        |                                                  | Callback when you select the autofill hints.                                                                                                                                                                                                    |
 | beforeTextPaste             | bool Function(String?)? | null                                             | This callback execute before you copy paste the OTP                                                                                                                                                                                             |
+| showHintText                | bool                    | false                                            | Bool to show hints in pin field or not                                                                                                                                                                                                          |
+| hintTextColor               | Color                   | Color.black45                                    | To set the color of hints in pin field or not                                                                                                                                                                                                   |
+| hintText                    | String                  | 0                                                | To set the text  of hints in pin field                                                                                                                                                                                                          |
 
 # Example
 
@@ -119,6 +121,16 @@ import 'package:otp_pin_field/otp_pin.dart';
 
             /// to decorate your Otp_Pin_Field
             otpPinFieldStyle: OtpPinFieldStyle(
+            
+              /// bool to show hints in pin field or not
+                showHintText: true,
+
+              /// to set the color of hints in pin field or not
+              // hintTextColor: Colors.red,
+
+              /// To set the text  of hints in pin field
+              // hintText: '1',
+                
               /// border color for inactive/unfocused Otp_Pin_Field
               // defaultFieldBorderColor: Colors.red,
 
@@ -218,20 +230,20 @@ refer to `example/lib/main.dart`
 
 #### Different Shapes
 
-<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/1.png" width="250" height="480">
-<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/2.png" width="250" height="480">
-<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/3.png" width="250" height="480">
-<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/4.png" width="250" height="480">
-<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/5.png" width="250" height="480">
-<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/6.png" width="250" height="480">
-<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/7.png" width="250" height="480">
-<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/8.png" width="250" height="480">
-<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/9.png" width="250" height="480">
-<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/10.png" width="250" height="480">
+<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/1.png" width="250" height="480" alt="OTP Pin Field - Example 1">
+<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/2.png" width="250" height="480" alt="OTP Pin Field - Example 2">
+<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/3.png" width="250" height="480" alt="OTP Pin Field - Example 3">
+<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/4.png" width="250" height="480" alt="OTP Pin Field - Example 4">
+<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/5.png" width="250" height="480" alt="OTP Pin Field - Example 5">
+<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/6.png" width="250" height="480" alt="OTP Pin Field - Example 6">
+<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/7.png" width="250" height="480" alt="OTP Pin Field - Example 7">
+<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/8.png" width="250" height="480" alt="OTP Pin Field - Example 8">
+<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/9.png" width="250" height="480" alt="OTP Pin Field - Example 9">
+<img src="https://raw.githubusercontent.com/shivbo96/otp_pin_field/main/images/10.png" width="250" height="480" alt="OTP Pin Field - Example 10">
 
 ### video
 
-<img width="250" height="480" src="https://user-images.githubusercontent.com/37922543/233455524-43332b0b-c315-46f8-b4bf-8a64e1786108.gif" />
+<img width="250" height="480" src="https://user-images.githubusercontent.com/37922543/233455524-43332b0b-c315-46f8-b4bf-8a64e1786108.gif" alt="Animated OTP Pin Field Example" />
 
 ## More information
 

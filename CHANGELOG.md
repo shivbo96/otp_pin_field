@@ -163,3 +163,18 @@ feat: Add support for custom border colors and width in OTP pin field
 
 **Documentation:**
 - Updated changelog file with version 1.2.9+1 release notes.
+
+
+#### [Version 1.3.0] - 2024-10-21
+
+**Added**
+- **Hint Text Support**: Added new properties to show hint text in the OTP pin field:
+  - `showHintText`: Allows displaying hint text inside the pin fields (default: `false`).
+  - `hintText`: Customizable hint text to display (default: `'0'`).
+  - `hintTextColor`: Customize the color of the hint text (default: `Colors.black45`).
+
+**Improvements:**
+- Added logic to respect `autoFillEnable` flag, ensuring that `autofillHints` is set to `null` when `autoFillEnable == false`. This prevents the SMS hint from being displayed when autofill is disabled.
+
+**Fixed**
+- Fixed autofocus behavior on the web. Autofocus is now correctly respected on web platforms if the `autoFocus` property is enabled.

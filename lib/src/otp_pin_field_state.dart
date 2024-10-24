@@ -98,9 +98,11 @@ class OtpPinFieldState extends State<OtpPinField>
                     child: TextField(
                       controller: controller,
                       maxLength: widget.maxLength,
-                      autofillHints: const [AutofillHints.oneTimeCode],
+                      autofillHints: (widget.autoFillEnable ?? false)
+                          ? const [AutofillHints.oneTimeCode]
+                          : null,
                       readOnly: widget.showCustomKeyboard ?? true,
-                      autofocus: !kIsWeb ? widget.autoFocus : false,
+                      autofocus: widget.autoFocus,
                       enableInteractiveSelection: false,
                       inputFormatters:
                           widget.keyboardType == TextInputType.number
@@ -194,9 +196,11 @@ class OtpPinFieldState extends State<OtpPinField>
               child: TextField(
                 controller: controller,
                 maxLength: widget.maxLength,
-                autofillHints: const [AutofillHints.oneTimeCode],
+                autofillHints: (widget.autoFillEnable ?? false)
+                    ? const [AutofillHints.oneTimeCode]
+                    : null,
                 readOnly: !(widget.showDefaultKeyboard ?? true),
-                autofocus: !kIsWeb ? widget.autoFocus : false,
+                autofocus: widget.autoFocus,
                 enableInteractiveSelection: false,
                 inputFormatters: widget.keyboardType == TextInputType.number
                     ? <TextInputFormatter>[
@@ -383,7 +387,11 @@ class OtpPinFieldState extends State<OtpPinField>
             Center(
               child: Text(
                 _getPinDisplay(i),
-                style: widget.otpPinFieldStyle?.textStyle,
+                style: pinsInputed[i].isEmpty &&
+                        widget.otpPinFieldStyle?.showHintText == true
+                    ? widget.otpPinFieldStyle?.textStyle
+                        .copyWith(color: widget.otpPinFieldStyle?.hintTextColor)
+                    : widget.otpPinFieldStyle?.textStyle,
                 textAlign: TextAlign.center,
               ),
             ),
@@ -405,6 +413,11 @@ class OtpPinFieldState extends State<OtpPinField>
         display = value;
         break;
     }
+
+    if (value.isEmpty && widget.otpPinFieldStyle?.showHintText == true) {
+      return widget.otpPinFieldStyle?.hintText ?? '0';
+    }
+
     return value.isNotEmpty ? display : value;
   }
 
@@ -514,7 +527,7 @@ class OtpPinFieldState extends State<OtpPinField>
       if (ending) {
         widget.onSubmit(controller.text.trim());
         FocusScope.of(context).unfocus();
-        hideKeyboard();
+        _hideKeyboard();
       }
     }
   }
@@ -605,4 +618,8 @@ mixin OtpPinAutoFill {
   }
 
   void codeUpdated();
+}
+
+void _hideKeyboard() {
+  SystemChannels.textInput.invokeMethod('TextInput.hide');
 }
