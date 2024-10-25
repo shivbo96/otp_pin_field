@@ -114,6 +114,7 @@ feat: Add support for custom border colors and width in OTP pin field
 ## [1.2.7+1] -Release
 - Documents updated.
 
+
 ## [1.2.8] - 2024-07-03
 
 Added:
@@ -192,3 +193,6 @@ Documentation:
 Documentation:
 - Formatted changelog file to include the latest versions.
 - Updated README file with the latest changes and usage instructions.
+
+## [1.3.1] -Release
+- Documents updated.
