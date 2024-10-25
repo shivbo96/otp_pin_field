@@ -116,15 +116,15 @@ feat: Add support for custom border colors and width in OTP pin field
 
 ## [1.2.8] - 2024-07-03
 
-### Added
-- Box border support for `defaultPinBoxDecoration`, `roundedPinBoxDecoration`, and `custom` in `otpPinFieldDecoration`.
-- Enhanced customization options for OTP pin fields, including border radius and box shadow properties.
+**Added**
+  - Box border support for `defaultPinBoxDecoration`, `roundedPinBoxDecoration`, and `custom` in `otpPinFieldDecoration`.
+  - Enhanced customization options for OTP pin fields, including border radius and box shadow properties.
 
-### Fixed
-- Clarified the usage of `borderRadius` property with `otpPinFieldDecoration.custom` to avoid confusion when using `underlinedPinBoxDecoration`.
+**Fixed** 
+  - Clarified the usage of `borderRadius` property with `otpPinFieldDecoration.custom` to avoid confusion when using `underlinedPinBoxDecoration`.
 
-### Updated
-- Updated documentation and example code to demonstrate new features and proper usage of custom decorations.
+**Updated**
+  - Updated documentation and example code to demonstrate new features and proper usage of custom decorations.
 
 
 
