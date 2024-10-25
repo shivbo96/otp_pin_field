@@ -1,50 +1,56 @@
-# Miscellaneous
-*.class
+# Operating System Files
+.DS_Store              # macOS
+Thumbs.db              # Windows
+Desktop.ini            # Windows
+Icon?                  # macOS
+.Trashes               # macOS
+*.swp                  # Linux, Vim swap files
 *.lock
 *.log
 *.pyc
-*.swp
-.DS_Store
+*.class
 .atom/
 .buildlog/
 .history
 .svn/
 
-# IntelliJ related
+# Web Development
+node_modules/          # Node.js dependencies
+bower_components/      # Bower dependencies
+dist/                  # Distribution folder
+coverage/              # Test coverage results
+*.min.js               # Minified JavaScript files
+*.map                  # Source maps
+
+# IDE/Editor-specific
+.idea/                 # IntelliJ
 *.iml
 *.ipr
 *.iws
-.idea/
-
-# Visual Studio Code related
-.classpath
+.vscode/               # Visual Studio Code
+.classpath             # Eclipse
 .project
 .settings/
-.vscode/
+*.sublime-*
+*.tmproj
+*.tmproject
 
-# Flutter repo-specific
-/bin/cache/
-/bin/internal/bootstrap.bat
-/bin/internal/bootstrap.sh
-/bin/mingit/
-/dev/benchmarks/mega_gallery/
-/dev/bots/.recipe_deps
-/dev/bots/android_tools/
-/dev/devicelab/ABresults*.json
-/dev/docs/doc/
-/dev/docs/flutter.docs.zip
-/dev/docs/lib/
-/dev/docs/pubspec.yaml
-/dev/integration_tests/**/xcuserdata
-/dev/integration_tests/**/Pods
-/packages/flutter/coverage/
-version
-analysis_benchmark.json
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# packages file containing multi-root paths
-.packages.generated
+# macOS-specific files
+**/macos/Flutter/GeneratedPluginRegistrant.swift
 
-# Flutter/Dart/Pub related
+# Windows-specific files
+Thumbs.db
+ehthumbs.db
+
+# Flutter/Dart/Pub-related files
 **/doc/api/
 .dart_tool/
 .flutter-plugins
@@ -59,7 +65,7 @@ linked_*.ds
 unlinked.ds
 unlinked_spec.ds
 
-# Android related
+# Android-related files
 **/android/**/gradle-wrapper.jar
 **/android/.gradle
 **/android/captures/
@@ -70,7 +76,7 @@ unlinked_spec.ds
 **/android/key.properties
 *.jks
 
-# iOS/XCode related
+# iOS/Xcode-related files
 **/ios/**/*.mode1v3
 **/ios/**/*.mode2v3
 **/ios/**/*.moved-aside
@@ -100,16 +106,13 @@ unlinked_spec.ds
 **/ios/ServiceDefinitions.json
 **/ios/Runner/GeneratedPluginRegistrant.*
 
-# macOS
-**/macos/Flutter/GeneratedPluginRegistrant.swift
-
-# Coverage
+# Coverage and Symbol files
 coverage/
 
 # Symbols
 app.*.symbols
 
-# Exceptions to above rules.
+# Exceptions
 !**/ios/**/default.mode1v3
 !**/ios/**/default.mode2v3
 !**/ios/**/default.pbxuser
