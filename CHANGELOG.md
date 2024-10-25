@@ -188,7 +188,7 @@ Documentation:
 - Formatted changelog file to include the latest versions.
 - updated README file with the latest changes and usage instructions.
 
-## [Version 1.3.0+2] - 2024-10-25
+## [1.3.0+2] - 2024-10-25
 
 Documentation:
 - Formatted changelog file to include the latest versions.
