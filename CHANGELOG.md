@@ -116,73 +116,73 @@ feat: Add support for custom border colors and width in OTP pin field
 
 ## [1.2.8] - 2024-07-03
 
-**Added**
+Added:
   - Box border support for `defaultPinBoxDecoration`, `roundedPinBoxDecoration`, and `custom` in `otpPinFieldDecoration`.
   - Enhanced customization options for OTP pin fields, including border radius and box shadow properties.
 
-**Fixed** 
+Fixed: 
   - Clarified the usage of `borderRadius` property with `otpPinFieldDecoration.custom` to avoid confusion when using `underlinedPinBoxDecoration`.
 
-**Updated**
+Updated:
   - Updated documentation and example code to demonstrate new features and proper usage of custom decorations.
 
 
 
 ## [Version 1.2.8+1] - 2024-07-09
 
-**Improvements:**
+Improvements:
 - Refactored `OtpPinFieldState` to streamline decoration handling.
 - Removed `foregroundBoxDecoration` and integrated its logic into `BoxDecoration`.
 - Improved handling of `fieldBorderGradient` with a fallback mechanism.
 - Enhanced code readability and maintainability.
 
-**Bug Fixes:**
+Bug Fixes:
 - Fixed potential issues with the decoration logic by consolidating it within `BoxDecoration`.
 - Addressed minor inconsistencies in field highlighting and cursor behavior.
 
 
 ## [Version 1.2.9] - 2024-07-09
 
-**Improvements:**
+Improvements:
 - Added handling for keyboard not opening issue in webview apps.
 - Improved focus management for webview apps in the `onFieldFocus` method.
 
-**Bug Fixes:**
+Bug Fixes:
 - Fixed potential issues with the decoration logic by consolidating it within `BoxDecoration`.
 - Addressed minor inconsistencies in field highlighting and cursor behavior.
 
-**Documentation:**
+Documentation:
 - Updated README file with the latest changes and usage instructions.
 - Updated changelog file with version 1.2.9 release notes.
 
 
 ## [Version 1.2.9+1] - 2024-07-30
 
-**Improvements:**
+Improvements:
 - Add conditional for AGP <4.2 compatibility in Android configuration
 
-**Documentation:**
+Documentation:
 - Updated changelog file with version 1.2.9+1 release notes.
 
 
 ## [Version 1.3.0] - 2024-10-23
 
-**Added**
-- **Hint Text Support**: Added new properties to show hint text in the OTP pin field:
+Added:
+- Hint Text Support: Added new properties to show hint text in the OTP pin field:
   - `showHintText`: Allows displaying hint text inside the pin fields (default: `false`).
   - `hintText`: Customizable hint text to display (default: `'0'`).
   - `hintTextColor`: Customize the color of the hint text (default: `Colors.black45`).
 
-**Improvements:**
+Improvements:
 - Added logic to respect `autoFillEnable` flag, ensuring that `autofillHints` is set to `null` when `autoFillEnable == false`. This prevents the SMS hint from being displayed when autofill is disabled.
 
-**Fixed**
+Fixed:
 - Fixed autofocus behavior on the web. Autofocus is now correctly respected on web platforms if the `autoFocus` property is enabled.
 
 
 ## [Version 1.3.0+1] - 2024-10-25
 
-**Documentation:**
+Documentation:
 - Updated package with web,Macos,Windows and Linux support.
 - Formatted changelog file to include the latest versions.
 - updated README file with the latest changes and usage instructions.
