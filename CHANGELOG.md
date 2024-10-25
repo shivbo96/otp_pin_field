@@ -128,7 +128,7 @@ Updated:
 
 
 
-## [Version 1.2.8+1] - 2024-07-09
+## [1.2.8+1] - 2024-07-09
 
 Improvements:
 - Refactored `OtpPinFieldState` to streamline decoration handling.
@@ -141,7 +141,7 @@ Bug Fixes:
 - Addressed minor inconsistencies in field highlighting and cursor behavior.
 
 
-## [Version 1.2.9] - 2024-07-09
+## [1.2.9] - 2024-07-09
 
 Improvements:
 - Added handling for keyboard not opening issue in webview apps.
@@ -156,7 +156,7 @@ Documentation:
 - Updated changelog file with version 1.2.9 release notes.
 
 
-## [Version 1.2.9+1] - 2024-07-30
+## [1.2.9+1] - 2024-07-30
 
 Improvements:
 - Add conditional for AGP <4.2 compatibility in Android configuration
@@ -165,7 +165,7 @@ Documentation:
 - Updated changelog file with version 1.2.9+1 release notes.
 
 
-## [Version 1.3.0] - 2024-10-23
+## [1.3.0] - 2024-10-23
 
 Added:
 - Hint Text Support: Added new properties to show hint text in the OTP pin field:
@@ -180,7 +180,7 @@ Fixed:
 - Fixed autofocus behavior on the web. Autofocus is now correctly respected on web platforms if the `autoFocus` property is enabled.
 
 
-## [Version 1.3.0+1] - 2024-10-25
+## [1.3.0+1] - 2024-10-25
 
 Documentation:
 - Updated package with web,Macos,Windows and Linux support.
