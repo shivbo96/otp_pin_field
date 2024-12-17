@@ -125,7 +125,9 @@ class OtpPinFieldState extends State<OtpPinField>
                         ending = text.length == widget.maxLength;
                         if (ending) {
                           widget.onSubmit(text);
-                          FocusScope.of(context).unfocus();
+                          if (widget.unFocusOnEnding) {
+                            FocusScope.of(context).unfocus();
+                          }
                         }
                       },
                     ),
@@ -150,7 +152,7 @@ class OtpPinFieldState extends State<OtpPinField>
                       widget.onChange(controller.text.trim());
                       ending =
                           controller.text.trim().length == widget.maxLength;
-                      if (ending) {
+                      if (ending && widget.unFocusOnEnding) {
                         FocusScope.of(context).unfocus();
                       }
                     },
@@ -223,7 +225,9 @@ class OtpPinFieldState extends State<OtpPinField>
                   ending = text.length == widget.maxLength;
                   if (ending) {
                     widget.onSubmit(text);
-                    FocusScope.of(context).unfocus();
+                    if (widget.unFocusOnEnding) {
+                      FocusScope.of(context).unfocus();
+                    }
                   }
                 },
               ),
@@ -526,8 +530,10 @@ class OtpPinFieldState extends State<OtpPinField>
       ending = controller.text.trim().length == widget.maxLength;
       if (ending) {
         widget.onSubmit(controller.text.trim());
-        FocusScope.of(context).unfocus();
-        _hideKeyboard();
+        if (widget.unFocusOnEnding) {
+          FocusScope.of(context).unfocus();
+          _hideKeyboard();
+        }
       }
     }
   }
