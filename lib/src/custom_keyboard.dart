@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 
 class OtpKeyboard extends StatelessWidget {
   OtpKeyboard(
-      {super.key,
-      required this.callbackValue,
-      required this.callbackSubmitValue,
-      required this.callbackDeleteValue});
+      {super.key, required this.callbackValue, required this.callbackSubmitValue, required this.callbackDeleteValue});
 
   final Function(String) callbackValue;
   final VoidCallback callbackDeleteValue;
