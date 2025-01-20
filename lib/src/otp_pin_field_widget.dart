@@ -30,6 +30,7 @@ class OtpPinField extends StatefulWidget {
   final Widget? customKeyboard;
   final bool? showCustomKeyboard;
   final bool? showDefaultKeyboard;
+  final bool unFocusOnEnding;
   final Function(String)? onCodeChanged;
   final bool Function(String? text)? beforeTextPaste;
   final Function(String?)? onPhoneHintSelected;
@@ -65,6 +66,7 @@ class OtpPinField extends StatefulWidget {
     this.showCustomKeyboard,
     this.onPhoneHintSelected,
     this.showDefaultKeyboard = true,
+    this.unFocusOnEnding = false,
   });
 
   @override
