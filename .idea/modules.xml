@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/otp_pin_field.iml" filepath="$PROJECT_DIR$/.idea/otp_pin_field.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/otp_pin_field_android.iml" filepath="$PROJECT_DIR$/android/otp_pin_field_android.iml" />
     </modules>
   </component>
 </project>
