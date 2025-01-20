@@ -39,34 +39,35 @@ class AppSignatureHelper(context: Context?) : ContextWrapper(context) {
     /**
      * Get all the app signatures for the current package
      *
-     * @return
+     * @return List of app signatures
      */
     @get:SuppressLint("PackageManagerGetSignatures")
     val appSignatures: ArrayList<String>
         get() {
-            val appCodes: ArrayList<String> = ArrayList<String>()
+            val appCodes: ArrayList<String> = ArrayList()
             try {
                 // Get all package signatures for the current package
                 val packageName: String = packageName
                 val packageManager: PackageManager = packageManager
-                val signatures: Array<Signature> = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                        packageManager.getPackageInfo(
-                            packageName,
-                            PackageManager.GET_SIGNING_CERTIFICATES
-                        ).signingInfo.apkContentsSigners
-                    } else {
-                        packageManager.getPackageInfo(
-                            packageName,
-                            PackageManager.GET_SIGNATURES
-                        ).signatures
-                    }
+                val signatures: Array<Signature>? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    packageManager.getPackageInfo(
+                        packageName,
+                        PackageManager.GET_SIGNING_CERTIFICATES
+                    ).signingInfo?.apkContentsSigners
+                } else {
+                    packageManager.getPackageInfo(
+                        packageName,
+                        PackageManager.GET_SIGNATURES
+                    ).signatures
+                }
 
-                // For each signature create a compatible hash
-                for (signature in signatures) {
-                    val hash = hash(packageName, signature.toCharsString())
-                    if (hash != null) {
-                        appCodes.add(String.format("%s", hash))
+                signatures?.let {
+                    for (signature in it) {
+                        val hash = hash(packageName, signature.toCharsString())
+                        hash?.let { appCodes.add(it) }
                     }
+                } ?: run {
+                    Log.e(TAG, "No signatures found for package: $packageName")
                 }
             } catch (e: PackageManager.NameNotFoundException) {
                 Log.e(TAG, "Unable to find package to obtain hash.", e)
@@ -75,33 +76,35 @@ class AppSignatureHelper(context: Context?) : ContextWrapper(context) {
         }
 
     companion object {
-        val TAG: String = "shivam check"
+        val TAG: String = "Otp Pin Field AppSignatureHelper"
         private const val HASH_TYPE = "SHA-256"
         const val NUM_HASHED_BYTES = 9
         const val NUM_BASE64_CHAR = 11
+
         private fun hash(packageName: String, signature: String): String? {
             val appInfo = "$packageName $signature"
-            try {
+            return try {
                 val messageDigest: MessageDigest = MessageDigest.getInstance(HASH_TYPE)
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    messageDigest.update(appInfo.toByteArray(java.nio.charset.StandardCharsets.UTF_8))
+                    messageDigest.update(appInfo.toByteArray(Charsets.UTF_8))
                 } else {
                     messageDigest.update(appInfo.toByteArray(Charset.forName("UTF-8")))
                 }
                 var hashSignature: ByteArray = messageDigest.digest()
 
-                // truncated into NUM_HASHED_BYTES
+                // Truncate into NUM_HASHED_BYTES
                 hashSignature = hashSignature.copyOfRange(0, NUM_HASHED_BYTES)
-                // encode into Base64
+
+                // Encode into Base64
                 var base64Hash: String =
                     Base64.encodeToString(hashSignature, Base64.NO_PADDING or Base64.NO_WRAP)
                 base64Hash = base64Hash.substring(0, NUM_BASE64_CHAR)
                 Log.d(TAG, String.format("pkg: %s -- hash: %s", packageName, base64Hash))
-                return base64Hash
+                base64Hash
             } catch (e: NoSuchAlgorithmException) {
                 Log.e(TAG, "hash:NoSuchAlgorithm", e)
+                null
             }
-            return null
         }
     }
 }
