@@ -85,6 +85,7 @@ import 'package:otp_pin_field/otp_pin.dart';
 | showHintText                | bool                    | false                                            | Bool to show hints in pin field or not                                                                                                                                                                                                          |
 | hintTextColor               | Color                   | Color.black45                                    | To set the color of hints in pin field or not                                                                                                                                                                                                   |
 | hintText                    | String                  | 0                                                | To set the text  of hints in pin field                                                                                                                                                                                                          |
+| unFocusOnEnding             | bool                    | true                                             | A boolean that controls hiding and unhiding the keyboard after entering the OTP.                                                                                                                                                                |
 
 # Example
 
