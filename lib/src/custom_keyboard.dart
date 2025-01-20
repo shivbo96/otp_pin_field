@@ -54,7 +54,7 @@ class CustomKeyboard extends StatelessWidget {
           // height: 280,
           // margin:const EdgeInsets.only(bottom: 30) ,
           decoration: BoxDecoration(
-              color: const Color(0xffEDEDED).withOpacity(0.4),
+              color: const Color(0xffEDEDED).withValues(alpha: 0.4),
               //  border: Border.all(  color: Colors.grey.withOpacity(0.4),),
               borderRadius: BorderRadius.circular(20)),
           child: Column(
@@ -77,13 +77,13 @@ class CustomKeyboard extends StatelessWidget {
         Container(
           width: 1,
           height: 60,
-          color: Colors.grey.withOpacity(0.4),
+          color: Colors.grey.withValues(alpha: 0.4),
         ),
         TextKey(text: '2', onTextInput: _textInputHandler),
         Container(
           width: 1,
           height: 60,
-          color: Colors.grey.withOpacity(0.4),
+          color: Colors.grey.withValues(alpha: 0.4),
         ),
         TextKey(text: '3', onTextInput: _textInputHandler),
       ],
@@ -97,13 +97,13 @@ class CustomKeyboard extends StatelessWidget {
         Container(
           width: 1,
           height: 60,
-          color: Colors.grey.withOpacity(0.4),
+          color: Colors.grey.withValues(alpha: 0.4),
         ),
         TextKey(text: '5', onTextInput: _textInputHandler),
         Container(
           width: 1,
           height: 60,
-          color: Colors.grey.withOpacity(0.4),
+          color: Colors.grey.withValues(alpha: 0.4),
         ),
         TextKey(text: '6', onTextInput: _textInputHandler),
       ],
@@ -117,13 +117,13 @@ class CustomKeyboard extends StatelessWidget {
         Container(
           width: 1,
           height: 60,
-          color: Colors.grey.withOpacity(0.4),
+          color: Colors.grey.withValues(alpha: 0.4),
         ),
         TextKey(text: '8', onTextInput: _textInputHandler),
         Container(
           width: 1,
           height: 60,
-          color: Colors.grey.withOpacity(0.4),
+          color: Colors.grey.withValues(alpha: 0.4),
         ),
         TextKey(text: '9', onTextInput: _textInputHandler),
       ],
@@ -137,13 +137,13 @@ class CustomKeyboard extends StatelessWidget {
         Container(
           width: 1,
           height: 60,
-          color: Colors.grey.withOpacity(0.4),
+          color: Colors.grey.withValues(alpha: 0.4),
         ),
         TextKey(text: '0', onTextInput: _textInputHandler),
         Container(
           width: 1,
           height: 60,
-          color: Colors.grey.withOpacity(0.4),
+          color: Colors.grey.withValues(alpha: 0.4),
         ),
         CheckKey(onCheck: _onSubmitHandler)
       ],
