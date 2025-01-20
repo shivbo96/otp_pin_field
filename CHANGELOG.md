@@ -196,3 +196,20 @@ Documentation:
 
 ## [1.3.1] -Release
 - Documents updated.
+
+## [1.3.2] - 2025-01-20
+  
+Added:
+  - **`unFocusOnEnding` Option:**
+      - Introduced a new `unFocusOnEnding` property in the `OtpPinField` to improve usability.
+      - When enabled, the field will automatically lose focus once the user has completed input (default: `false`).
+Improvements:
+  - **Build Configuration Modernization:**
+      - Updated `build.gradle` to adopt Java 17 and Kotlin JVM target 17 for better compatibility and performance:
+      - `compileOptions.sourceCompatibility` updated from `JavaVersion.VERSION_1_8` to `JavaVersion.VERSION_17`.
+      - `kotlinOptions.jvmTarget` updated from `1.8` to `17`.
+      - These changes align the project with modern Java/Kotlin standards and ensure support for newer tools and libraries.
+Acknowledged:
+      - **WebAssembly Compatibility:**
+      - Community feedback to use the `universal_html` package for WebAssembly compatibility (`--wasm`) has been acknowledged.
+      - This enhancement is under review for future implementation.
