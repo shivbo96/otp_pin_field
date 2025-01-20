@@ -44,7 +44,8 @@ class OtpPinField extends StatefulWidget {
     this.otpPinFieldStyle = const OtpPinFieldStyle(),
     this.textInputAction = TextInputAction.done,
     this.otpPinFieldInputType = OtpPinFieldInputType.none,
-    this.otpPinFieldDecoration = OtpPinFieldDecoration.underlinedPinBoxDecoration,
+    this.otpPinFieldDecoration =
+        OtpPinFieldDecoration.underlinedPinBoxDecoration,
     this.otpPinInputCustom = '*',
     this.smsRegex,
     this.beforeTextPaste,
