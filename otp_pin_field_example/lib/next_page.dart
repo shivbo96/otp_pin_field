@@ -7,9 +7,7 @@ class NextPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const Center(
-        child: Text('Next Page '),
-      ),
+      body: const Center(child: Text('Next Page ')),
     );
   }
 }
