@@ -213,3 +213,25 @@ Acknowledged:
       - **WebAssembly Compatibility:**
       - Community feedback to use the `universal_html` package for WebAssembly compatibility (`--wasm`) has been acknowledged.
       - This enhancement is under review for future implementation.
+
+
+## [1.4.0] - 2025-02-13
+
+Added:
+
+- **New Flutter 3.29.0 Example:**
+    - Introduced a new example compatible with Flutter 3.29.0 to demonstrate plugin usage more effectively.
+
+Improvements:
+
+- **`OtpPinFieldPlugin`**** Registration Fix:**
+    - Resolved an issue with the plugin's registration mechanism to improve reliability and stability.
+- **Dependency Updates:**
+    - Updated project dependencies to their latest compatible versions for enhanced performance and security.
+
+Updated:
+
+- **Changelog & Pubspec File:**
+    - Revised the changelog to document the latest changes.
+    - Updated `pubspec.yaml` to reflect new version and dependency updates.
+-
