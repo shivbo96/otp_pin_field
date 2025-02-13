@@ -107,3 +107,12 @@ coverage/
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 !/dev/ci/**/Gemfile.lock
+
+.idea/.gitignore
+  .idea/caches/deviceStreaming.xml
+  .idea/libraries/Dart_SDK.xml
+  .idea/libraries/Flutter_Plugins.xml
+  .idea/libraries/KotlinJavaRuntime.xml
+  .idea/misc.xml
+  .idea/modules.xml
+  .idea/vcs.xml
