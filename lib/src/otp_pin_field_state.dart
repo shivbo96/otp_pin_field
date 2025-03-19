@@ -205,7 +205,11 @@ class OtpPinFieldState extends State<OtpPinField>
             ),
             // Transparent TextField overlay
             Positioned.fill(
-              child: TextField(
+              child:
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10, left: 70),
+                child:
+              TextField(
                 cursorColor: Colors.transparent,
                 controller: controller,
                 maxLength: widget.maxLength,
@@ -224,7 +228,7 @@ class OtpPinFieldState extends State<OtpPinField>
                 keyboardType: widget.keyboardType,
                 textInputAction: widget.textInputAction,
                 style: const TextStyle(
-                    color: Colors.transparent), // Make text invisible
+                    color: Colors.transparent,), // Make text invisible
                 decoration: const InputDecoration(
                   counterText: '', // Remove counter text
                   border: InputBorder.none, // Remove borders
@@ -248,6 +252,7 @@ class OtpPinFieldState extends State<OtpPinField>
                     }
                   }
                 },
+              ),
               ),
             ),
           ],
