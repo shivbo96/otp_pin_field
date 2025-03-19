@@ -118,6 +118,7 @@ class OtpPinFieldState extends State<OtpPinField>
                       style: TextStyle(
                           color: Colors.transparent), // Make text invisible
                       decoration: InputDecoration(
+                        counterText: '', // Remove counter text
                         border: InputBorder.none, // Remove borders
                         contentPadding: EdgeInsets.zero, // Remove padding
                       ),
