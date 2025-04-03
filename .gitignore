@@ -1,110 +1,122 @@
-# Miscellaneous
-*.class
-*.log
-*.lock
-*.mock.dart
-*.pyc
-*.swp
-.DS_Store
-.atom/
-.buildlog/
-.history
-.svn/
-/build
-.dart_tool
-.idea
-migrate_working_dir/
-# IntelliJ related
-*.iml
-*.ipr
-*.iws
-.idea/
-# packages file containing multi-root paths
-.packages.generated
-# Visual Studio Code related
-.classpath
-.project
-.settings/
-.flutter-plugins
-.flutter-plugins-dependencies
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-# .vscode/
-# Flutter/Dart/Pub related
-**/doc/api/
-**/ios/Flutter/.last_build_id
+# Dart/Pub/Flutter related
 .dart_tool/
 .packages
+.packages.generated
 .pub-cache/
 .pub/
-/build/
+.buildlog/
+.migrate_working_dir/
+generated/
+*.g.dart
+*.freezed.dart
+*.mock.dart
 flutter_*.png
 linked_*.ds
 unlinked.ds
 unlinked_spec.ds
-*.g.dart
-*.freezed.dart
-generated/
-# Symbolication related
-app.*.symbols
-# Obfuscation related
-app.*.map.json
-# Android related
-**/android/**/gradle-wrapper.jar
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Build outputs
+/build/
+**/build/
+
+# Android
 .gradle/
+**/android/**/gradle-wrapper.jar
 **/android/captures/
 **/android/gradlew
 **/android/gradlew.bat
 **/android/local.properties
 **/android/**/GeneratedPluginRegistrant.java
 **/android/key.properties
+**/android/**/.cxx/
 *.jks
+/android/app/debug/
+/android/app/profile/
+/android/app/release/
 
-# Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
-
-# iOS/XCode related
+# iOS
 **/ios/**/*.mode1v3
 **/ios/**/*.mode2v3
-**/ios/**/*.moved-aside
 **/ios/**/*.pbxuser
 **/ios/**/*.perspectivev3
+**/ios/**/*.moved-aside
 **/ios/**/*sync/
 **/ios/**/.sconsign.dblite
 **/ios/**/.tags*
 **/ios/**/.vagrant/
 **/ios/**/DerivedData/
-**/ios/**/Icon?
 **/ios/**/Pods/
 **/ios/**/.symlinks/
 **/ios/**/profile
-**/ios/**/xcuserdata
+**/ios/**/xcuserdata/
 **/ios/.generated/
+**/ios/Flutter/ephemeral/
+**/ios/Flutter/flutter_assets/
 **/ios/Flutter/App.framework
 **/ios/Flutter/Flutter.framework
 **/ios/Flutter/Flutter.podspec
 **/ios/Flutter/Generated.xcconfig
-**/ios/Flutter/ephemeral
 **/ios/Flutter/app.flx
 **/ios/Flutter/app.zip
-**/ios/Flutter/flutter_assets/
 **/ios/Flutter/flutter_export_environment.sh
 **/ios/ServiceDefinitions.json
 **/ios/Runner/GeneratedPluginRegistrant.*
+
 # macOS
 **/macos/Flutter/GeneratedPluginRegistrant.swift
-**/macos/Flutter/ephemeral
+**/macos/Flutter/ephemeral/
+
+# Windows
+**/windows/flutter/ephemeral/
+**/windows/GeneratedPluginRegistrant.*
+
+# Linux
+**/linux/flutter/ephemeral/
+**/linux/GeneratedPluginRegistrant.*
+
+# Web
+**/web/.dart_tool/
+
+# IDE related
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VSCode
+.vscode/
+
+# Eclipse/JetBrains
+.classpath
+.project
+.settings/
+
+# Miscellaneous
+*.class
+*.log
+*.lock
+*.pyc
+*.swp
+.DS_Store
+.history
+.svn
+.atom/
+
+# Symbolication/Obfuscation
+app.*.symbols
+app.*.map.json
+
 # Coverage
 coverage/
-# Symbols
-# Exceptions to above rules.
+
+# Exceptions
 !**/ios/**/default.mode1v3
 !**/ios/**/default.mode2v3
 !**/ios/**/default.pbxuser
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
-!/dev/ci/**/Gemfile.lock
-
+!/dev/ci/**/Gemfile
