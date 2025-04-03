@@ -146,13 +146,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   const SizedBox(height: 10),
                   ElevatedButton(
-                    onPressed:
-                        () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const NextPage(),
-                          ),
-                        ),
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const NextPage(),
+                      ),
+                    ),
                     child: const Text('Next Class'),
                   ),
                   const SizedBox(height: 30),

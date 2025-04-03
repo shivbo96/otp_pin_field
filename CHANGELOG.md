@@ -235,3 +235,11 @@ Updated:
     - Revised the changelog to document the latest changes.
     - Updated `pubspec.yaml` to reflect new version and dependency updates.
 -
+
+
+## [1.4.1] - 2025-04-03
+
+- **Changelog & Pubspec File:**
+    - Revised the changelog to document the latest changes.
+    - Updated Readme file.
+-
