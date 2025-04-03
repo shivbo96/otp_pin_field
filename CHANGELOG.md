@@ -239,6 +239,6 @@ Updated:
 
 ## [1.4.1] - 2025-04-03
 
-- **Changelog & Pubspec File:**
+- **Changelog & Readme:**
     - Revised the changelog to document the latest changes.
     - Updated Readme file.
