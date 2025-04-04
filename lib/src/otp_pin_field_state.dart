@@ -87,23 +87,25 @@ class OtpPinFieldState extends State<OtpPinField>
             onTap: onFieldFocus,
             child: SizedBox(
               height: widget.fieldHeight,
-              child: Stack(children: [
-                Row(
+              child: Stack(
+                children: [
+                  // Custom pin fields
+                  Row(
                     mainAxisAlignment:
                         widget.mainAxisAlignment ?? MainAxisAlignment.center,
-                    children: _buildBody(context)),
-                AbsorbPointer(
-                  child: Opacity(
-                    opacity: 0.0,
+                    children: _buildBody(context),
+                  ),
+                  // Transparent TextField overlay
+                  Positioned.fill(
                     child: TextField(
                       controller: controller,
                       maxLength: widget.maxLength,
                       autofillHints: (widget.autoFillEnable ?? false)
                           ? const [AutofillHints.oneTimeCode]
                           : null,
-                      readOnly: widget.showCustomKeyboard ?? true,
+                      readOnly: !(widget.showDefaultKeyboard ?? true),
                       autofocus: widget.autoFocus,
-                      enableInteractiveSelection: false,
+                      enableInteractiveSelection: true, // Enable paste overlay
                       inputFormatters:
                           widget.keyboardType == TextInputType.number
                               ? <TextInputFormatter>[
@@ -112,6 +114,14 @@ class OtpPinFieldState extends State<OtpPinField>
                               : null,
                       focusNode: _focusNode,
                       keyboardType: widget.keyboardType,
+                      textInputAction: widget.textInputAction,
+                      style: TextStyle(
+                          color: Colors.transparent), // Make text invisible
+                      decoration: InputDecoration(
+                        counterText: '', // Remove counter text
+                        border: InputBorder.none, // Remove borders
+                        contentPadding: EdgeInsets.zero, // Remove padding
+                      ),
                       onSubmitted: (text) {
                         debugPrint(text);
                       },
@@ -132,8 +142,8 @@ class OtpPinFieldState extends State<OtpPinField>
                       },
                     ),
                   ),
-                )
-              ]),
+                ],
+              ),
             ),
           ),
           Expanded(child: widget.middleChild ?? const SizedBox.shrink()),
@@ -186,16 +196,22 @@ class OtpPinFieldState extends State<OtpPinField>
       onTap: onFieldFocus,
       child: SizedBox(
         height: widget.fieldHeight,
-        child: Stack(children: [
-          Row(
+        child: Stack(
+          children: [
+            // Custom pin fields
+            Row(
               mainAxisAlignment:
                   widget.mainAxisAlignment ?? MainAxisAlignment.center,
-              children: _buildBody(context)),
-          AbsorbPointer(
-            absorbing: true,
-            child: Opacity(
-              opacity: 0.0,
-              child: TextField(
+              children: _buildBody(context),
+            ),
+            // Transparent TextField overlay
+            Positioned.fill(
+              child:
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10, left: 70),
+                child:
+              TextField(
+                cursorColor: Colors.transparent,
                 controller: controller,
                 maxLength: widget.maxLength,
                 autofillHints: (widget.autoFillEnable ?? false)
@@ -203,15 +219,22 @@ class OtpPinFieldState extends State<OtpPinField>
                     : null,
                 readOnly: !(widget.showDefaultKeyboard ?? true),
                 autofocus: widget.autoFocus,
-                enableInteractiveSelection: false,
+                enableInteractiveSelection: true, // Enable paste overlay
                 inputFormatters: widget.keyboardType == TextInputType.number
                     ? <TextInputFormatter>[
                         FilteringTextInputFormatter.digitsOnly
                       ]
                     : null,
                 focusNode: _focusNode,
-                textInputAction: widget.textInputAction,
                 keyboardType: widget.keyboardType,
+                textInputAction: widget.textInputAction,
+                style: const TextStyle(
+                    color: Colors.transparent,), // Make text invisible
+                decoration: const InputDecoration(
+                  counterText: '', // Remove counter text
+                  border: InputBorder.none, // Remove borders
+                  contentPadding: EdgeInsets.zero, // Remove padding
+                ),
                 onSubmitted: (text) {
                   debugPrint(text);
                 },
@@ -231,9 +254,10 @@ class OtpPinFieldState extends State<OtpPinField>
                   }
                 },
               ),
+              ),
             ),
-          )
-        ]),
+          ],
+        ),
       ),
     );
   }
