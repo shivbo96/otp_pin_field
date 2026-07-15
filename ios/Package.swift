@@ -24,8 +24,7 @@ let package = Package(
             name: "otp_pin_field",
             dependencies: [
                 .product(name: "Flutter", package: "packages")
-            ],
-            path: "Classes"
+            ]
         )
     ]
 )

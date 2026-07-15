@@ -13,7 +13,7 @@ A new Flutter project.
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Shivam Mishra' => 'mishra.shivam1311@gmail.com' }
   s.source           = { :path => '.' }
-  s.source_files = 'Classes/**/*'
+  s.source_files = 'otp_pin_field/Sources/otp_pin_field/**/*'
   s.dependency 'Flutter'
   s.platform = :ios, '12.0'
 
