@@ -53,6 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             OtpPinField(
               key: _otpPinFieldController,
+              // key: ValueKey("input"),
 
               ///in case you want to enable autoFill
               autoFillEnable: true,

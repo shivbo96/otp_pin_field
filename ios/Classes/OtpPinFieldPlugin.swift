@@ -1,10 +1,10 @@
 import Flutter
 import UIKit
 
-public class SwiftOtpPinFieldPlugin: NSObject, FlutterPlugin {
+@objc public class OtpPinFieldPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "otp_pin_field", binaryMessenger: registrar.messenger())
-    let instance = SwiftOtpPinFieldPlugin()
+    let instance = OtpPinFieldPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
