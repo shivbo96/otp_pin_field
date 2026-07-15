@@ -242,3 +242,15 @@ Updated:
 - **Changelog & Readme:**
     - Revised the changelog to document the latest changes.
     - Updated Readme file.
+
+
+## [1.5.0] - 2026-07-15
+
+- **Swift Package Manager (SPM) Migration**:
+    - Migrated the native iOS codebase to fully support Swift Package Manager (SPM).
+    - Upgraded minimum iOS platform target to iOS 12.0 (`.iOS(.v12)` in `Package.swift` and `s.platform = :ios, '12.0'` in `otp_pin_field.podspec`).
+    - Simplified the iOS module to a modern Swift-only plugin by removing the legacy Objective-C bridge files (`OtpPinFieldPlugin.h` & `OtpPinFieldPlugin.m`).
+    - Exposed the Swift class registration to Objective-C using the `@objc` annotation for complete backward compatibility.
+- **Accessibility & Testing Enhancements**:
+    - Added `Semantics` wrapper with the key `otp_pin_field_container` and label `'otp_pin_field_container'` around the field row layout.
+    - Embedded testing automation `Key` identifiers to inner TextFields, cell boxes, spacers, and cursors.
