@@ -14,16 +14,13 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(
-            url: "https://github.com/flutter/packages.git",
-            from: "1.0.0"
-        )
+        .package(name: "FlutterFramework", path: "../FlutterFramework")
     ],
     targets: [
         .target(
             name: "otp_pin_field",
             dependencies: [
-                .product(name: "Flutter", package: "packages")
+                .product(name: "FlutterFramework", package: "FlutterFramework")
             ]
         )
     ]
