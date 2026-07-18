@@ -254,3 +254,9 @@ Updated:
 - **Accessibility & Testing Enhancements**:
     - Added `Semantics` wrapper with the key `otp_pin_field_container` and label `'otp_pin_field_container'` around the field row layout.
     - Embedded testing automation `Key` identifiers to inner TextFields, cell boxes, spacers, and cursors.
+
+## [1.5.1] - 2026-07-18
+
+- **iOS SwiftPM Build Fix**:
+    - Removed the invalid remote dependency on `flutter/packages` in `Package.swift` that was causing SwiftPM dependency resolution failure.
+
