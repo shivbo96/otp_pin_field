@@ -260,3 +260,7 @@ Updated:
 - **iOS SwiftPM Build Fix**:
     - Removed the invalid remote dependency on `flutter/packages` in `Package.swift` that was causing SwiftPM dependency resolution failure.
 
+## [1.5.2] - 2026-07-19
+
+- **iOS SwiftPM Product Name Fix**:
+    - Renamed the library product name in `Package.swift` from `otp_pin_field` to `otp-pin-field` (with hyphens) to align with Flutter's package product name generation.

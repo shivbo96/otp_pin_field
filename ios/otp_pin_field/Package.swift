@@ -9,7 +9,7 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "otp_pin_field",
+            name: "otp-pin-field",
             targets: ["otp_pin_field"]
         )
     ],
